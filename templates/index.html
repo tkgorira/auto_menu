@@ -6,20 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- PWA: manifest と テーマカラー -->
-    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <link rel="manifest" href="/static/manifest.json">
     <meta name="theme-color" content="#ff9800">
 
     <style>
         :root {
             font-size: 16px;
         }
-
         @media (max-width: 600px) {
             :root {
                 font-size: 17px; /* スマホでは少し大きめだが詰める */
             }
         }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
                          "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
@@ -29,19 +27,16 @@
             line-height: 1.7;
             background-color: #ffffff;
         }
-
         h1 {
             font-size: 1.4rem;
             margin: 8px 0 8px;
             white-space: nowrap; /* タイトルを1行に収める */
         }
-
         p,
         li,
         label {
             font-size: 0.95rem;
         }
-
         fieldset {
             margin-bottom: 10px;
             padding: 8px 10px;
@@ -49,17 +44,14 @@
             border: 1px solid #ddd;
             background-color: #f9f9f9;
         }
-
         legend {
             font-size: 1.0rem;
             font-weight: bold;
         }
-
         label {
             display: block;
             margin-bottom: 4px;
         }
-
         input[type="checkbox"],
         input[type="radio"] {
             width: 18px;
@@ -67,7 +59,6 @@
             vertical-align: middle;
             margin-right: 6px;
         }
-
         input[type="text"],
         select {
             width: 100%;
@@ -77,7 +68,6 @@
             box-sizing: border-box;
             margin-top: 3px;
         }
-
         button {
             padding: 10px 16px;
             font-size: 1.0rem;
@@ -89,11 +79,9 @@
             width: 100%;
             max-width: 460px;
         }
-
         button:hover {
             opacity: 0.9;
         }
-
         .top-bar {
             display: flex;
             justify-content: space-between;
@@ -101,29 +89,24 @@
             gap: 6px;
             margin-bottom: 8px;
         }
-
         .login-area {
             font-size: 0.85rem;
             text-align: right;
         }
-
         .login-area form {
             display: inline-block;
             margin: 0;
         }
-
         .login-area input[type="text"] {
             width: 130px;
             padding: 3px 6px;
             font-size: 0.85rem;
         }
-
         .login-area button {
             padding: 5px 8px;
             font-size: 0.85rem;
             width: auto;
         }
-
         .link-button {
             display: inline-block;
             padding: 4px 8px;
@@ -134,19 +117,16 @@
             color: #4b7bec;
             text-decoration: none;
         }
-
         .flash {
             color: #c00;
             font-size: 0.85rem;
             margin-bottom: 4px;
         }
-
         .nickname-note {
             font-size: 0.8rem;
             color: #666;
             margin-top: 2px;
         }
-
         @media (max-width: 600px) {
             body {
                 padding: 6px 8px 18px;
@@ -165,48 +145,30 @@
     <div class="top-bar">
         <h1>まいにち献立ナビ</h1>
         <div class="login-area">
-            {% with messages = get_flashed_messages() %}
-              {% if messages %}
-                {% for message in messages %}
-                  <div class="flash">{{ message }}</div>
-                {% endfor %}
-              {% endif %}
-            {% endwith %}
-
-            {% if nickname %}
-                <div>ログイン中: {{ nickname }}</div>
-                <div class="nickname-note">
-                    ※ログイン中はお気に入り登録と自作レシピが利用できます。
-                </div>
-                <div style="margin-top:4px;">
-                    <a href="{{ url_for('favorite_list') }}" class="link-button">お気に入り</a>
-                    <a href="{{ url_for('recipe_new') }}" class="link-button" style="margin-left:4px;">レシピ登録</a>
-                    <form method="GET" action="{{ url_for('logout') }}" style="display:inline;">
-                        <button type="submit" style="margin-left:4px;">ログアウト</button>
-                    </form>
-                </div>
-            {% else %}
-                <form method="POST" action="{{ url_for('login') }}">
-                    <label style="margin-bottom:2px;">
-                        ニックネーム：
-                        <input type="text" name="nickname" placeholder="例：たろう" required>
-                    </label>
-                    <button type="submit">ログイン</button>
-                </form>
-                <div class="nickname-note">
-                    ※お気に入り登録・自作レシピの保存には、最初にニックネームでログインしてください。
-                </div>
-            {% endif %}
+            <form method="POST" action="/login">
+                <label style="margin-bottom:2px;">
+                    ニックネーム：
+                    <input type="text" name="nickname" placeholder="例：たろう" required>
+                </label>
+                <button type="submit">ログイン</button>
+            </form>
+            <div class="nickname-note">
+                ※お気に入り登録・自作レシピの保存には、最初にニックネームでログインしてください。
+            </div>
         </div>
     </div>
 
-    <form method="POST" action="{{ url_for('generate') }}">
+    <form method="POST" action="/generate">
         <p>
             期間（日数）：
             <select name="days">
-                {% for d in range(1, 8) %}
-                <option value="{{ d }}">{{ d }}日分</option>
-                {% endfor %}
+                <option value="1">1日分</option>
+                <option value="2">2日分</option>
+                <option value="3">3日分</option>
+                <option value="4">4日分</option>
+                <option value="5">5日分</option>
+                <option value="6">6日分</option>
+                <option value="7">7日分</option>
             </select>
         </p>
 
@@ -239,9 +201,18 @@
             <label>
                 月：
                 <select name="month">
-                    {% for m in range(1, 13) %}
-                    <option value="{{ m }}">{{ m }}月</option>
-                    {% endfor %}
+                    <option value="1">1月</option>
+                    <option value="2">2月</option>
+                    <option value="3">3月</option>
+                    <option value="4">4月</option>
+                    <option value="5">5月</option>
+                    <option value="6">6月</option>
+                    <option value="7">7月</option>
+                    <option value="8">8月</option>
+                    <option value="9">9月</option>
+                    <option value="10">10月</option>
+                    <option value="11">11月</option>
+                    <option value="12">12月</option>
                 </select>
             </label>
         </fieldset>
