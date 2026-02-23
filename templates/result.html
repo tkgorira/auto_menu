@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>まいにち献立ナビ - 献立結果</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root {
+            font-size: 16px;
+        }
+
+        @media (max-width: 600px) {
+            :root {
+                font-size: 17px;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                         "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 8px 10px 20px;
+            line-height: 1.7;
+            background-color: #ffffff;
+        }
+
+        h1 {
+            font-size: 1.4rem;
+            margin: 8px 0 8px;
+            white-space: nowrap;
+        }
+
+        h2 {
+            font-size: 1.15rem;
+            margin: 14px 0 6px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 3px;
+        }
+
+        h3 {
+            font-size: 1.0rem;
+            margin: 10px 0 4px;
+        }
+
+        p,
+        li {
+            font-size: 0.95rem;
+        }
+
+        ul, ol {
+            padding-left: 1.1em;
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
+
+        li {
+            margin-bottom: 2px;
+        }
+
+        a {
+            color: #3366cc;
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .nutrition-summary {
+            margin: 3px 0 5px;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .nutrition-label {
+            font-weight: bold;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .login-info {
+            font-size: 0.85rem;
+            text-align: right;
+        }
+
+        .link-button {
+            display: inline-block;
+            padding: 4px 8px;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            border: 1px solid #4b7bec;
+            background-color: #ffffff;
+            color: #4b7bec;
+            text-decoration: none;
+        }
+
+        .flash {
+            color: #c00;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+
+        .nickname-note {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        /* ハート用 */
+        .heart-form {
+            display: inline;
+            margin-left: 4px;
+        }
+        .heart-button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 0;
+        }
+        .heart-button:disabled {
+            cursor: default;
+            opacity: 0.4;
+        }
+
+        /* クックパッドボタン */
+        .cookpad-button {
+            font-size: 0.8rem;
+            border: 1px solid #f08a24;
+            border-radius: 3px;
+            padding: 1px 4px;
+            color: #f08a24;
+            text-decoration: none;
+        }
+        .cookpad-button:hover {
+            background-color: #fff5ea;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 6px 8px 18px;
+            }
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .login-info {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>まいにち献立ナビ</h1>
+        <div class="login-info">
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="flash">{{ message }}</div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+            {% if nickname %}
+                <div>ログイン中: {{ nickname }}</div>
+                <div class="nickname-note">
+                    ※ログイン中はハートからお気に入り登録ができます。
+                </div>
+                <div style="margin-top:4px;">
+                    <a href="{{ url_for('favorite_list') }}" class="link-button">お気に入り</a>
+                    <a href="{{ url_for('index') }}" class="link-button" style="margin-left:4px;">条件入力</a>
+                </div>
+            {% else %}
+                <div>ニックネーム未ログイン</div>
+                <div class="nickname-note">
+                    ※お気に入り登録を使うには、先に条件入力画面でニックネームでログインしてください。
+                </div>
+                <div style="margin-top:4px;">
+                    <a href="{{ url_for('index') }}" class="link-button">条件入力に戻る</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% set meal_type_labels = {'breakfast': '朝食', 'lunch': '昼食', 'dinner': '夕食'} %}
+
+    <h2>入力条件</h2>
+    <p>日数：{{ days }}日分</p>
+    <p>
+        食事タイミング：
+        {% if meal_types %}
+            {% for mt in meal_types %}
+                {{ meal_type_labels.get(mt, mt) }}{% if not loop.last %}・{% endif %}
+            {% endfor %}
+        {% else %}
+            （未選択）
+        {% endif %}
+    </p>
+    <p>ダイエット料理：{{ 'あり' if diet else 'なし' }}</p>
+    <p>季節料理：{{ 'あり' if seasonal else 'なし' }}</p>
+    <p>月：{{ month }}月</p>
+    <p>NG食材：{{ ng_ingredients or 'なし' }}</p>
+
+    <h2>献立（{{ days }}日分）</h2>
+    <p style="font-size:0.85rem; color:#666; margin-top:2px; margin-bottom:6px;">
+        ※メニュー名をタップすると、イメージ画像（Google画像検索）が開きます。<br>
+        「作り方を検索」ボタンからはクックパッドでレシピの作り方を探せます。
+    </p>
+
+    {% for mt in meal_types %}
+        <h3>■ {{ meal_type_labels.get(mt, mt) }}</h3>
+        {% set day_menus = menus_by_meal.get(mt, []) %}
+        {% if day_menus %}
+            <ol>
+                {% for day_menu in day_menus %}
+                <li>
+                    {{ loop.index }}日目：
+                    {% if day_menu %}
+                        <ul>
+                            {% for recipe in day_menu %}
+                            <li>
+                                <div style="display:flex; flex-direction:column; gap:2px;">
+                                    <!-- 上の行：レシピ名（画像検索リンク） -->
+                                    <div>
+                                        <a
+                                            href="https://www.google.com/search?tbm=isch&q={{ recipe.name | urlencode }}"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            {{ recipe.name }}
+                                        </a>
+                                    </div>
+
+                                    <!-- 下の行：クックパッドボタン＋ハート -->
+                                    <div style="display:flex; align-items:center; flex-wrap:wrap; gap:4px; font-size:0.85rem;">
+                                        <a
+                                            href="https://cookpad.com/search/{{ recipe.name | urlencode }}"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="cookpad-button"
+                                        >
+                                            作り方を検索
+                                        </a>
+
+                                        {% if nickname %}
+                                            <form class="heart-form" method="POST" action="{{ url_for('favorite_add') }}">
+                                                <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
+                                                <button type="submit" class="heart-button" title="お気に入りに追加">❤️</button>
+                                            </form>
+                                        {% else %}
+                                            <button class="heart-button" type="button" disabled title="ログインでお気に入り">
+                                                ❤️
+                                            </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        条件に合うレシピがありませんでした。
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ol>
+        {% else %}
+            <p>条件に合うレシピがありませんでした。</p>
+        {% endif %}
+    {% endfor %}
+
+    {% if daily_nutrition %}
+        <h2>1日ごとの栄養トータル</h2>
+        <ul>
+            {% for nut in daily_nutrition %}
+            <li class="nutrition-summary">
+                <span class="nutrition-label">{{ loop.index }}日目：</span>
+                {{ "%0.1f"|format(nut.kcal|float) }} kcal /
+                {{ nutrition_labels["protein"] }} {{ "%0.1f"|format(nut.protein|float) }} g /
+                {{ nutrition_labels["fat"] }} {{ "%0.1f"|format(nut.fat|float) }} g /
+                {{ nutrition_labels["carbs"] }} {{ "%0.1f"|format(nut.carbs|float) }} g
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <h2>簡易買い物リスト</h2>
+    {% if shopping_list %}
+        <ul>
+            {% for item in shopping_list %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>買い物リストはありません。</p>
+    {% endif %}
+
+    <p style="margin-top:14px;"><a href="{{ url_for('index') }}">条件を変えてもう一度</a></p>
+</body>
+</html>

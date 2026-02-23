@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>まいにち献立ナビ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root {
+            font-size: 16px;
+        }
+
+        @media (max-width: 600px) {
+            :root {
+                font-size: 17px; /* スマホでは少し大きめだが詰める */
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                         "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 8px 10px 20px;
+            line-height: 1.7;
+            background-color: #ffffff;
+        }
+
+        h1 {
+            font-size: 1.4rem;
+            margin: 8px 0 8px;
+            white-space: nowrap; /* タイトルを1行に収める */
+        }
+
+        p,
+        li,
+        label {
+            font-size: 0.95rem;
+        }
+
+        fieldset {
+            margin-bottom: 10px;
+            padding: 8px 10px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+
+        legend {
+            font-size: 1.0rem;
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            max-width: 460px;
+            padding: 6px 8px;
+            font-size: 0.95rem;
+            box-sizing: border-box;
+            margin-top: 3px;
+        }
+
+        button {
+            padding: 10px 16px;
+            font-size: 1.0rem;
+            border-radius: 6px;
+            border: none;
+            background-color: #4b7bec;
+            color: #fff;
+            cursor: pointer;
+            width: 100%;
+            max-width: 460px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .login-area {
+            font-size: 0.85rem;
+            text-align: right;
+        }
+
+        .login-area form {
+            display: inline-block;
+            margin: 0;
+        }
+
+        .login-area input[type="text"] {
+            width: 130px;
+            padding: 3px 6px;
+            font-size: 0.85rem;
+        }
+
+        .login-area button {
+            padding: 5px 8px;
+            font-size: 0.85rem;
+            width: auto;
+        }
+
+        .link-button {
+            display: inline-block;
+            padding: 4px 8px;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            border: 1px solid #4b7bec;
+            background-color: #ffffff;
+            color: #4b7bec;
+            text-decoration: none;
+        }
+
+        .flash {
+            color: #c00;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+
+        .nickname-note {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 6px 8px 18px;
+            }
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .login-area {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>まいにち献立ナビ</h1>
+        <div class="login-area">
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="flash">{{ message }}</div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+            {% if nickname %}
+                <div>ログイン中: {{ nickname }}</div>
+                <div class="nickname-note">
+                    ※ログイン中はお気に入り登録と自作レシピが利用できます。
+                </div>
+                <div style="margin-top:4px;">
+                    <a href="{{ url_for('favorite_list') }}" class="link-button">お気に入り</a>
+                    <a href="{{ url_for('recipe_new') }}" class="link-button" style="margin-left:4px;">レシピ登録</a>
+                    <form method="GET" action="{{ url_for('logout') }}" style="display:inline;">
+                        <button type="submit" style="margin-left:4px;">ログアウト</button>
+                    </form>
+                </div>
+            {% else %}
+                <form method="POST" action="{{ url_for('login') }}">
+                    <label style="margin-bottom:2px;">
+                        ニックネーム：
+                        <input type="text" name="nickname" placeholder="例：たろう" required>
+                    </label>
+                    <button type="submit">ログイン</button>
+                </form>
+                <div class="nickname-note">
+                    ※お気に入り登録・自作レシピの保存には、最初にニックネームでログインしてください。
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <form method="POST" action="{{ url_for('generate') }}">
+        <p>
+            期間（日数）：
+            <select name="days">
+                {% for d in range(1, 8) %}
+                <option value="{{ d }}">{{ d }}日分</option>
+                {% endfor %}
+            </select>
+        </p>
+
+        <fieldset>
+            <legend>食事タイミング</legend>
+            <label>
+                <input type="checkbox" name="meal_types" value="breakfast">
+                朝食
+            </label>
+            <label>
+                <input type="checkbox" name="meal_types" value="lunch">
+                昼食
+            </label>
+            <label>
+                <input type="checkbox" name="meal_types" value="dinner" checked>
+                夕食
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>コンセプト</legend>
+            <label>
+                <input type="checkbox" name="diet" value="1">
+                ダイエット料理
+            </label>
+            <label>
+                <input type="checkbox" name="seasonal" value="1">
+                季節料理
+            </label>
+            <label>
+                月：
+                <select name="month">
+                    {% for m in range(1, 13) %}
+                    <option value="{{ m }}">{{ m }}月</option>
+                    {% endfor %}
+                </select>
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>アレルギー</legend>
+            <label><input type="checkbox" name="allergy_egg" value="1"> 卵</label>
+            <label><input type="checkbox" name="allergy_milk" value="1"> 乳</label>
+            <label><input type="checkbox" name="allergy_wheat" value="1"> 小麦</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>NG食材（チェック）</legend>
+            <label><input type="checkbox" name="ng_preset" value="玉ねぎ"> 玉ねぎ</label>
+            <label><input type="checkbox" name="ng_preset" value="ピーマン"> ピーマン</label>
+            <label><input type="checkbox" name="ng_preset" value="にんじん"> にんじん</label>
+            <label><input type="checkbox" name="ng_preset" value="きのこ"> きのこ類</label>
+            <label><input type="checkbox" name="ng_preset" value="魚"> 魚系</label>
+        </fieldset>
+
+        <p>
+            その他NG食材（カンマ区切り）：<br>
+            <input type="text" name="ng_ingredients" placeholder="例：パプリカ, セロリ">
+        </p>
+
+        <button type="submit">献立を作成する</button>
+    </form>
+</body>
+</html>
