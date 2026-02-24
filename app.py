@@ -384,7 +384,7 @@ def generate():
     except ValueError:
         days = 3
 
-    # ★ 手軽さ / 冷蔵庫の食材
+    # 手軽さ / 冷蔵庫の食材
     easy_level = request.form.get("easy_level", "normal")
     have_ingredients_raw = request.form.get("have_ingredients", "")
     have_ingredients = [
@@ -460,7 +460,7 @@ def generate():
             if not any(ng in r.get("ingredients", []) for ng in ng_list)
         ]
 
-    # ★ 4.5 冷蔵庫の食材でフィルタ＆ソート
+    # 4.5 冷蔵庫の食材でフィルタ＆ソート
     if have_ingredients:
         def match_score(r):
             ings = r.get("ingredients", [])
@@ -481,7 +481,7 @@ def generate():
             )
         # マッチするレシピが1つもない場合は、filtered_recipes はそのまま（フォールバック）
 
-    # ★ 4.6 手軽メニューの優先
+    # 4.6 手軽メニューの優先
     if easy_level == "easy":
         def easy_score(r):
             tags = r.get("tags", [])
@@ -497,6 +497,29 @@ def generate():
             key=easy_score,
             reverse=True,
         )
+
+    # ★ 4.7 朝食メインのカロリー上限（300kcal）を適用
+    if "breakfast" in target_meal_types:
+        MAX_BREAKFAST_KCAL = 300.0
+
+        def is_ok_breakfast(r):
+            # 朝食かつメインだけを対象
+            if "breakfast" not in r.get("meal_type", []):
+                return True
+            if r.get("role", "main") != "main":
+                return True
+
+            n = r.get("nutrition", {}) or {}
+            try:
+                kcal = float(n.get("kcal", 0) or 0)
+            except (TypeError, ValueError):
+                kcal = 0.0
+            return kcal <= MAX_BREAKFAST_KCAL
+
+        filtered_recipes = [
+            r for r in filtered_recipes
+            if is_ok_breakfast(r)
+        ]
 
     # 5. メニュー生成（鍋とスープを同日にしない）
     menus_by_meal = {}
