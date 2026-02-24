@@ -210,7 +210,7 @@
     <p>月：{{ month }}月</p>
     <p>NG食材：{{ ng_ingredients or 'なし' }}</p>
 
-    <!-- ★ 追加: 冷蔵庫の食材 / 手軽メニュー -->
+    <!-- ★ 冷蔵庫の食材 / 手軽メニュー -->
     <p>
         冷蔵庫の食材：
         {% if have_ingredients %}
@@ -227,7 +227,6 @@
             こだわらない
         {% endif %}
     </p>
-    <!-- ★ ここまで追加 -->
 
     <h2>献立（{{ days }}日分）</h2>
     <p style="font-size:0.85rem; color:#666; margin-top:2px; margin-bottom:6px;">
@@ -259,7 +258,7 @@
                                         </a>
                                     </div>
 
-                                    <!-- 下の行：クックパッドボタン＋ハート -->
+                                    <!-- 下の行：クックパッドボタン＋ハート＋調理時間 -->
                                     <div style="display:flex; align-items:center; flex-wrap:wrap; gap:4px; font-size:0.85rem;">
                                         <a
                                             href="https://cookpad.com/search/{{ recipe.name | urlencode }}"
@@ -279,6 +278,12 @@
                                             <button class="heart-button" type="button" disabled title="ログインでお気に入り">
                                                 ❤️
                                             </button>
+                                        {% endif %}
+
+                                        {% if recipe.cook_time_min is defined %}
+                                            <span style="margin-left:4px; font-size:0.8rem; color:#555;">
+                                                調理時間の目安：約 {{ recipe.cook_time_min }}分
+                                            </span>
                                         {% endif %}
                                     </div>
                                 </div>
