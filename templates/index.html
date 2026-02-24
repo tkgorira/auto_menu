@@ -91,6 +91,7 @@
         button:hover {
             opacity: 0.9;
         }
+
         .top-bar {
             display: flex;
             justify-content: space-between;
@@ -125,6 +126,7 @@
             background-color: #ffffff;
             color: #4b7bec;
             text-decoration: none;
+            cursor: pointer;
         }
         .flash {
             color: #c00;
@@ -136,6 +138,49 @@
             color: #666;
             margin-top: 2px;
         }
+
+        /* 画面下部固定の2ボタンバー */
+        .fixed-fab-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 6px 8px;
+            background: rgba(255, 255, 255, 0.95);
+            border-top: 1px solid #ddd;
+            display: flex;
+            gap: 8px;
+            z-index: 999;
+            box-sizing: border-box;
+        }
+        .fixed-fab-button {
+            flex: 1;
+            text-align: center;
+            padding: 8px 10px;
+            font-size: 0.9rem;
+            border-radius: 999px;
+            border: 1px solid #f39c12;
+            background-color: #fff8e6;
+            color: #e67e22;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .fixed-fab-button.primary {
+            border-color: #4b7bec;
+            background-color: #4b7bec;
+            color: #ffffff;
+        }
+        .fixed-fab-button:hover {
+            opacity: 0.9;
+        }
+
+        /* PC では隠したい場合（お好みで） */
+        @media (min-width: 801px) {
+            .fixed-fab-bar {
+                display: none;
+            }
+        }
+
         @media (max-width: 600px) {
             body {
                 padding: 6px 8px 18px;
@@ -154,26 +199,49 @@
     <div class="top-bar">
         <h1>まいにち献立ナビ</h1>
         <div class="login-area">
-            <form method="POST" action="/login">
-                <label style="margin-bottom:2px;">
-                    ニックネーム：
-                    <input type="text" name="nickname" placeholder="例：たろう" required>
-                </label>
-                <button type="submit">ログイン</button>
-            </form>
-            <div class="nickname-note">
-                ※お気に入り登録・自作レシピの保存には、最初にニックネームでログインしてください。
-            </div>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="flash">{{ message }}</div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+            {% if nickname %}
+                <div>ログイン中: {{ nickname }}</div>
+                <div class="nickname-note">
+                    ※お気に入り登録・自作レシピの保存ができます。
+                </div>
+                <div style="margin-top:4px;">
+                    <form method="GET" action="{{ url_for('favorite_list') }}" style="display:inline;">
+                        <button type="submit" class="link-button">お気に入り一覧</button>
+                    </form>
+                    <form method="GET" action="{{ url_for('logout') }}" style="display:inline; margin-left:4px;">
+                        <button type="submit" class="link-button">ログアウト</button>
+                    </form>
+                </div>
+            {% else %}
+                <form method="POST" action="{{ url_for('login') }}">
+                    <label style="margin-bottom:2px;">
+                        ニックネーム：
+                        <input type="text" name="nickname" placeholder="例：たろう" required>
+                    </label>
+                    <button type="submit">ログイン</button>
+                </form>
+                <div class="nickname-note">
+                    ※お気に入り登録・自作レシピの保存には、最初にニックネームでログインしてください。
+                </div>
+            {% endif %}
         </div>
     </div>
 
-    <form method="POST" action="/generate">
+    <form id="generate-form" method="POST" action="{{ url_for('generate') }}">
         <p>
             期間（日数）：
             <select name="days">
                 <option value="1">1日分</option>
                 <option value="2">2日分</option>
-                <option value="3">3日分</option>
+                <option value="3" selected>3日分</option>
                 <option value="4">4日分</option>
                 <option value="5">5日分</option>
                 <option value="6">6日分</option>
@@ -242,7 +310,7 @@
             <label><input type="checkbox" name="ng_preset" value="魚"> 魚系</label>
         </fieldset>
 
-        <!-- ★ 追加: 冷蔵庫の食材 & 手軽メニュー -->
+        <!-- 冷蔵庫の食材 & 手軽メニュー -->
         <fieldset>
             <legend>冷蔵庫の食材から探す</legend>
             <p>
@@ -259,7 +327,6 @@
                 </select>
             </p>
         </fieldset>
-        <!-- ★ ここまで追加 -->
 
         <p>
             その他NG食材（カンマ区切り）：<br>
@@ -284,5 +351,17 @@
         });
       }
     </script>
+
+    {% if nickname %}
+      <div class="fixed-fab-bar">
+        <a href="{{ url_for('favorite_list') }}" class="fixed-fab-button">
+          ★ お気に入り一覧
+        </a>
+        <button type="button" class="fixed-fab-button primary"
+                onclick="document.getElementById('generate-form').submit();">
+          献立を作成する
+        </button>
+      </div>
+    {% endif %}
 </body>
 </html>

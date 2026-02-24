@@ -144,6 +144,51 @@
             background-color: #fff5ea;
         }
 
+        /* 画面下部固定 2 ボタンバー（条件入力へ / お気に入り一覧） */
+        .fixed-fab-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 6px 8px;
+            background: rgba(255, 255, 255, 0.95);
+            border-top: 1px solid #ddd;
+            display: flex;
+            gap: 8px;
+            z-index: 999;
+            box-sizing: border-box;
+        }
+
+        .fixed-fab-button {
+            flex: 1;
+            text-align: center;
+            padding: 8px 10px;
+            font-size: 0.9rem;
+            border-radius: 999px;
+            border: 1px solid #4b7bec;
+            background-color: #ffffff;
+            color: #4b7bec;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .fixed-fab-button.primary {
+            border-color: #4b7bec;
+            background-color: #4b7bec;
+            color: #ffffff;
+        }
+
+        .fixed-fab-button:hover {
+            opacity: 0.9;
+        }
+
+        /* PC では隠したい場合 */
+        @media (min-width: 801px) {
+            .fixed-fab-bar {
+                display: none;
+            }
+        }
+
         @media (max-width: 600px) {
             body {
                 padding: 6px 8px 18px;
@@ -175,17 +220,10 @@
                 <div class="nickname-note">
                     ※ログイン中はハートからお気に入り登録ができます。
                 </div>
-                <div style="margin-top:4px;">
-                    <a href="{{ url_for('favorite_list') }}" class="link-button">お気に入り</a>
-                    <a href="{{ url_for('index') }}" class="link-button" style="margin-left:4px;">条件入力</a>
-                </div>
             {% else %}
                 <div>ニックネーム未ログイン</div>
                 <div class="nickname-note">
                     ※お気に入り登録を使うには、先に条件入力画面でニックネームでログインしてください。
-                </div>
-                <div style="margin-top:4px;">
-                    <a href="{{ url_for('index') }}" class="link-button">条件入力に戻る</a>
                 </div>
             {% endif %}
         </div>
@@ -329,5 +367,16 @@
     {% endif %}
 
     <p style="margin-top:14px;"><a href="{{ url_for('index') }}">条件を変えてもう一度</a></p>
+
+    {% if nickname %}
+      <div class="fixed-fab-bar">
+        <a href="{{ url_for('index') }}" class="fixed-fab-button">
+          条件入力へ戻る
+        </a>
+        <a href="{{ url_for('favorite_list') }}" class="fixed-fab-button primary">
+          ★ お気に入り一覧
+        </a>
+      </div>
+    {% endif %}
 </body>
 </html>
