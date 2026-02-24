@@ -193,41 +193,7 @@
 
     {% set meal_type_labels = {'breakfast': '朝食', 'lunch': '昼食', 'dinner': '夕食'} %}
 
-    <h2>入力条件</h2>
-    <p>日数：{{ days }}日分</p>
-    <p>
-        食事タイミング：
-        {% if meal_types %}
-            {% for mt in meal_types %}
-                {{ meal_type_labels.get(mt, mt) }}{% if not loop.last %}・{% endif %}
-            {% endfor %}
-        {% else %}
-            （未選択）
-        {% endif %}
-    </p>
-    <p>ダイエット料理：{{ 'あり' if diet else 'なし' }}</p>
-    <p>季節料理：{{ 'あり' if seasonal else 'なし' }}</p>
-    <p>月：{{ month }}月</p>
-    <p>NG食材：{{ ng_ingredients or 'なし' }}</p>
-
-    <!-- ★ 冷蔵庫の食材 / 手軽メニュー -->
-    <p>
-        冷蔵庫の食材：
-        {% if have_ingredients %}
-            {{ have_ingredients | join('・') }}
-        {% else %}
-            なし
-        {% endif %}
-    </p>
-    <p>
-        手軽メニュー：
-        {% if easy_level == 'easy' %}
-            手軽（時短・簡単）
-        {% else %}
-            こだわらない
-        {% endif %}
-    </p>
-
+    <!-- 先に献立結果を表示 -->
     <h2>献立（{{ days }}日分）</h2>
     <p style="font-size:0.85rem; color:#666; margin-top:2px; margin-bottom:6px;">
         ※メニュー名をタップすると、イメージ画像（Google画像検索）が開きます。<br>
@@ -300,6 +266,41 @@
             <p>条件に合うレシピがありませんでした。</p>
         {% endif %}
     {% endfor %}
+
+    <!-- 入力条件は献立のあとに表示 -->
+    <h2>入力条件</h2>
+    <p>日数：{{ days }}日分</p>
+    <p>
+        食事タイミング：
+        {% if meal_types %}
+            {% for mt in meal_types %}
+                {{ meal_type_labels.get(mt, mt) }}{% if not loop.last %}・{% endif %}
+            {% endfor %}
+        {% else %}
+            （未選択）
+        {% endif %}
+    </p>
+    <p>ダイエット料理：{{ 'あり' if diet else 'なし' }}</p>
+    <p>季節料理：{{ 'あり' if seasonal else 'なし' }}</p>
+    <p>月：{{ month }}月</p>
+    <p>NG食材：{{ ng_ingredients or 'なし' }}</p>
+
+    <p>
+        冷蔵庫の食材：
+        {% if have_ingredients %}
+            {{ have_ingredients | join('・') }}
+        {% else %}
+            なし
+        {% endif %}
+    </p>
+    <p>
+        手軽メニュー：
+        {% if easy_level == 'easy' %}
+            手軽（時短・簡単）
+        {% else %}
+            こだわらない
+        {% endif %}
+    </p>
 
     {% if daily_nutrition %}
         <h2>1日ごとの栄養トータル</h2>
