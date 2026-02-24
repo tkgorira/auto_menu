@@ -384,7 +384,7 @@ def generate():
     except ValueError:
         days = 3
 
-    # ★ 追加: 手軽さ / 冷蔵庫の食材
+    # ★ 手軽さ / 冷蔵庫の食材
     easy_level = request.form.get("easy_level", "normal")
     have_ingredients_raw = request.form.get("have_ingredients", "")
     have_ingredients = [
@@ -460,17 +460,26 @@ def generate():
             if not any(ng in r.get("ingredients", []) for ng in ng_list)
         ]
 
-    # ★ 4.5 冷蔵庫の食材マッチ度でソート
+    # ★ 4.5 冷蔵庫の食材でフィルタ＆ソート
     if have_ingredients:
         def match_score(r):
             ings = r.get("ingredients", [])
             return sum(1 for h in have_ingredients if h in ings)
 
-        filtered_recipes = sorted(
-            filtered_recipes,
-            key=match_score,
-            reverse=True,
-        )
+        # 冷蔵庫食材を1つ以上含むレシピだけ抽出
+        with_ingredients = [
+            r for r in filtered_recipes
+            if match_score(r) > 0
+        ]
+
+        if with_ingredients:
+            # マッチ数が多い順にソート
+            filtered_recipes = sorted(
+                with_ingredients,
+                key=match_score,
+                reverse=True,
+            )
+        # マッチするレシピが1つもない場合は、filtered_recipes はそのまま（フォールバック）
 
     # ★ 4.6 手軽メニューの優先
     if easy_level == "easy":
@@ -573,8 +582,8 @@ def generate():
         daily_nutrition=daily_nutrition,
         nutrition_labels=nutrition_labels,
         nickname=session.get("nickname"),
-        easy_level=easy_level,             # ★ 追加
-        have_ingredients=have_ingredients  # ★ 追加
+        easy_level=easy_level,
+        have_ingredients=have_ingredients,
     )
 
 
