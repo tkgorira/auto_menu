@@ -242,6 +242,25 @@
             <label><input type="checkbox" name="ng_preset" value="魚"> 魚系</label>
         </fieldset>
 
+        <!-- ★ 追加: 冷蔵庫の食材 & 手軽メニュー -->
+        <fieldset>
+            <legend>冷蔵庫の食材から探す</legend>
+            <p>
+                冷蔵庫にある食材（カンマ区切り）：<br>
+                <input type="text" name="have_ingredients"
+                       placeholder="例：鶏もも肉, じゃがいも, 玉ねぎ">
+            </p>
+
+            <p>
+                手軽メニューの希望：<br>
+                <select name="easy_level">
+                    <option value="normal" selected>こだわらない</option>
+                    <option value="easy">手軽（時短・簡単）</option>
+                </select>
+            </p>
+        </fieldset>
+        <!-- ★ ここまで追加 -->
+
         <p>
             その他NG食材（カンマ区切り）：<br>
             <input type="text" name="ng_ingredients" placeholder="例：パプリカ, セロリ">

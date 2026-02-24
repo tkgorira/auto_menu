@@ -384,6 +384,13 @@ def generate():
     except ValueError:
         days = 3
 
+    # ★ 追加: 手軽さ / 冷蔵庫の食材
+    easy_level = request.form.get("easy_level", "normal")
+    have_ingredients_raw = request.form.get("have_ingredients", "")
+    have_ingredients = [
+        s.strip() for s in have_ingredients_raw.split(",") if s.strip()
+    ]
+
     # JSON
     with open(RECIPES_JSON_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
@@ -452,6 +459,35 @@ def generate():
             r for r in filtered_recipes
             if not any(ng in r.get("ingredients", []) for ng in ng_list)
         ]
+
+    # ★ 4.5 冷蔵庫の食材マッチ度でソート
+    if have_ingredients:
+        def match_score(r):
+            ings = r.get("ingredients", [])
+            return sum(1 for h in have_ingredients if h in ings)
+
+        filtered_recipes = sorted(
+            filtered_recipes,
+            key=match_score,
+            reverse=True,
+        )
+
+    # ★ 4.6 手軽メニューの優先
+    if easy_level == "easy":
+        def easy_score(r):
+            tags = r.get("tags", [])
+            score = 0
+            if "時短" in tags or "簡単" in tags:
+                score += 2
+            if "フライパン1つ" in tags or "レンチン" in tags:
+                score += 1
+            return score
+
+        filtered_recipes = sorted(
+            filtered_recipes,
+            key=easy_score,
+            reverse=True,
+        )
 
     # 5. メニュー生成（鍋とスープを同日にしない）
     menus_by_meal = {}
@@ -537,12 +573,11 @@ def generate():
         daily_nutrition=daily_nutrition,
         nutrition_labels=nutrition_labels,
         nickname=session.get("nickname"),
+        easy_level=easy_level,             # ★ 追加
+        have_ingredients=have_ingredients  # ★ 追加
     )
 
 
 if __name__ == "__main__":
-    import os
-
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=True)
-

@@ -210,6 +210,25 @@
     <p>月：{{ month }}月</p>
     <p>NG食材：{{ ng_ingredients or 'なし' }}</p>
 
+    <!-- ★ 追加: 冷蔵庫の食材 / 手軽メニュー -->
+    <p>
+        冷蔵庫の食材：
+        {% if have_ingredients %}
+            {{ have_ingredients | join('・') }}
+        {% else %}
+            なし
+        {% endif %}
+    </p>
+    <p>
+        手軽メニュー：
+        {% if easy_level == 'easy' %}
+            手軽（時短・簡単）
+        {% else %}
+            こだわらない
+        {% endif %}
+    </p>
+    <!-- ★ ここまで追加 -->
+
     <h2>献立（{{ days }}日分）</h2>
     <p style="font-size:0.85rem; color:#666; margin-top:2px; margin-bottom:6px;">
         ※メニュー名をタップすると、イメージ画像（Google画像検索）が開きます。<br>
