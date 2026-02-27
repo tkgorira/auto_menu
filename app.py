@@ -105,6 +105,8 @@ def load_user_recipes(user_id):
                 "fat": row["fat"] or 0,
                 "carbs": row["carbs"] or 0,
             },
+            # 自作レシピ側に cook_time_min 列を追加している前提
+            "cook_time_min": row["cook_time_min"] if "cook_time_min" in row.keys() else 0,
         }
         result.append(recipe)
     return result
@@ -206,6 +208,7 @@ def favorite_add():
     db.commit()
 
     flash("お気に入りに追加しました。")
+    # シンプルにトップへ戻る
     return redirect(url_for("index"))
 
 
@@ -258,7 +261,7 @@ def favorite_delete():
     """
     if "user_id" not in session:
         flash("お気に入り機能を使うには、ニックネームでログインしてください。")
-        return redirect(url_for("index"))
+        return redirect(url_for("favorite_list"))
 
     user_id = session["user_id"]
     recipe_id = request.form.get("recipe_id")
@@ -307,6 +310,9 @@ def recipe_new():
         fat = request.form.get("fat") or "0"
         carbs = request.form.get("carbs") or "0"
 
+        # 調理時間
+        cook_time_min = request.form.get("cook_time_min") or "0"
+
         if not name:
             flash("レシピ名を入力してください。")
             return redirect(url_for("recipe_new"))
@@ -320,8 +326,9 @@ def recipe_new():
             protein_val = float(protein)
             fat_val = float(fat)
             carbs_val = float(carbs)
+            cook_time_val = float(cook_time_min)
         except ValueError:
-            flash("栄養素は数字で入力してください。")
+            flash("栄養素と調理時間は数字で入力してください。")
             return redirect(url_for("recipe_new"))
 
         db = get_db()
@@ -330,8 +337,8 @@ def recipe_new():
             INSERT INTO user_recipes (
                 user_id, name, meal_type, role,
                 tags, months, ingredients, allergy_flags,
-                kcal, protein, fat, carbs
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                kcal, protein, fat, carbs, cook_time_min
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 user_id,
@@ -346,6 +353,7 @@ def recipe_new():
                 protein_val,
                 fat_val,
                 carbs_val,
+                cook_time_val,
             ),
         )
         db.commit()
