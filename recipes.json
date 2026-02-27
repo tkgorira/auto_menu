@@ -118,7 +118,7 @@
         "protein": 16.0,
         "fat": 10.0,
         "carbs": 60.0
-      ],
+      },
       "cook_time_min": 25
     },
     {
@@ -158,7 +158,7 @@
         "protein": 12.0,
         "fat": 10.0,
         "carbs": 60.0
-      ],
+      },
       "cook_time_min": 25
     },
     {
@@ -348,7 +348,7 @@
         "protein": 5.0,
         "fat": 4.0,
         "carbs": 18.0
-      ],
+      },
       "cook_time_min": 15
     },
     {
