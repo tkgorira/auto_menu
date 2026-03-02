@@ -129,6 +129,16 @@ def is_soup_by_name(recipe):
     return ("スープ" in name) or ("汁" in name)
 
 
+def is_soup_recipe(r):
+    """
+    名前 or tags からスープかどうか判定。
+    """
+    if is_soup_by_name(r):
+        return True
+    tags = r.get("tags", []) or []
+    return "スープ" in tags
+
+
 # ===================== ログイン関連 =====================
 @app.route("/login", methods=["POST"])
 def login():
@@ -529,7 +539,7 @@ def generate():
             if is_ok_breakfast(r)
         ]
 
-    # 5. メニュー生成（鍋とスープを同日にしない）
+    # 5. メニュー生成（夕食はメイン＋副菜＋スープ）
     menus_by_meal = {}
     daily_nutrition = []
     day_recipes = [[] for _ in range(days)]
@@ -540,41 +550,44 @@ def generate():
             if mt in r.get("meal_type", [])
         ]
 
-        main_recipes = [r for r in mt_recipes if r.get("role", "main") == "main"]
-        side_recipes = [r for r in mt_recipes if r.get("role", "main") == "side"]
+        # 共通：メインは role="main"
+        mains = [r for r in mt_recipes if r.get("role", "main") == "main"]
+
+        # 夕食だけ「副菜＋スープ」を分ける
+        if mt == "dinner":
+            soups = [r for r in mt_recipes if is_soup_recipe(r)]
+            sides = [
+                r for r in mt_recipes
+                if r.get("role", "main") == "side" and not is_soup_recipe(r)
+            ]
+        else:
+            # 朝・昼はこれまで通り「副菜のみ」
+            soups = []
+            sides = [r for r in mt_recipes if r.get("role", "main") == "side"]
 
         day_menus = []
 
-        if main_recipes and side_recipes:
+        if mains and (sides or mt != "dinner"):
             for day_index in range(days):
-                # その日に既に鍋/スープがあるか名前から判定
-                has_nabe = any(is_nabe_by_name(r) for r in day_recipes[day_index])
-                has_soup = any(is_soup_by_name(r) for r in day_recipes[day_index])
-
-                # メイン候補をフィルタして「鍋とスープが同日にならない」ようにする
-                filtered_mains = main_recipes
-                if has_nabe:
-                    filtered_mains = [r for r in filtered_mains if not is_soup_by_name(r)]
-                if has_soup:
-                    filtered_mains = [r for r in filtered_mains if not is_nabe_by_name(r)]
-
-                if filtered_mains:
-                    main = random.choice(filtered_mains)
-                else:
-                    # どうしても無ければ制約なしで選ぶ
-                    main = random.choice(main_recipes)
+                # メインは必ず1品
+                main = random.choice(mains)
 
                 # 副菜
-                if len(side_recipes) >= 2:
-                    sides = random.sample(side_recipes, k=2)
-                else:
-                    k = min(2, len(side_recipes))
-                    sides = random.choices(side_recipes, k=k) if k > 0 else []
+                side = random.choice(sides) if sides else None
 
-                day_menu = [main] + sides
+                # スープ（夕食かつ soups があれば1品）
+                soup = random.choice(soups) if (mt == "dinner" and soups) else None
+
+                day_menu = [main]
+                if side:
+                    day_menu.append(side)
+                if soup:
+                    day_menu.append(soup)
+
                 day_menus.append(day_menu)
                 day_recipes[day_index].extend(day_menu)
         else:
+            # メインが無いなど、組めない場合
             for day_index in range(days):
                 day_menus.append([])
 
