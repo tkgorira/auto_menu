@@ -126,10 +126,6 @@
             font-size: 1.1rem;
             padding: 0;
         }
-        .heart-button:disabled {
-            cursor: default;
-            opacity: 0.4;
-        }
 
         /* クックパッドボタン */
         .cookpad-button {
@@ -214,18 +210,6 @@
                 {% endfor %}
               {% endif %}
             {% endwith %}
-
-            {% if nickname %}
-                <div>ログイン中: {{ nickname }}</div>
-                <div class="nickname-note">
-                    ※ログイン中はハートからお気に入り登録ができます。
-                </div>
-            {% else %}
-                <div>ニックネーム未ログイン</div>
-                <div class="nickname-note">
-                    ※お気に入り登録を使うには、先に条件入力画面でニックネームでログインしてください。
-                </div>
-            {% endif %}
         </div>
     </div>
 
@@ -273,16 +257,10 @@
                                             作り方を検索
                                         </a>
 
-                                        {% if nickname %}
-                                            <form class="heart-form" method="POST" action="{{ url_for('favorite_add') }}">
-                                                <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
-                                                <button type="submit" class="heart-button" title="お気に入りに追加">❤️</button>
-                                            </form>
-                                        {% else %}
-                                            <button class="heart-button" type="button" disabled title="ログインでお気に入り">
-                                                ❤️
-                                            </button>
-                                        {% endif %}
+                                        <form class="heart-form" method="POST" action="{{ url_for('favorite_add') }}">
+                                            <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
+                                            <button type="submit" class="heart-button" title="お気に入りに追加">❤️</button>
+                                        </form>
 
                                         {% if recipe.cook_time_min is defined %}
                                             <span style="margin-left:4px; font-size:0.8rem; color:#555;">
@@ -368,15 +346,13 @@
 
     <p style="margin-top:14px;"><a href="{{ url_for('index') }}">条件を変えてもう一度</a></p>
 
-    {% if nickname %}
-      <div class="fixed-fab-bar">
+    <div class="fixed-fab-bar">
         <a href="{{ url_for('index') }}" class="fixed-fab-button">
           条件入力へ戻る
         </a>
         <a href="{{ url_for('favorite_list') }}" class="fixed-fab-button primary">
           ★ お気に入り一覧
         </a>
-      </div>
-    {% endif %}
+    </div>
 </body>
 </html>

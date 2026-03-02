@@ -2,6 +2,7 @@ import json
 import random
 import sqlite3
 import os
+import uuid
 
 from flask import (
     Flask,
@@ -37,6 +38,52 @@ def close_db(exc):
     db = g.pop("db", None)
     if db is not None:
         db.close()
+
+
+# ===================== 匿名ユーザー管理 =====================
+def ensure_anonymous_user():
+    """
+    ログイン機能を廃止し、端末(ブラウザ)ごとに1つの匿名ユーザーを自動発行して使う。
+    - 初回アクセス時: users に anon-xxxx ユーザーを作成
+    - 以降: session['user_id'] を使って favorites などに紐付け
+    """
+    if "user_id" in session:
+        return  # すでに何らかのユーザーが紐付いている
+
+    db = get_db()
+
+    # すでに anonymous_id をセッションに持っていたらそれを使う
+    anon_id = session.get("anonymous_id")
+    if anon_id:
+        cur = db.execute(
+            "SELECT id, nickname FROM users WHERE nickname = ?",
+            (anon_id,),
+        )
+        row = cur.fetchone()
+        if row:
+            session["user_id"] = row["id"]
+            # 表示用としては使わないので空を入れておく
+            session["nickname"] = ""
+            return
+
+    # なければ新規 anonymous ユーザーを作る
+    anon_id = "anon-" + uuid.uuid4().hex[:16]
+    db.execute(
+        "INSERT INTO users (nickname) VALUES (?)",
+        (anon_id,),
+    )
+    db.commit()
+
+    cur = db.execute(
+        "SELECT id FROM users WHERE nickname = ?",
+        (anon_id,),
+    )
+    row = cur.fetchone()
+
+    session["anonymous_id"] = anon_id
+    session["user_id"] = row["id"]
+    # ニックネームはもう表示に使わないので空
+    session["nickname"] = ""
 
 
 # ===================== 栄養関連 =====================
@@ -76,6 +123,7 @@ def load_user_recipes(user_id):
     """
     user_recipes テーブルからログインユーザーのレシピを読み込み、
     recipes.json と同じ形の dict に変換して返す。
+    （匿名ユーザーも user_id を持っているので同じ仕組み）
     """
     db = get_db()
     cur = db.execute(
@@ -95,7 +143,7 @@ def load_user_recipes(user_id):
             "name": row["name"],
             "meal_type": meal_type,
             "role": row["role"],
-            "tags": [],  # 必要なら row["tags"] を分割して入れる
+            "tags": [],
             "months": months,
             "ingredients": ingredients,
             "allergy_flags": allergy_flags,
@@ -105,7 +153,6 @@ def load_user_recipes(user_id):
                 "fat": row["fat"] or 0,
                 "carbs": row["carbs"] or 0,
             },
-            # 自作レシピ側に cook_time_min 列を追加している前提
             "cook_time_min": row["cook_time_min"] if "cook_time_min" in row.keys() else 0,
         }
         result.append(recipe)
@@ -139,63 +186,15 @@ def is_soup_recipe(r):
     return "スープ" in tags
 
 
-# ===================== ログイン関連 =====================
-@app.route("/login", methods=["POST"])
-def login():
-    """
-    ニックネームを使った簡易ログイン。
-    users テーブルに存在しなければ INSERT。
-    """
-    nickname = request.form.get("nickname", "").strip()
-    if not nickname:
-        flash("ニックネームを入力してください。")
-        return redirect(url_for("index"))
-
-    db = get_db()
-    # 既存ユーザーを検索
-    cur = db.execute(
-        "SELECT id FROM users WHERE nickname = ?",
-        (nickname,),
-    )
-    row = cur.fetchone()
-
-    if row is None:
-        # なければ新規作成
-        db.execute(
-            "INSERT INTO users (nickname) VALUES (?)",
-            (nickname,),
-        )
-        db.commit()
-        cur = db.execute(
-            "SELECT id FROM users WHERE nickname = ?",
-            (nickname,),
-        )
-        row = cur.fetchone()
-
-    session.clear()
-    session["user_id"] = row["id"]
-    session["nickname"] = nickname
-
-    return redirect(url_for("index"))
-
-
-@app.route("/logout")
-def logout():
-    session.clear()
-    return redirect(url_for("index"))
-
-
 # ===================== お気に入り機能 =====================
 @app.route("/favorite/add", methods=["POST"])
 def favorite_add():
     """
     結果画面からお気に入りに追加。
     favorites テーブルに (user_id, recipe_id) を INSERT OR IGNORE。
+    匿名ユーザーでも利用可能。
     """
-    if "user_id" not in session:
-        flash("お気に入り機能を使うには、ニックネームでログインしてください。")
-        return redirect(url_for("index"))
-
+    ensure_anonymous_user()
     user_id = session["user_id"]
     recipe_id = request.form.get("recipe_id")
 
@@ -203,7 +202,6 @@ def favorite_add():
         flash("レシピIDが指定されていません。")
         return redirect(url_for("index"))
 
-    # INTEGER として扱う
     try:
         recipe_id_int = int(recipe_id)
     except ValueError:
@@ -218,21 +216,18 @@ def favorite_add():
     db.commit()
 
     flash("お気に入りに追加しました。")
-    # シンプルにトップへ戻る
     return redirect(url_for("index"))
 
 
 @app.route("/favorite/list")
 def favorite_list():
     """
-    ログイン中ユーザーの favorites から recipe_id を取得し、
+    現在の端末（ブラウザ）に紐づくユーザーの favorites から recipe_id を取得し、
     recipes.json + 自作レシピから対応レシピを抽出して表示。
     """
-    if "user_id" not in session:
-        flash("お気に入り機能を使うには、ニックネームでログインしてください。")
-        return redirect(url_for("index"))
-
+    ensure_anonymous_user()
     user_id = session["user_id"]
+
     db = get_db()
     cur = db.execute(
         "SELECT recipe_id FROM favorites WHERE user_id = ?",
@@ -260,7 +255,7 @@ def favorite_list():
     return render_template(
         "favorites.html",
         recipes=favorite_recipes,
-        nickname=session.get("nickname"),
+        nickname=None,  # もう表示しない
     )
 
 
@@ -268,11 +263,9 @@ def favorite_list():
 def favorite_delete():
     """
     お気に入り一覧から削除。
+    匿名ユーザーでも利用可能。
     """
-    if "user_id" not in session:
-        flash("お気に入り機能を使うには、ニックネームでログインしてください。")
-        return redirect(url_for("favorite_list"))
-
+    ensure_anonymous_user()
     user_id = session["user_id"]
     recipe_id = request.form.get("recipe_id")
 
@@ -300,15 +293,14 @@ def favorite_delete():
 # ===================== 自作レシピ登録 =====================
 @app.route("/recipe/new", methods=["GET", "POST"])
 def recipe_new():
-    if "user_id" not in session:
-        flash("レシピを登録するには、ニックネームでログインしてください。")
-        return redirect(url_for("index"))
+    # 自作レシピも、匿名ユーザーごとに紐付ける
+    ensure_anonymous_user()
 
     if request.method == "POST":
         user_id = session["user_id"]
 
         name = request.form.get("name", "").strip()
-        meal_types = request.form.getlist("meal_type")  # ["breakfast", "dinner"] など
+        meal_types = request.form.getlist("meal_type")
         role = request.form.get("role", "main")
         ingredients = request.form.get("ingredients", "").strip()
         months_raw = request.form.get("months", "").strip()
@@ -372,21 +364,24 @@ def recipe_new():
 
     return render_template(
         "recipe_new.html",
-        nickname=session.get("nickname"),
+        nickname=None,
     )
 
 
 # ===================== 画面ルート =====================
 @app.route("/")
 def index():
+    ensure_anonymous_user()
     return render_template(
         "index.html",
-        nickname=session.get("nickname"),
+        nickname=None,
     )
 
 
 @app.route("/generate", methods=["POST"])
 def generate():
+    ensure_anonymous_user()
+
     # フォームから値を取得
     meal_types = request.form.getlist("meal_types")
     diet = request.form.get("diet")
@@ -414,12 +409,9 @@ def generate():
         data = json.load(f)
     json_recipes = data.get("recipes", [])
 
-    # 自作レシピ
-    if "user_id" in session:
-        user_recipes = load_user_recipes(session["user_id"])
-        all_recipes = json_recipes + user_recipes
-    else:
-        all_recipes = json_recipes
+    # 匿名ユーザーの自作レシピも含める
+    user_recipes = load_user_recipes(session["user_id"])
+    all_recipes = json_recipes + user_recipes
 
     target_meal_types = meal_types or ["dinner"]
 
@@ -484,20 +476,17 @@ def generate():
             ings = r.get("ingredients", [])
             return sum(1 for h in have_ingredients if h in ings)
 
-        # 冷蔵庫食材を1つ以上含むレシピだけ抽出
         with_ingredients = [
             r for r in filtered_recipes
             if match_score(r) > 0
         ]
 
         if with_ingredients:
-            # マッチ数が多い順にソート
             filtered_recipes = sorted(
                 with_ingredients,
                 key=match_score,
                 reverse=True,
             )
-        # マッチするレシピが1つもない場合は、filtered_recipes はそのまま（フォールバック）
 
     # 4.6 手軽メニューの優先
     if easy_level == "easy":
@@ -521,7 +510,6 @@ def generate():
         MAX_BREAKFAST_KCAL = 300.0
 
         def is_ok_breakfast(r):
-            # 朝食かつメインだけを対象
             if "breakfast" not in r.get("meal_type", []):
                 return True
             if r.get("role", "main") != "main":
@@ -550,10 +538,8 @@ def generate():
             if mt in r.get("meal_type", [])
         ]
 
-        # 共通：メインは role="main"
         mains = [r for r in mt_recipes if r.get("role", "main") == "main"]
 
-        # 夕食だけ「副菜＋スープ」を分ける
         if mt == "dinner":
             soups = [r for r in mt_recipes if is_soup_recipe(r)]
             sides = [
@@ -561,7 +547,6 @@ def generate():
                 if r.get("role", "main") == "side" and not is_soup_recipe(r)
             ]
         else:
-            # 朝・昼はこれまで通り「副菜のみ」
             soups = []
             sides = [r for r in mt_recipes if r.get("role", "main") == "side"]
 
@@ -569,13 +554,8 @@ def generate():
 
         if mains and (sides or mt != "dinner"):
             for day_index in range(days):
-                # メインは必ず1品
                 main = random.choice(mains)
-
-                # 副菜
                 side = random.choice(sides) if sides else None
-
-                # スープ（夕食かつ soups があれば1品）
                 soup = random.choice(soups) if (mt == "dinner" and soups) else None
 
                 day_menu = [main]
@@ -587,7 +567,6 @@ def generate():
                 day_menus.append(day_menu)
                 day_recipes[day_index].extend(day_menu)
         else:
-            # メインが無いなど、組めない場合
             for day_index in range(days):
                 day_menus.append([])
 
@@ -625,7 +604,7 @@ def generate():
         shopping_list=shopping_list,
         daily_nutrition=daily_nutrition,
         nutrition_labels=nutrition_labels,
-        nickname=session.get("nickname"),
+        nickname=None,
         easy_level=easy_level,
         have_ingredients=have_ingredients,
     )

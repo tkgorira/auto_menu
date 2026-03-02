@@ -178,10 +178,6 @@
                 {% endfor %}
               {% endif %}
             {% endwith %}
-
-            {% if nickname %}
-                <div>ログイン中: {{ nickname }}</div>
-            {% endif %}
         </div>
     </div>
 
@@ -205,15 +201,13 @@
         <p>お気に入りがありません。</p>
     {% endif %}
 
-    {% if nickname %}
-      <div class="fixed-fab-bar">
+    <div class="fixed-fab-bar">
         <a href="{{ url_for('index') }}" class="fixed-fab-button">
           条件入力へ戻る
         </a>
         <a href="{{ url_for('index') }}" class="fixed-fab-button primary" onclick="history.back(); return false;">
           献立結果へ戻る
         </a>
-      </div>
-    {% endif %}
+    </div>
 </body>
 </html>
