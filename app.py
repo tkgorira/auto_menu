@@ -527,7 +527,7 @@ def generate():
             if is_ok_breakfast(r)
         ]
 
-    # 5. メニュー生成（夕食はメイン＋副菜＋スープ）
+    # 5. メニュー生成（朝・昼・夕すべてメイン＋副菜＋スープ）
     menus_by_meal = {}
     daily_nutrition = []
     day_recipes = [[] for _ in range(days)]
@@ -538,37 +538,37 @@ def generate():
             if mt in r.get("meal_type", [])
         ]
 
+        # メイン・副菜・スープを共通ルールで分ける
         mains = [r for r in mt_recipes if r.get("role", "main") == "main"]
-
-        if mt == "dinner":
-            soups = [r for r in mt_recipes if is_soup_recipe(r)]
-            sides = [
-                r for r in mt_recipes
-                if r.get("role", "main") == "side" and not is_soup_recipe(r)
-            ]
-        else:
-            soups = []
-            sides = [r for r in mt_recipes if r.get("role", "main") == "side"]
+        soups = [r for r in mt_recipes if is_soup_recipe(r)]
+        sides = [
+            r for r in mt_recipes
+            if r.get("role", "main") == "side" and not is_soup_recipe(r)
+        ]
 
         day_menus = []
 
-        if mains and (sides or mt != "dinner"):
-            for day_index in range(days):
-                main = random.choice(mains)
-                side = random.choice(sides) if sides else None
-                soup = random.choice(soups) if (mt == "dinner" and soups) else None
+        for day_index in range(days):
+            menu = []
 
-                day_menu = [main]
-                if side:
-                    day_menu.append(side)
-                if soup:
-                    day_menu.append(soup)
+            # メインはあれば1品
+            if mains:
+                menu.append(random.choice(mains))
 
-                day_menus.append(day_menu)
-                day_recipes[day_index].extend(day_menu)
-        else:
-            for day_index in range(days):
-                day_menus.append([])
+            # 副菜：あれば1品
+            if sides:
+                menu.append(random.choice(sides))
+
+            # スープ：あれば1品
+            if soups:
+                menu.append(random.choice(soups))
+
+            # もし何も選べなかった場合でも、メインがあれば1品は出す
+            if not menu and mains:
+                menu.append(random.choice(mains))
+
+            day_menus.append(menu)
+            day_recipes[day_index].extend(menu)
 
         menus_by_meal[mt] = day_menus
 
