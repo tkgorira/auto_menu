@@ -7231,6 +7231,2643 @@
                 "carbs": 10.0
             },
             "cook_time_min": 15
+        },
+        {
+            "id": 956,
+            "name": "納豆卵かけご飯",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "朝食",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "納豆",
+                "卵",
+                "醤油",
+                "のり"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "卵",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 420.0,
+                "protein": 20.0,
+                "fat": 12.0,
+                "carbs": 60.0
+            },
+            "cook_time_min": 5
+        },
+        {
+            "id": 957,
+            "name": "鮭フレークと豆腐のヘルシー丼",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "朝食",
+                "ダイエット",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "鮭フレーク",
+                "木綿豆腐",
+                "小ねぎ",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 400.0,
+                "protein": 23.0,
+                "fat": 11.0,
+                "carbs": 60.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 958,
+            "name": "しらすおろしご飯",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "朝食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "しらす",
+                "大根おろし",
+                "小ねぎ",
+                "しょうゆ"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 360.0,
+                "protein": 17.0,
+                "fat": 5.0,
+                "carbs": 65.0
+            },
+            "cook_time_min": 5
+        },
+        {
+            "id": 959,
+            "name": "ゆで卵とアボカドののっけご飯",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "朝食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "卵",
+                "アボカド",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "卵",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 450.0,
+                "protein": 16.0,
+                "fat": 18.0,
+                "carbs": 60.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 960,
+            "name": "和風ツナマヨおにぎり",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "朝食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "ツナ缶",
+                "マヨネーズ",
+                "のり"
+            ],
+            "allergy_flags": [
+                "卵"
+            ],
+            "nutrition": {
+                "kcal": 380.0,
+                "protein": 12.0,
+                "fat": 13.0,
+                "carbs": 55.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 961,
+            "name": "鯖缶と大葉のおにぎり",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "朝食",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "鯖缶",
+                "大葉",
+                "ごま"
+            ],
+            "allergy_flags": [
+                "さば"
+            ],
+            "nutrition": {
+                "kcal": 420.0,
+                "protein": 18.0,
+                "fat": 15.0,
+                "carbs": 55.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 962,
+            "name": "卵焼きとほうれん草の朝定食",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "朝食",
+                "定食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "卵",
+                "ほうれん草",
+                "味噌汁"
+            ],
+            "allergy_flags": [
+                "卵",
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 500.0,
+                "protein": 22.0,
+                "fat": 14.0,
+                "carbs": 75.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 963,
+            "name": "鶏そぼろと温玉の朝丼",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "朝食",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "鶏ひき肉",
+                "卵",
+                "しょうゆ"
+            ],
+            "allergy_flags": [
+                "卵",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 480.0,
+                "protein": 25.0,
+                "fat": 14.0,
+                "carbs": 65.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 964,
+            "name": "豆腐納豆ご飯",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "朝食",
+                "ダイエット",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "木綿豆腐",
+                "納豆",
+                "のり",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 420.0,
+                "protein": 22.0,
+                "fat": 11.0,
+                "carbs": 65.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 965,
+            "name": "具だくさん味噌汁と小さなおにぎり",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "朝食",
+                "スープ"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "根菜",
+                "味噌",
+                "豆腐",
+                "わかめ"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 350.0,
+                "protein": 14.0,
+                "fat": 8.0,
+                "carbs": 60.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 966,
+            "name": "プロテインオートミール",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "朝食",
+                "ダイエット",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "オートミール",
+                "低脂肪乳",
+                "プロテインパウダー",
+                "バナナ"
+            ],
+            "allergy_flags": [
+                "乳"
+            ],
+            "nutrition": {
+                "kcal": 450.0,
+                "protein": 20.0,
+                "fat": 11.0,
+                "carbs": 68.0
+            },
+            "cook_time_min": 5
+        },
+        {
+            "id": 967,
+            "name": "ヨーグルトグラノーラボウル",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "朝食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "プレーンヨーグルト",
+                "グラノーラ",
+                "バナナ",
+                "ナッツ"
+            ],
+            "allergy_flags": [
+                "乳"
+            ],
+            "nutrition": {
+                "kcal": 380.0,
+                "protein": 15.0,
+                "fat": 14.0,
+                "carbs": 50.0
+            },
+            "cook_time_min": 5
+        },
+        {
+            "id": 968,
+            "name": "全粒粉トーストとゆで卵",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "朝食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "全粒粉パン",
+                "卵",
+                "バター"
+            ],
+            "allergy_flags": [
+                "乳",
+                "卵"
+            ],
+            "nutrition": {
+                "kcal": 320.0,
+                "protein": 15.0,
+                "fat": 12.0,
+                "carbs": 35.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 969,
+            "name": "ベーコンエッグトースト(控えめ)",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "朝食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "食パン",
+                "ベーコン",
+                "卵",
+                "ケチャップ"
+            ],
+            "allergy_flags": [
+                "小麦",
+                "卵"
+            ],
+            "nutrition": {
+                "kcal": 350.0,
+                "protein": 17.0,
+                "fat": 16.0,
+                "carbs": 30.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 970,
+            "name": "サラダチキンとサラダボウル",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "朝食",
+                "ダイエット",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "サラダチキン",
+                "レタス",
+                "トマト",
+                "ブロッコリー",
+                "オリーブオイル"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 260.0,
+                "protein": 27.0,
+                "fat": 10.0,
+                "carbs": 8.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 971,
+            "name": "ツナとトマトのチーズ炒め丼",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "朝食",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "ツナ缶",
+                "トマト",
+                "チーズ",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "乳",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 480.0,
+                "protein": 22.0,
+                "fat": 16.0,
+                "carbs": 65.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 972,
+            "name": "ブロッコリーと豆腐の卵チーズ炒め",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "朝食",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ブロッコリー",
+                "木綿豆腐",
+                "卵",
+                "チーズ"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "卵",
+                "乳"
+            ],
+            "nutrition": {
+                "kcal": 320.0,
+                "protein": 23.0,
+                "fat": 18.0,
+                "carbs": 8.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 973,
+            "name": "厚揚げハムチーズトースト",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "朝食",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "食パン",
+                "厚揚げ",
+                "ハム",
+                "チーズ",
+                "マヨネーズ"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "乳",
+                "卵",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 420.0,
+                "protein": 20.0,
+                "fat": 20.0,
+                "carbs": 35.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 974,
+            "name": "オートミール卵粥(和風)",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "朝食",
+                "スープ",
+                "ダイエット",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "オートミール",
+                "卵",
+                "だし",
+                "塩",
+                "小ねぎ"
+            ],
+            "allergy_flags": [
+                "卵"
+            ],
+            "nutrition": {
+                "kcal": 260.0,
+                "protein": 14.0,
+                "fat": 6.0,
+                "carbs": 35.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 975,
+            "name": "豆乳バナナきなこスープ",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "朝食",
+                "スープ"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "豆乳",
+                "バナナ",
+                "きなこ",
+                "はちみつ"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 250.0,
+                "protein": 13.0,
+                "fat": 6.0,
+                "carbs": 35.0
+            },
+            "cook_time_min": 5
+        },
+        {
+            "id": 976,
+            "name": "鶏むね照り焼き弁当風",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "昼食",
+                "ダイエット",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "鶏むね肉",
+                "ブロッコリー",
+                "にんじん",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 620.0,
+                "protein": 35.0,
+                "fat": 14.0,
+                "carbs": 85.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 977,
+            "name": "鶏むね肉のねぎ塩プレート",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "昼食",
+                "ダイエット",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "鶏むね肉",
+                "長ねぎ",
+                "レモン",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 600.0,
+                "protein": 32.0,
+                "fat": 15.0,
+                "carbs": 80.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 978,
+            "name": "サバ缶と雑穀ご飯のヘルシー丼",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "昼食",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "雑穀ご飯",
+                "サバ缶",
+                "大葉",
+                "しょうが",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "さば",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 630.0,
+                "protein": 30.0,
+                "fat": 20.0,
+                "carbs": 75.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 979,
+            "name": "鮭の塩焼き定食",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "昼食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "生鮭",
+                "ほうれん草のお浸し",
+                "味噌汁"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 650.0,
+                "protein": 30.0,
+                "fat": 18.0,
+                "carbs": 85.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 980,
+            "name": "鶏むね肉の親子丼(ライト)",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "丼もの",
+                "ダイエット",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "鶏むね肉",
+                "卵",
+                "玉ねぎ",
+                "だし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "卵",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 620.0,
+                "protein": 34.0,
+                "fat": 14.0,
+                "carbs": 80.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 981,
+            "name": "豆腐ハンバーグ定食",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "昼食",
+                "ダイエット",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "豆腐ハンバーグ",
+                "サラダ",
+                "味噌汁"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "小麦",
+                "卵"
+            ],
+            "nutrition": {
+                "kcal": 640.0,
+                "protein": 30.0,
+                "fat": 17.0,
+                "carbs": 90.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 982,
+            "name": "鶏そぼろと温玉の三色丼",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "丼もの",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "鶏そぼろ",
+                "卵",
+                "ほうれん草"
+            ],
+            "allergy_flags": [
+                "卵",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 680.0,
+                "protein": 32.0,
+                "fat": 19.0,
+                "carbs": 90.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 983,
+            "name": "マグロ漬け丼",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "丼もの",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "まぐろ",
+                "醤油",
+                "わさび",
+                "のり"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 650.0,
+                "protein": 32.0,
+                "fat": 10.0,
+                "carbs": 95.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 984,
+            "name": "ささみとひじきの混ぜご飯",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "昼食",
+                "ダイエット",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "鶏ささみ",
+                "ひじき",
+                "にんじん",
+                "枝豆"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 580.0,
+                "protein": 28.0,
+                "fat": 9.0,
+                "carbs": 90.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 985,
+            "name": "鶏むね肉の和風パスタ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "パスタ",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "スパゲティ",
+                "鶏むね肉",
+                "しめじ",
+                "大葉",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 680.0,
+                "protein": 30.0,
+                "fat": 15.0,
+                "carbs": 95.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 986,
+            "name": "サラダチキンのサラダうどん",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "麺",
+                "ダイエット",
+                "高たんぱく"
+            ],
+            "months": [
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "うどん",
+                "サラダチキン",
+                "レタス",
+                "トマト",
+                "きゅうり"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 620.0,
+                "protein": 30.0,
+                "fat": 11.0,
+                "carbs": 95.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 987,
+            "name": "鶏むね肉とブロッコリーのペンネ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "パスタ",
+                "ダイエット",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ペンネ",
+                "鶏むね肉",
+                "ブロッコリー",
+                "にんにく",
+                "オリーブオイル"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 660.0,
+                "protein": 32.0,
+                "fat": 16.0,
+                "carbs": 90.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 988,
+            "name": "タコライス(ライト)",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "丼もの",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "合いびき肉",
+                "レタス",
+                "トマト",
+                "チーズ"
+            ],
+            "allergy_flags": [
+                "乳"
+            ],
+            "nutrition": {
+                "kcal": 720.0,
+                "protein": 30.0,
+                "fat": 24.0,
+                "carbs": 95.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 989,
+            "name": "グリルチキンと雑穀サラダボウル",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "昼食",
+                "ダイエット",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "雑穀ご飯",
+                "鶏もも肉(皮なし)",
+                "レタス",
+                "アボカド",
+                "トマト"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 640.0,
+                "protein": 32.0,
+                "fat": 16.0,
+                "carbs": 85.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 990,
+            "name": "鶏むね肉のバジルライスボウル",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "丼もの",
+                "高たんぱく"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "ご飯",
+                "鶏むね肉",
+                "バジル",
+                "トマト",
+                "レタス"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 650.0,
+                "protein": 31.0,
+                "fat": 14.0,
+                "carbs": 90.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 991,
+            "name": "豆腐とチキンのキーマカレー(ライト)",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "カレー",
+                "ダイエット",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "鶏ひき肉",
+                "木綿豆腐",
+                "玉ねぎ",
+                "カレー粉"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 700.0,
+                "protein": 33.0,
+                "fat": 18.0,
+                "carbs": 95.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 992,
+            "name": "鶏むね肉の中華風あんかけ丼",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "中華",
+                "丼もの",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "鶏むね肉",
+                "小松菜",
+                "人参",
+                "中華スープ"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 680.0,
+                "protein": 32.0,
+                "fat": 14.0,
+                "carbs": 95.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 993,
+            "name": "鶏むね肉と野菜のあんかけ焼きそば",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "中華",
+                "麺",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "中華麺",
+                "鶏むね肉",
+                "キャベツ",
+                "にんじん",
+                "もやし"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 700.0,
+                "protein": 30.0,
+                "fat": 18.0,
+                "carbs": 95.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 994,
+            "name": "麻婆豆腐丼(ライト)",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "中華",
+                "丼もの",
+                "ダイエット",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "木綿豆腐",
+                "鶏ひき肉",
+                "長ねぎ",
+                "豆板醤"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 680.0,
+                "protein": 30.0,
+                "fat": 18.0,
+                "carbs": 95.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 995,
+            "name": "鶏チャーシューと温野菜の丼",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "丼もの",
+                "ダイエット",
+                "高たんぱく"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "鶏むねチャーシュー",
+                "ブロッコリー",
+                "キャベツ",
+                "半熟卵"
+            ],
+            "allergy_flags": [
+                "卵"
+            ],
+            "nutrition": {
+                "kcal": 650.0,
+                "protein": 34.0,
+                "fat": 15.0,
+                "carbs": 90.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 996,
+            "name": "ベーコンエッグ定食",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "朝食",
+                "定食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "ベーコン",
+                "卵",
+                "サラダ",
+                "味噌汁"
+            ],
+            "allergy_flags": [
+                "卵",
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 650.0,
+                "protein": 23.0,
+                "fat": 28.0,
+                "carbs": 75.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 997,
+            "name": "ハムチーズトーストとコーンスープ",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "朝食",
+                "スープ"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "食パン",
+                "ハム",
+                "スライスチーズ",
+                "バター",
+                "コーンスープ"
+            ],
+            "allergy_flags": [
+                "乳",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 520.0,
+                "protein": 20.0,
+                "fat": 25.0,
+                "carbs": 55.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 998,
+            "name": "ソーセージとスクランブルエッグセット",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "朝食",
+                "スープ"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ロールパン",
+                "ソーセージ",
+                "卵",
+                "サラダ",
+                "コンソメスープ"
+            ],
+            "allergy_flags": [
+                "卵",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 600.0,
+                "protein": 22.0,
+                "fat": 28.0,
+                "carbs": 55.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 999,
+            "name": "塩鮭と卵焼きの朝定食",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "朝食",
+                "スープ"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "塩鮭",
+                "卵焼き",
+                "ほうれん草のお浸し",
+                "味噌汁"
+            ],
+            "allergy_flags": [
+                "卵",
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 680.0,
+                "protein": 30.0,
+                "fat": 23.0,
+                "carbs": 80.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1000,
+            "name": "ツナサンドと野菜スープ",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "朝食",
+                "スープ"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "食パン",
+                "ツナ缶",
+                "マヨネーズ",
+                "レタス",
+                "野菜スープ"
+            ],
+            "allergy_flags": [
+                "卵",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 560.0,
+                "protein": 21.0,
+                "fat": 24.0,
+                "carbs": 60.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1001,
+            "name": "納豆トーストとミネストローネ",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "洋食",
+                "朝食",
+                "スープ"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "食パン",
+                "納豆",
+                "チーズ",
+                "ミネストローネスープ"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "乳",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 580.0,
+                "protein": 22.0,
+                "fat": 22.0,
+                "carbs": 65.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1002,
+            "name": "ベーグルサンドとポタージュ",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "朝食",
+                "スープ"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ベーグル",
+                "スモークサーモン",
+                "クリームチーズ",
+                "コーンポタージュ"
+            ],
+            "allergy_flags": [
+                "乳",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 620.0,
+                "protein": 24.0,
+                "fat": 26.0,
+                "carbs": 70.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1003,
+            "name": "おにぎりと豚汁セット",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "朝食",
+                "スープ"
+            ],
+            "months": [
+                10,
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "ingredients": [
+                "おにぎり(鮭)",
+                "おにぎり(梅)",
+                "豚汁",
+                "漬物"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 600.0,
+                "protein": 22.0,
+                "fat": 19.0,
+                "carbs": 90.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1004,
+            "name": "フレンチトーストとフルーツヨーグルト",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "朝食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "食パン",
+                "卵",
+                "牛乳",
+                "砂糖",
+                "バター",
+                "ヨーグルト",
+                "フルーツ"
+            ],
+            "allergy_flags": [
+                "卵",
+                "乳",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 650.0,
+                "protein": 20.0,
+                "fat": 26.0,
+                "carbs": 80.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1005,
+            "name": "クロワッサンとオニオンスープ",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "朝食",
+                "スープ"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "クロワッサン",
+                "ハム",
+                "チーズ",
+                "オニオンスープ"
+            ],
+            "allergy_flags": [
+                "乳",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 580.0,
+                "protein": 18.0,
+                "fat": 30.0,
+                "carbs": 50.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1006,
+            "name": "唐揚げ定食",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "昼食",
+                "定食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "鶏の唐揚げ",
+                "キャベツ",
+                "味噌汁"
+            ],
+            "allergy_flags": [
+                "小麦",
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 900.0,
+                "protein": 30.0,
+                "fat": 45.0,
+                "carbs": 95.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 1007,
+            "name": "焼き魚定食(サバ味噌)",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "昼食",
+                "定食"
+            ],
+            "months": [
+                10,
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "ingredients": [
+                "ご飯",
+                "サバ味噌",
+                "ほうれん草のお浸し",
+                "味噌汁"
+            ],
+            "allergy_flags": [
+                "さば",
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 780.0,
+                "protein": 32.0,
+                "fat": 30.0,
+                "carbs": 85.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 1008,
+            "name": "オムライスとコンソメスープ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "昼食",
+                "スープ"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "卵",
+                "ケチャップ",
+                "鶏肉",
+                "玉ねぎ",
+                "コンソメスープ"
+            ],
+            "allergy_flags": [
+                "卵"
+            ],
+            "nutrition": {
+                "kcal": 850.0,
+                "protein": 28.0,
+                "fat": 35.0,
+                "carbs": 105.0
+            },
+            "cook_time_min": 30
+        },
+        {
+            "id": 1009,
+            "name": "ナポリタンとサラダセット",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "パスタ",
+                "昼食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "スパゲティ",
+                "ベーコン",
+                "ピーマン",
+                "玉ねぎ",
+                "サラダ"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 820.0,
+                "protein": 24.0,
+                "fat": 28.0,
+                "carbs": 110.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 1010,
+            "name": "ハンバーグランチ(デミグラス)",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "昼食",
+                "スープ"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "ハンバーグ",
+                "サラダ",
+                "ポタージュスープ"
+            ],
+            "allergy_flags": [
+                "卵",
+                "小麦",
+                "乳"
+            ],
+            "nutrition": {
+                "kcal": 950.0,
+                "protein": 32.0,
+                "fat": 45.0,
+                "carbs": 100.0
+            },
+            "cook_time_min": 30
+        },
+        {
+            "id": 1011,
+            "name": "しょうが焼き定食",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "昼食",
+                "定食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "豚の生姜焼き",
+                "キャベツ",
+                "味噌汁"
+            ],
+            "allergy_flags": [
+                "小麦",
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 880.0,
+                "protein": 30.0,
+                "fat": 38.0,
+                "carbs": 100.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 1012,
+            "name": "チキンカツカレー",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "カレー",
+                "昼食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "チキンカツ",
+                "カレールウ"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 1050.0,
+                "protein": 32.0,
+                "fat": 45.0,
+                "carbs": 130.0
+            },
+            "cook_time_min": 30
+        },
+        {
+            "id": 1013,
+            "name": "冷やし中華(夏)",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "中華",
+                "麺",
+                "昼食"
+            ],
+            "months": [
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "中華麺",
+                "ハム",
+                "きゅうり",
+                "卵",
+                "トマト",
+                "ごまダレ"
+            ],
+            "allergy_flags": [
+                "卵",
+                "小麦",
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 750.0,
+                "protein": 27.0,
+                "fat": 22.0,
+                "carbs": 100.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1014,
+            "name": "ミックスサンドとコーンスープ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "昼食",
+                "スープ"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "サンドイッチ用パン",
+                "ハム",
+                "卵",
+                "きゅうり",
+                "チーズ",
+                "コーンスープ"
+            ],
+            "allergy_flags": [
+                "卵",
+                "乳",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 700.0,
+                "protein": 26.0,
+                "fat": 30.0,
+                "carbs": 75.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1015,
+            "name": "ビビンバ丼とわかめスープ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "main",
+            "tags": [
+                "韓国風",
+                "丼もの",
+                "昼食",
+                "スープ"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "牛肉",
+                "ナムル",
+                "卵",
+                "コチュジャン",
+                "わかめスープ"
+            ],
+            "allergy_flags": [
+                "卵"
+            ],
+            "nutrition": {
+                "kcal": 820.0,
+                "protein": 30.0,
+                "fat": 28.0,
+                "carbs": 110.0
+            },
+            "cook_time_min": 25
         }
     ]
 }
