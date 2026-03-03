@@ -26,7 +26,7 @@
         }
         @media (max-width: 600px) {
             :root {
-                font-size: 17px; /* スマホでは少し大きめだが詰める */
+                font-size: 17px;
             }
         }
         body {
@@ -34,7 +34,6 @@
                          "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
             max-width: 520px;
             margin: 0 auto;
-            /* 下側だけ広めに余白をとる（ボトムバーに隠れないように） */
             padding: 8px 10px 80px;
             line-height: 1.7;
             background-color: #ffffff;
@@ -42,7 +41,7 @@
         h1 {
             font-size: 1.4rem;
             margin: 8px 0 8px;
-            white-space: nowrap; /* タイトルを1行に収める */
+            white-space: nowrap;
         }
         p,
         li,
@@ -150,15 +149,15 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
         .fixed-fab-button.favorite {
-            background-color: #ffc0cb;   /* ピンク */
+            background-color: #ffc0cb;
             color: #5a2a3a;
         }
         .fixed-fab-button.primary {
-            flex: 1.2;                   /* 少し大きめ */
-            padding: 12px 14px;          /* ボタンを大きく */
-            font-size: 1.0rem;           /* 文字も少し大きく */
+            flex: 1.2;
+            padding: 12px 14px;
+            font-size: 1.0rem;
             font-weight: bold;
-            background-color: #ff7043;   /* 目立つ色 */
+            background-color: #ff7043;
             color: #ffffff;
         }
         .fixed-fab-button:hover {
@@ -173,7 +172,7 @@
 
         @media (max-width: 600px) {
             body {
-                padding: 6px 8px 80px;  /* スマホ時も下80pxは維持 */
+                padding: 6px 8px 80px;
             }
             .top-bar {
                 flex-direction: column;
@@ -296,20 +295,46 @@
             その他NG食材（カンマ区切り）：<br>
             <input type="text" name="ng_ingredients" placeholder="例：パプリカ, セロリ">
         </p>
-
+        <!-- ここにあった「献立を作成する」ボタンは削除 -->
     </form>
 
     <!-- 画像から献立を作るフォーム（Vision用） -->
     <form id="photo-form" action="{{ url_for('upload_photo') }}" method="post" enctype="multipart/form-data" style="margin-top: 16px;">
         <fieldset>
             <legend>冷蔵庫の写真から献立を作る</legend>
+            <p style="font-size: 0.85rem; color: #555;">
+              ※不透明な袋に入った食材や、ピントが合っていない・暗い写真は正しく認識できない場合があります。
+              できるだけ中身が見えるように撮影してください。
+            </p>
             <p>
                 冷蔵庫の中を撮影してアップロード：<br>
-                <input
+
+                <!-- カメラで撮影 -->
+                <label style="display:inline-block; margin-right:8px;">
+                  <span style="display:inline-block; padding:6px 10px; border-radius:4px;
+                               border:1px solid #4b7bec; color:#4b7bec; font-size:0.9rem; cursor:pointer;">
+                    カメラで撮影
+                  </span>
+                  <input
                     type="file"
-                    name="fridge_photo"
+                    name="fridge_photo_camera"
                     accept="image/*"
-                    capture="environment">
+                    capture="environment"
+                    style="display:none;">
+                </label>
+
+                <!-- 写真フォルダなどから選択 -->
+                <label style="display:inline-block;">
+                  <span style="display:inline-block; padding:6px 10px; border-radius:4px;
+                               border:1px solid #888; color:#444; font-size:0.9rem; cursor:pointer;">
+                    ファイルを選択
+                  </span>
+                  <input
+                    type="file"
+                    name="fridge_photo_file"
+                    accept="image/*"
+                    style="display:none;">
+                </label>
             </p>
             <input type="hidden" name="meal_types" value="dinner">
             <input type="hidden" name="days" value="3">
