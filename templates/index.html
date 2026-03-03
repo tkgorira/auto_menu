@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <title>今晩の夕食なに作ろう？食材から自動で献立提案する無料Webアプリ｜まいにち献立ナビ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- 説明文を検索結果向けに調整 -->
     <meta name="description"
-          content="「今晩の夕食何を作ろう…」と迷ったら、無料の自動献立アプリ『まいにち献立ナビ』。冷蔵庫の食材を入力するだけで、今日の夕食メニューを自動提案します。">
+          content="「今晩の夕食なに作ろう？」という悩みを解消する、自動献立提案サイトです。冷蔵庫の中身の写真から献立を作成出来ます。冷蔵庫の食材やアレルギー、NG食材を入力するだけで、今日の朝・昼・夜の献立をまとめて提案します。">
 
     <!-- PWA: manifest と テーマカラー -->
     <link rel="manifest" href="/static/manifest.json">
@@ -179,7 +181,7 @@
                 align-items: flex-start;
             }
             .login-area {
-                text-align: left;
+                text-align:左;
             }
         }
     </style>
@@ -198,14 +200,19 @@
         </div>
     </div>
 
+    <!-- サイトの概要説明 -->
+    <p>
+      「今晩の夕食なに作ろう？」という悩みを解消するための自動献立提案サイトです。冷蔵庫の食材やアレルギー、NG食材を入力するだけで、朝食・昼食・夕食の献立を自動で作成します。
+    </p>
+
     <!-- 通常の条件入力フォーム -->
     <form id="generate-form" method="POST" action="{{ url_for('generate') }}">
         <p>
             期間（日数）：
             <select name="days">
-                <option value="1">1日分</option>
+                <option value="1" selected>1日分</option>
                 <option value="2">2日分</option>
-                <option value="3" selected>3日分</option>
+                <option value="3">3日分</option>
                 <option value="4">4日分</option>
                 <option value="5">5日分</option>
                 <option value="6">6日分</option>
