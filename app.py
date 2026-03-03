@@ -457,7 +457,8 @@ def recipe_new():
 def upload_photo():
     ensure_anonymous_user()
 
-    file = request.files.get("fridge_photo")
+    # カメラまたはファイルどちらか優先的に取得
+    file = request.files.get("fridge_photo_camera") or request.files.get("fridge_photo_file")
     if not file or file.filename == "":
         flash("画像が選択されていません。")
         return redirect(url_for("index"))
@@ -626,6 +627,9 @@ def generate():
     ng_presets = request.form.getlist("ng_preset")
     ng_ingredients = request.form.get("ng_ingredients", "")
 
+    # 料理タイプ（和食・洋食・中華）プルダウン
+    cuisine = request.form.get("cuisine", "")
+
     days_str = request.form.get("days", "3")
     try:
         days = int(days_str)
@@ -647,17 +651,27 @@ def generate():
 
     target_meal_types = meal_types or ["dinner"]
 
+    # 食事タイミングで絞り込み
     filtered_recipes = [
         r for r in all_recipes
         if any(mt in r.get("meal_type", []) for mt in target_meal_types)
     ]
 
+    # 料理タイプ（和食・洋食・中華）で絞り込み
+    if cuisine:
+        filtered_recipes = [
+            r for r in filtered_recipes
+            if cuisine in (r.get("tags") or [])
+        ]
+
+    # ダイエット
     if diet:
         filtered_recipes = [
             r for r in filtered_recipes
             if "ダイエット" in r.get("tags", [])
         ]
 
+    # 季節
     month_int = None
     try:
         month_int = int(month)
@@ -672,6 +686,7 @@ def generate():
         if seasonal_recipes:
             filtered_recipes = seasonal_recipes
 
+    # アレルギー
     allergy_flags = []
     if request.form.get("allergy_egg"):
         allergy_flags.append("卵")
@@ -686,6 +701,7 @@ def generate():
             if not any(flag in r.get("allergy_flags", []) for flag in allergy_flags)
         ]
 
+    # NG食材
     free_ng_list = [
         s.strip() for s in ng_ingredients.split(",")
         if s.strip()
@@ -698,6 +714,7 @@ def generate():
             if not any(ng in r.get("ingredients", []) for ng in ng_list)
         ]
 
+    # 手持ち食材
     if have_ingredients:
         def match_score(r):
             ings = r.get("ingredients", [])
@@ -715,6 +732,7 @@ def generate():
                 reverse=True,
             )
 
+    # 手軽さ
     if easy_level == "easy":
         def easy_score(r):
             tags = r.get("tags", [])
@@ -731,6 +749,7 @@ def generate():
             reverse=True,
         )
 
+    # 朝食カロリー上限
     if "breakfast" in target_meal_types:
         MAX_BREAKFAST_KCAL = 300.0
 
