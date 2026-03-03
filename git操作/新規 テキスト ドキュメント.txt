@@ -1,0 +1,17 @@
+リモートの最新を取り込む（pull）
+git pull origin main
+
+ローカルの変更を送る（push）
+git add .
+git commit -m "作業内容メモ"
+git push origin main
+
+自宅PC・会社PCでの「お約束」メモ例
+
+【更新を取ってから作業】
+git pull origin main
+
+【作業が終わったら】
+git add .
+git commit -m "作業内容"
+git push origin main

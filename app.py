@@ -15,6 +15,8 @@ from flask import (
     flash,
 )
 
+from google.cloud import vision  # ★ 追加
+
 app = Flask(__name__)
 
 # セッション用のシークレットキー（本番では環境変数などで安全に管理）
@@ -23,6 +25,136 @@ app.secret_key = "change_this_to_random_secret_key"
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DB_PATH = os.path.join(BASE_DIR, "favorites.db")
 RECIPES_JSON_PATH = os.path.join(BASE_DIR, "recipes.json")
+
+# 画像アップロード用フォルダ
+UPLOAD_FOLDER = os.path.join(BASE_DIR, "uploads")
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+
+# Vision のラベル → recipes.json の ingredients 用キー
+# recipes.json によく出てくる食材ベースで初期セット。[file:31]
+LABEL_TO_INGREDIENT = {
+    # 肉類
+    "chicken": "鶏むね肉",
+    "chicken meat": "鶏むね肉",
+    "chicken thigh": "鶏もも肉",
+    "pork": "豚こま切れ肉",
+    "pork belly": "豚バラブロック",
+    "beef": "牛こま切れ肉",
+    "ground beef": "牛ひき肉",
+    "minced meat": "合い挽き肉",
+
+    # 魚介
+    "salmon": "鮭切り身",
+    "salmon fillet": "鮭切り身",
+    "fish": "白身魚切り身",
+    "shrimp": "むきエビ",
+
+    # 卵・乳製品
+    "egg": "卵",
+    "eggs": "卵",
+    "milk": "牛乳",
+    "cheese": "ピザ用チーズ",
+    "cream cheese": "クリームチーズ",
+    "butter": "バター",
+    "yogurt": "ヨーグルト",
+
+    # 主食
+    "rice": "ご飯",
+    "white rice": "ご飯",
+    "bread": "食パン",
+    "loaf": "食パン",
+    "toast": "食パン",
+    "noodles": "うどん",
+    "udon": "うどん",
+    "pasta": "スパゲッティ",
+    "spaghetti": "スパゲッティ",
+
+    # 野菜
+    "cabbage": "キャベツ",
+    "chinese cabbage": "白菜",
+    "napa cabbage": "白菜",
+    "lettuce": "レタス",
+    "onion": "玉ねぎ",
+    "green onion": "長ねぎ",
+    "spring onion": "長ねぎ",
+    "scallion": "長ねぎ",
+    "leek": "長ねぎ",
+    "carrot": "にんじん",
+    "potato": "じゃがいも",
+    "sweet potato": "さつまいも",
+    "cucumber": "きゅうり",
+    "tomato": "トマト",
+    "cherry tomato": "ミニトマト",
+    "eggplant": "なす",
+    "aubergine": "なす",
+    "bell pepper": "パプリカ",
+    "green pepper": "ピーマン",
+    "paprika": "パプリカ",
+    "spinach": "ほうれん草",
+    "broccoli": "ブロッコリー",
+    "burdock": "ごぼう",
+    "gobo": "ごぼう",
+    "lotus root": "れんこん",
+    "daikon": "大根",
+    "radish": "大根",
+    "mushroom": "しめじ",
+    "shiitake": "しいたけ",
+    "shimeji": "しめじ",
+    "enoki": "えのきだけ",
+    "corn": "コーン",
+
+    # 大豆・豆製品・海藻など
+    "tofu": "豆腐",
+    "bean curd": "豆腐",
+    "soybean": "大豆",
+    "edamame": "枝豆",
+    "seaweed": "わかめ",
+    "wakame": "わかめ",
+    "nori": "のり",
+
+    # 加工品
+    "bacon": "ベーコン",
+    "sausage": "ソーセージ",
+    "ham": "ハム",
+
+    # 果物
+    "banana": "バナナ",
+    "apple": "りんご",
+    "orange": "みかん",
+}
+
+# ===================== Vision 呼び出しヘルパ =====================
+def map_labels_to_ingredients(labels):
+    """
+    Vision の英語ラベル配列から、recipes.jsonのingredients用の日本語食材キー配列を返す。
+    """
+    mapped = []
+    for label in labels:
+        key = LABEL_TO_INGREDIENT.get(label.lower())
+        if key and key not in mapped:
+            mapped.append(key)
+    return mapped
+
+
+def detect_ingredients_from_image(path):
+    """
+    画像ファイルパスを受け取り、Vision APIでラベルを取得し、
+    日本語の食材リスト（ingredients用）を返す。
+    """
+    client = vision.ImageAnnotatorClient()
+    with open(path, "rb") as f:
+        content = f.read()
+
+    image = vision.Image(content=content)
+    response = client.label_detection(image=image)
+    annotations = response.label_annotations or []
+
+    raw_labels = [a.description for a in annotations]
+    print("Vision labels:", raw_labels)  # デバッグ用
+
+    ingredients = map_labels_to_ingredients(raw_labels)
+    return ingredients
 
 
 # ===================== DB 接続ヘルパ =====================
@@ -44,15 +176,12 @@ def close_db(exc):
 def ensure_anonymous_user():
     """
     ログイン機能を廃止し、端末(ブラウザ)ごとに1つの匿名ユーザーを自動発行して使う。
-    - 初回アクセス時: users に anon-xxxx ユーザーを作成
-    - 以降: session['user_id'] を使って favorites などに紐付け
     """
     if "user_id" in session:
-        return  # すでに何らかのユーザーが紐付いている
+        return
 
     db = get_db()
 
-    # すでに anonymous_id をセッションに持っていたらそれを使う
     anon_id = session.get("anonymous_id")
     if anon_id:
         cur = db.execute(
@@ -62,11 +191,9 @@ def ensure_anonymous_user():
         row = cur.fetchone()
         if row:
             session["user_id"] = row["id"]
-            # 表示用としては使わないので空を入れておく
             session["nickname"] = ""
             return
 
-    # なければ新規 anonymous ユーザーを作る
     anon_id = "anon-" + uuid.uuid4().hex[:16]
     db.execute(
         "INSERT INTO users (nickname) VALUES (?)",
@@ -82,16 +209,11 @@ def ensure_anonymous_user():
 
     session["anonymous_id"] = anon_id
     session["user_id"] = row["id"]
-    # ニックネームはもう表示に使わないので空
     session["nickname"] = ""
 
 
 # ===================== 栄養関連 =====================
 def get_recipe_nutrition(recipe):
-    """
-    レシピ1品分の栄養 dict を返す。
-    nutrition が無い場合・不足しているキーは 0 として扱う。
-    """
     n = recipe.get("nutrition", {}) or {}
     return {
         "kcal": float(n.get("kcal", 0) or 0),
@@ -102,9 +224,6 @@ def get_recipe_nutrition(recipe):
 
 
 def sum_nutrition(recipes):
-    """
-    レシピのリストを受け取り、栄養の合計値 dict を返す。
-    """
     total = {"kcal": 0.0, "protein": 0.0, "fat": 0.0, "carbs": 0.0}
     for r in recipes:
         n = get_recipe_nutrition(r)
@@ -112,7 +231,6 @@ def sum_nutrition(recipes):
         total["protein"] += n["protein"]
         total["fat"] += n["fat"]
         total["carbs"] += n["carbs"]
-    # 小数第1位に丸め
     for k in total:
         total[k] = round(total[k], 1)
     return total
@@ -120,11 +238,6 @@ def sum_nutrition(recipes):
 
 # ===================== 自作レシピ読み込みヘルパ =====================
 def load_user_recipes(user_id):
-    """
-    user_recipes テーブルからログインユーザーのレシピを読み込み、
-    recipes.json と同じ形の dict に変換して返す。
-    （匿名ユーザーも user_id を持っているので同じ仕組み）
-    """
     db = get_db()
     cur = db.execute(
         "SELECT * FROM user_recipes WHERE user_id = ?",
@@ -139,7 +252,7 @@ def load_user_recipes(user_id):
         months = [int(s) for s in (row["months"] or "").split(",") if s.strip().isdigit()]
 
         recipe = {
-            "id": int(row["id"]),  # user_recipes の id をそのまま利用
+            "id": int(row["id"]),
             "name": row["name"],
             "meal_type": meal_type,
             "role": row["role"],
@@ -161,25 +274,16 @@ def load_user_recipes(user_id):
 
 # ===================== 名前ベースの鍋/スープ判定 =====================
 def is_nabe_by_name(recipe):
-    """
-    レシピ名に「鍋」が含まれていれば鍋扱い。
-    """
     name = recipe.get("name", "")
     return "鍋" in name
 
 
 def is_soup_by_name(recipe):
-    """
-    レシピ名に「スープ」または「汁」が含まれていればスープ扱い。
-    """
     name = recipe.get("name", "")
     return ("スープ" in name) or ("汁" in name)
 
 
 def is_soup_recipe(r):
-    """
-    名前 or tags からスープかどうか判定。
-    """
     if is_soup_by_name(r):
         return True
     tags = r.get("tags", []) or []
@@ -189,11 +293,6 @@ def is_soup_recipe(r):
 # ===================== お気に入り機能 =====================
 @app.route("/favorite/add", methods=["POST"])
 def favorite_add():
-    """
-    結果画面からお気に入りに追加。
-    favorites テーブルに (user_id, recipe_id) を INSERT OR IGNORE。
-    匿名ユーザーでも利用可能。
-    """
     ensure_anonymous_user()
     user_id = session["user_id"]
     recipe_id = request.form.get("recipe_id")
@@ -221,10 +320,6 @@ def favorite_add():
 
 @app.route("/favorite/list")
 def favorite_list():
-    """
-    現在の端末（ブラウザ）に紐づくユーザーの favorites から recipe_id を取得し、
-    recipes.json + 自作レシピから対応レシピを抽出して表示。
-    """
     ensure_anonymous_user()
     user_id = session["user_id"]
 
@@ -237,14 +332,11 @@ def favorite_list():
 
     favorite_ids = {int(row["recipe_id"]) for row in rows}
 
-    # JSONレシピ
     with open(RECIPES_JSON_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
     json_recipes = data.get("recipes", [])
 
-    # 自作レシピ
     user_recipes = load_user_recipes(user_id)
-
     all_recipes = json_recipes + user_recipes
 
     favorite_recipes = [
@@ -255,16 +347,12 @@ def favorite_list():
     return render_template(
         "favorites.html",
         recipes=favorite_recipes,
-        nickname=None,  # もう表示しない
+        nickname=None,
     )
 
 
 @app.route("/favorite/delete", methods=["POST"])
 def favorite_delete():
-    """
-    お気に入り一覧から削除。
-    匿名ユーザーでも利用可能。
-    """
     ensure_anonymous_user()
     user_id = session["user_id"]
     recipe_id = request.form.get("recipe_id")
@@ -293,7 +381,6 @@ def favorite_delete():
 # ===================== 自作レシピ登録 =====================
 @app.route("/recipe/new", methods=["GET", "POST"])
 def recipe_new():
-    # 自作レシピも、匿名ユーザーごとに紐付ける
     ensure_anonymous_user()
 
     if request.method == "POST":
@@ -306,13 +393,11 @@ def recipe_new():
         months_raw = request.form.get("months", "").strip()
         allergy_list = request.form.getlist("allergy_flags")
 
-        # 栄養
         kcal = request.form.get("kcal") or "0"
         protein = request.form.get("protein") or "0"
         fat = request.form.get("fat") or "0"
         carbs = request.form.get("carbs") or "0"
 
-        # 調理時間
         cook_time_min = request.form.get("cook_time_min") or "0"
 
         if not name:
@@ -368,6 +453,170 @@ def recipe_new():
     )
 
 
+# ===================== 画像アップロード → Vision → generate =====================
+@app.route("/upload_photo", methods=["POST"])
+def upload_photo():
+    """
+    冷蔵庫写真を受け取り、Visionで食材推定 → have_ingredients に流して結果画面へ。
+    """
+    ensure_anonymous_user()
+
+    file = request.files.get("fridge_photo")
+    if not file or file.filename == "":
+        flash("画像が選択されていません。")
+        return redirect(url_for("index"))
+
+    filename = uuid.uuid4().hex + ".jpg"
+    path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+    file.save(path)
+
+    ingredients = detect_ingredients_from_image(path)
+
+    if not ingredients:
+        flash("食材をうまく認識できませんでした。")
+        return redirect(url_for("index"))
+
+    # Vision で検出した食材をセッションに保存し、専用ルートからgenerateロジックへ。
+    session["vision_have_ingredients"] = ",".join(ingredients)
+
+    # meal_types や days を画像用フォームから渡す場合はここで拾う
+    session["vision_meal_types"] = request.form.getlist("meal_types") or ["dinner"]
+    session["vision_days"] = request.form.get("days", "3")
+
+    return redirect(url_for("generate_from_vision"))
+
+
+@app.route("/generate_from_vision")
+def generate_from_vision():
+    """
+    Vision 結果（have_ingredients）を使ってメニュー生成し、result.html を表示。
+    """
+    ensure_anonymous_user()
+
+    have_ingredients_raw = session.pop("vision_have_ingredients", "")
+    meal_types = session.pop("vision_meal_types", ["dinner"])
+    days_str = session.pop("vision_days", "3")
+
+    try:
+        days = int(days_str)
+    except ValueError:
+        days = 3
+
+    # JSON + 自作レシピ
+    with open(RECIPES_JSON_PATH, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    json_recipes = data.get("recipes", [])
+
+    user_recipes = load_user_recipes(session["user_id"])
+    all_recipes = json_recipes + user_recipes
+
+    target_meal_types = meal_types or ["dinner"]
+
+    filtered_recipes = [
+        r for r in all_recipes
+        if any(mt in r.get("meal_type", []) for mt in target_meal_types)
+    ]
+
+    have_ingredients = [
+        s.strip() for s in have_ingredients_raw.split(",") if s.strip()
+    ]
+
+    if have_ingredients:
+        def match_score(r):
+            ings = r.get("ingredients", [])
+            return sum(1 for h in have_ingredients if h in ings)
+
+        with_ingredients = [
+            r for r in filtered_recipes
+            if match_score(r) > 0
+        ]
+        if with_ingredients:
+            filtered_recipes = sorted(
+                with_ingredients,
+                key=match_score,
+                reverse=True,
+            )
+
+    # ここから下は generate() と同じロジックをほぼ再利用
+    diet = None
+    seasonal = None
+    month = None
+    easy_level = "normal"
+    ng_ingredients = ""
+
+    # 5. メニュー生成
+    menus_by_meal = {}
+    daily_nutrition = []
+    day_recipes = [[] for _ in range(days)]
+
+    for mt in target_meal_types:
+        mt_recipes = [
+            r for r in filtered_recipes
+            if mt in r.get("meal_type", [])
+        ]
+
+        mains = [r for r in mt_recipes if r.get("role", "main") == "main"]
+        soups = [r for r in mt_recipes if is_soup_recipe(r)]
+        sides = [
+            r for r in mt_recipes
+            if r.get("role", "main") == "side" and not is_soup_recipe(r)
+        ]
+
+        day_menus = []
+
+        for day_index in range(days):
+            menu = []
+
+            if mains:
+                menu.append(random.choice(mains))
+            if sides:
+                menu.append(random.choice(sides))
+            if soups:
+                menu.append(random.choice(soups))
+            if not menu and mains:
+                menu.append(random.choice(mains))
+
+            day_menus.append(menu)
+            day_recipes[day_index].extend(menu)
+
+        menus_by_meal[mt] = day_menus
+
+    for d in range(days):
+        total = sum_nutrition(day_recipes[d])
+        daily_nutrition.append(total)
+
+    nutrition_labels = {
+        "protein": "たんぱく質",
+        "fat": "脂質",
+        "carbs": "炭水化物",
+    }
+
+    ingredients_set = set()
+    for day_menus in menus_by_meal.values():
+        for day_menu in day_menus:
+            for r in day_menu:
+                for ing in r.get("ingredients", []):
+                    ingredients_set.add(ing)
+    shopping_list = sorted(ingredients_set)
+
+    return render_template(
+        "result.html",
+        days=days,
+        meal_types=target_meal_types,
+        diet=diet,
+        seasonal=seasonal,
+        month=month,
+        ng_ingredients=ng_ingredients,
+        menus_by_meal=menus_by_meal,
+        shopping_list=shopping_list,
+        daily_nutrition=daily_nutrition,
+        nutrition_labels=nutrition_labels,
+        nickname=None,
+        easy_level=easy_level,
+        have_ingredients=have_ingredients,
+    )
+
+
 # ===================== 画面ルート =====================
 @app.route("/")
 def index():
@@ -382,7 +631,6 @@ def index():
 def generate():
     ensure_anonymous_user()
 
-    # フォームから値を取得
     meal_types = request.form.getlist("meal_types")
     diet = request.form.get("diet")
     seasonal = request.form.get("seasonal")
@@ -397,19 +645,16 @@ def generate():
     except ValueError:
         days = 3
 
-    # 手軽さ / 冷蔵庫の食材
     easy_level = request.form.get("easy_level", "normal")
     have_ingredients_raw = request.form.get("have_ingredients", "")
     have_ingredients = [
         s.strip() for s in have_ingredients_raw.split(",") if s.strip()
     ]
 
-    # JSON
     with open(RECIPES_JSON_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
     json_recipes = data.get("recipes", [])
 
-    # 匿名ユーザーの自作レシピも含める
     user_recipes = load_user_recipes(session["user_id"])
     all_recipes = json_recipes + user_recipes
 
@@ -420,14 +665,12 @@ def generate():
         if any(mt in r.get("meal_type", []) for mt in target_meal_types)
     ]
 
-    # 1. ダイエット
     if diet:
         filtered_recipes = [
             r for r in filtered_recipes
             if "ダイエット" in r.get("tags", [])
         ]
 
-    # 2. 季節
     month_int = None
     try:
         month_int = int(month)
@@ -442,7 +685,6 @@ def generate():
         if seasonal_recipes:
             filtered_recipes = seasonal_recipes
 
-    # 3. アレルギー
     allergy_flags = []
     if request.form.get("allergy_egg"):
         allergy_flags.append("卵")
@@ -457,7 +699,6 @@ def generate():
             if not any(flag in r.get("allergy_flags", []) for flag in allergy_flags)
         ]
 
-    # 4. NG食材
     free_ng_list = [
         s.strip() for s in ng_ingredients.split(",")
         if s.strip()
@@ -470,7 +711,6 @@ def generate():
             if not any(ng in r.get("ingredients", []) for ng in ng_list)
         ]
 
-    # 4.5 冷蔵庫の食材でフィルタ＆ソート
     if have_ingredients:
         def match_score(r):
             ings = r.get("ingredients", [])
@@ -488,7 +728,6 @@ def generate():
                 reverse=True,
             )
 
-    # 4.6 手軽メニューの優先
     if easy_level == "easy":
         def easy_score(r):
             tags = r.get("tags", [])
@@ -505,7 +744,6 @@ def generate():
             reverse=True,
         )
 
-    # ★ 4.7 朝食メインのカロリー上限（300kcal）を適用
     if "breakfast" in target_meal_types:
         MAX_BREAKFAST_KCAL = 300.0
 
@@ -527,7 +765,6 @@ def generate():
             if is_ok_breakfast(r)
         ]
 
-    # 5. メニュー生成（朝・昼・夕すべてメイン＋副菜＋スープ）
     menus_by_meal = {}
     daily_nutrition = []
     day_recipes = [[] for _ in range(days)]
@@ -538,7 +775,6 @@ def generate():
             if mt in r.get("meal_type", [])
         ]
 
-        # メイン・副菜・スープを共通ルールで分ける
         mains = [r for r in mt_recipes if r.get("role", "main") == "main"]
         soups = [r for r in mt_recipes if is_soup_recipe(r)]
         sides = [
@@ -551,19 +787,12 @@ def generate():
         for day_index in range(days):
             menu = []
 
-            # メインはあれば1品
             if mains:
                 menu.append(random.choice(mains))
-
-            # 副菜：あれば1品
             if sides:
                 menu.append(random.choice(sides))
-
-            # スープ：あれば1品
             if soups:
                 menu.append(random.choice(soups))
-
-            # もし何も選べなかった場合でも、メインがあれば1品は出す
             if not menu and mains:
                 menu.append(random.choice(mains))
 
@@ -572,7 +801,6 @@ def generate():
 
         menus_by_meal[mt] = day_menus
 
-    # 6. 日ごとの栄養
     for d in range(days):
         total = sum_nutrition(day_recipes[d])
         daily_nutrition.append(total)
@@ -583,7 +811,6 @@ def generate():
         "carbs": "炭水化物",
     }
 
-    # 7. 買い物リスト
     ingredients_set = set()
     for day_menus in menus_by_meal.values():
         for day_menu in day_menus:

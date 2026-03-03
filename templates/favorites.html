@@ -2,8 +2,9 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>お気に入りメニュー</title>
+    <title>お気に入りメニュー一覧｜まいにち献立ナビ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <style>
         :root {
             font-size: 16px;
@@ -108,17 +109,17 @@
             margin-bottom: 4px;
         }
 
-        /* 画面下部固定 2ボタンバー（条件入力へ / 献立結果へ） */
+        /* 画面下部固定 2ボタンバー */
         .fixed-fab-bar {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 6px 8px;
-            background: rgba(255, 255, 255, 0.95);
+            padding: 8px 10px;
+            background: rgba(255, 255, 255, 0.96);
             border-top: 1px solid #ddd;
             display: flex;
-            gap: 8px;
+            gap: 10px;
             z-index: 999;
             box-sizing: border-box;
         }
@@ -126,20 +127,28 @@
         .fixed-fab-button {
             flex: 1;
             text-align: center;
-            padding: 8px 10px;
-            font-size: 0.9rem;
+            padding: 10px 12px;
+            font-size: 0.95rem;
             border-radius: 999px;
-            border: 1px solid #4b7bec;
-            background-color: #ffffff;
-            color: #4b7bec;
+            border: none;
             text-decoration: none;
             cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+
+        .fixed-fab-button.secondary {
+            background-color: #ffffff;
+            color: #4b7bec;
+            border: 1px solid #4b7bec;
         }
 
         .fixed-fab-button.primary {
-            border-color: #4b7bec;
-            background-color: #4b7bec;
-            color: #ffffff;
+            flex: 1.2;
+            padding: 12px 14px;
+            font-size: 1.0rem;
+            font-weight: bold;
+            background-color: #ffc0cb;   /* ピンク */
+            color: #5a2a3a;
         }
 
         .fixed-fab-button:hover {
@@ -169,7 +178,7 @@
 </head>
 <body>
     <div class="top-bar">
-        <h1>お気に入りメニュー</h1>
+        <h1>お気に入りメニュー一覧</h1>
         <div class="login-info">
             {% with messages = get_flashed_messages() %}
               {% if messages %}
@@ -182,6 +191,9 @@
     </div>
 
     {% if recipes %}
+        <p style="font-size:0.9rem; color:#666; margin-bottom:6px;">
+            気に入ったメニューをストックしておくと、「今晩の夕食何にしよう？」と思ったときにすぐ選べます。
+        </p>
         <ul>
             {% for r in recipes %}
             <li class="favorite-item">
@@ -198,15 +210,15 @@
             {% endfor %}
         </ul>
     {% else %}
-        <p>お気に入りがありません。</p>
+        <p>お気に入りがありません。献立結果画面から❤️ボタンを押して、気に入ったメニューをストックしてみてください。</p>
     {% endif %}
 
     <div class="fixed-fab-bar">
-        <a href="{{ url_for('index') }}" class="fixed-fab-button">
+        <a href="{{ url_for('index') }}" class="fixed-fab-button secondary">
           条件入力へ戻る
         </a>
         <a href="{{ url_for('index') }}" class="fixed-fab-button primary" onclick="history.back(); return false;">
-          献立結果へ戻る
+          ♥ お気に入り一覧を閉じる
         </a>
     </div>
 </body>

@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>まいにち献立ナビ - 献立結果</title>
+    <title>作成した献立結果｜今晩の夕食に迷ったら「まいにち献立ナビ」</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         :root {
@@ -140,17 +140,17 @@
             background-color: #fff5ea;
         }
 
-        /* 画面下部固定 2 ボタンバー（条件入力へ / お気に入り一覧） */
+        /* 画面下部固定 2 ボタンバー */
         .fixed-fab-bar {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 6px 8px;
-            background: rgba(255, 255, 255, 0.95);
+            padding: 8px 10px;
+            background: rgba(255, 255, 255, 0.96);
             border-top: 1px solid #ddd;
             display: flex;
-            gap: 8px;
+            gap: 10px;
             z-index: 999;
             box-sizing: border-box;
         }
@@ -158,20 +158,28 @@
         .fixed-fab-button {
             flex: 1;
             text-align: center;
-            padding: 8px 10px;
-            font-size: 0.9rem;
+            padding: 10px 12px;
+            font-size: 0.95rem;
             border-radius: 999px;
-            border: 1px solid #4b7bec;
-            background-color: #ffffff;
-            color: #4b7bec;
+            border: none;
             text-decoration: none;
             cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+
+        .fixed-fab-button.secondary {
+            background-color: #ffffff;
+            color: #4b7bec;
+            border: 1px solid #4b7bec;
         }
 
         .fixed-fab-button.primary {
-            border-color: #4b7bec;
-            background-color: #4b7bec;
-            color: #ffffff;
+            flex: 1.2;
+            padding: 12px 14px;
+            font-size: 1.0rem;
+            font-weight: bold;
+            background-color: #ffc0cb;  /* ピンク */
+            color: #5a2a3a;
         }
 
         .fixed-fab-button:hover {
@@ -216,9 +224,9 @@
     {% set meal_type_labels = {'breakfast': '朝食', 'lunch': '昼食', 'dinner': '夕食'} %}
 
     <!-- 先に献立結果を表示 -->
-    <h2>献立（{{ days }}日分）</h2>
+    <h2>作成された献立（{{ days }}日分）</h2>
     <p style="font-size:0.85rem; color:#666; margin-top:2px; margin-bottom:6px;">
-        ※メニュー名をタップすると、イメージ画像（Google画像検索）が開きます。<br>
+        ※メニュー名をタップするとイメージ画像（Google画像検索）が開きます。<br>
         「作り方を検索」ボタンからはクックパッドでレシピの作り方を探せます。
     </p>
 
@@ -347,11 +355,11 @@
     <p style="margin-top:14px;"><a href="{{ url_for('index') }}">条件を変えてもう一度</a></p>
 
     <div class="fixed-fab-bar">
-        <a href="{{ url_for('index') }}" class="fixed-fab-button">
+        <a href="{{ url_for('index') }}" class="fixed-fab-button secondary">
           条件入力へ戻る
         </a>
         <a href="{{ url_for('favorite_list') }}" class="fixed-fab-button primary">
-          ★ お気に入り一覧
+          ♥ お気に入り一覧
         </a>
     </div>
 </body>

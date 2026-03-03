@@ -2,8 +2,10 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>まいにち献立ナビ</title>
+    <title>今晩の夕食なに作ろう？食材から自動で献立提案する無料Webアプリ｜まいにち献立ナビ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="「今晩の夕食何を作ろう…」と迷ったら、無料の自動献立アプリ『まいにち献立ナビ』。冷蔵庫の食材を入力するだけで、今日の夕食メニューを自動提案します。">
 
     <!-- PWA: manifest と テーマカラー -->
     <link rel="manifest" href="/static/manifest.json">
@@ -32,7 +34,8 @@
                          "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
             max-width: 520px;
             margin: 0 auto;
-            padding: 8px 10px 20px;
+            /* 下側だけ広めに余白をとる（ボトムバーに隠れないように） */
+            padding: 8px 10px 80px;
             line-height: 1.7;
             background-color: #ffffff;
         }
@@ -127,36 +130,41 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 6px 8px;
-            background: rgba(255, 255, 255, 0.95);
+            padding: 8px 10px;
+            background: rgba(255, 255, 255, 0.96);
             border-top: 1px solid #ddd;
             display: flex;
-            gap: 8px;
+            gap: 10px;
             z-index: 999;
             box-sizing: border-box;
         }
         .fixed-fab-button {
             flex: 1;
             text-align: center;
-            padding: 8px 10px;
-            font-size: 0.9rem;
+            padding: 10px 12px;
+            font-size: 0.95rem;
             border-radius: 999px;
-            border: 1px solid #f39c12;
-            background-color: #fff8e6;
-            color: #e67e22;
+            border: none;
             text-decoration: none;
             cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+        .fixed-fab-button.favorite {
+            background-color: #ffc0cb;   /* ピンク */
+            color: #5a2a3a;
         }
         .fixed-fab-button.primary {
-            border-color: #4b7bec;
-            background-color: #4b7bec;
+            flex: 1.2;                   /* 少し大きめ */
+            padding: 12px 14px;          /* ボタンを大きく */
+            font-size: 1.0rem;           /* 文字も少し大きく */
+            font-weight: bold;
+            background-color: #ff7043;   /* 目立つ色 */
             color: #ffffff;
         }
         .fixed-fab-button:hover {
             opacity: 0.9;
         }
 
-        /* PC では隠したい場合（お好みで） */
         @media (min-width: 801px) {
             .fixed-fab-bar {
                 display: none;
@@ -165,7 +173,7 @@
 
         @media (max-width: 600px) {
             body {
-                padding: 6px 8px 18px;
+                padding: 6px 8px 80px;  /* スマホ時も下80pxは維持 */
             }
             .top-bar {
                 flex-direction: column;
@@ -191,6 +199,7 @@
         </div>
     </div>
 
+    <!-- 通常の条件入力フォーム -->
     <form id="generate-form" method="POST" action="{{ url_for('generate') }}">
         <p>
             期間（日数）：
@@ -266,7 +275,6 @@
             <label><input type="checkbox" name="ng_preset" value="魚"> 魚系</label>
         </fieldset>
 
-        <!-- 冷蔵庫の食材 & 手軽メニュー -->
         <fieldset>
             <legend>冷蔵庫の食材から探す</legend>
             <p>
@@ -292,6 +300,24 @@
         <button type="submit">献立を作成する</button>
     </form>
 
+    <!-- 画像から献立を作るフォーム（Vision用） -->
+    <form id="photo-form" action="{{ url_for('upload_photo') }}" method="post" enctype="multipart/form-data" style="margin-top: 16px;">
+        <fieldset>
+            <legend>冷蔵庫の写真から献立を作る</legend>
+            <p>
+                冷蔵庫の中を撮影してアップロード：<br>
+                <input
+                    type="file"
+                    name="fridge_photo"
+                    accept="image/*"
+                    capture="environment">
+            </p>
+            <input type="hidden" name="meal_types" value="dinner">
+            <input type="hidden" name="days" value="3">
+            <button type="submit">画像から判定して献立を提案</button>
+        </fieldset>
+    </form>
+
     <!-- PWA: Service Worker 登録 -->
     <script>
       if ("serviceWorker" in navigator) {
@@ -309,8 +335,8 @@
     </script>
 
     <div class="fixed-fab-bar">
-        <a href="{{ url_for('favorite_list') }}" class="fixed-fab-button">
-          ★ お気に入り一覧
+        <a href="{{ url_for('favorite_list') }}" class="fixed-fab-button favorite">
+          ♥ お気に入り一覧
         </a>
         <button type="button" class="fixed-fab-button primary"
                 onclick="document.getElementById('generate-form').submit();">
