@@ -3,6 +3,7 @@ import random
 import sqlite3
 import os
 import uuid
+import tempfile
 
 from flask import (
     Flask,
@@ -15,7 +16,16 @@ from flask import (
     flash,
 )
 
-from google.cloud import vision  # ★ 追加
+from google.cloud import vision
+
+# ==== Render用: サービスアカウントJSONを環境変数からファイルに展開 ====
+sa_json = os.environ.get("GCP_SERVICE_ACCOUNT_JSON")
+if sa_json and not os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"):
+    tmp_path = os.path.join(tempfile.gettempdir(), "vision-key.json")
+    with open(tmp_path, "w", encoding="utf-8") as f:
+        f.write(sa_json)
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = tmp_path
+# =====================================================================
 
 app = Flask(__name__)
 
@@ -32,7 +42,6 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 # Vision のラベル → recipes.json の ingredients 用キー
-# recipes.json によく出てくる食材ベースで初期セット。[file:31]
 LABEL_TO_INGREDIENT = {
     # 肉類
     "chicken": "鶏むね肉",
@@ -126,9 +135,6 @@ LABEL_TO_INGREDIENT = {
 
 # ===================== Vision 呼び出しヘルパ =====================
 def map_labels_to_ingredients(labels):
-    """
-    Vision の英語ラベル配列から、recipes.jsonのingredients用の日本語食材キー配列を返す。
-    """
     mapped = []
     for label in labels:
         key = LABEL_TO_INGREDIENT.get(label.lower())
@@ -138,10 +144,6 @@ def map_labels_to_ingredients(labels):
 
 
 def detect_ingredients_from_image(path):
-    """
-    画像ファイルパスを受け取り、Vision APIでラベルを取得し、
-    日本語の食材リスト（ingredients用）を返す。
-    """
     client = vision.ImageAnnotatorClient()
     with open(path, "rb") as f:
         content = f.read()
@@ -151,7 +153,7 @@ def detect_ingredients_from_image(path):
     annotations = response.label_annotations or []
 
     raw_labels = [a.description for a in annotations]
-    print("Vision labels:", raw_labels)  # デバッグ用
+    print("Vision labels:", raw_labels)
 
     ingredients = map_labels_to_ingredients(raw_labels)
     return ingredients
@@ -174,9 +176,6 @@ def close_db(exc):
 
 # ===================== 匿名ユーザー管理 =====================
 def ensure_anonymous_user():
-    """
-    ログイン機能を廃止し、端末(ブラウザ)ごとに1つの匿名ユーザーを自動発行して使う。
-    """
     if "user_id" in session:
         return
 
@@ -456,9 +455,6 @@ def recipe_new():
 # ===================== 画像アップロード → Vision → generate =====================
 @app.route("/upload_photo", methods=["POST"])
 def upload_photo():
-    """
-    冷蔵庫写真を受け取り、Visionで食材推定 → have_ingredients に流して結果画面へ。
-    """
     ensure_anonymous_user()
 
     file = request.files.get("fridge_photo")
@@ -476,10 +472,7 @@ def upload_photo():
         flash("食材をうまく認識できませんでした。")
         return redirect(url_for("index"))
 
-    # Vision で検出した食材をセッションに保存し、専用ルートからgenerateロジックへ。
     session["vision_have_ingredients"] = ",".join(ingredients)
-
-    # meal_types や days を画像用フォームから渡す場合はここで拾う
     session["vision_meal_types"] = request.form.getlist("meal_types") or ["dinner"]
     session["vision_days"] = request.form.get("days", "3")
 
@@ -488,9 +481,6 @@ def upload_photo():
 
 @app.route("/generate_from_vision")
 def generate_from_vision():
-    """
-    Vision 結果（have_ingredients）を使ってメニュー生成し、result.html を表示。
-    """
     ensure_anonymous_user()
 
     have_ingredients_raw = session.pop("vision_have_ingredients", "")
@@ -502,7 +492,6 @@ def generate_from_vision():
     except ValueError:
         days = 3
 
-    # JSON + 自作レシピ
     with open(RECIPES_JSON_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
     json_recipes = data.get("recipes", [])
@@ -537,14 +526,12 @@ def generate_from_vision():
                 reverse=True,
             )
 
-    # ここから下は generate() と同じロジックをほぼ再利用
     diet = None
     seasonal = None
     month = None
     easy_level = "normal"
     ng_ingredients = ""
 
-    # 5. メニュー生成
     menus_by_meal = {}
     daily_nutrition = []
     day_recipes = [[] for _ in range(days)]
