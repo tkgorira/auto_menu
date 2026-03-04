@@ -207,11 +207,10 @@ def init_db():
 
 def get_db():
     if "db" not in g:
-        need_init = not os.path.exists(DB_PATH)
-        if need_init:
-            init_db()
         g.db = sqlite3.connect(DB_PATH)
         g.db.row_factory = sqlite3.Row
+        # ここで毎回テーブル作成を試みる（IF NOT EXISTS なので安全）
+        init_db()
     return g.db
 
 
