@@ -168,15 +168,8 @@ def detect_ingredients_from_image(path):
 
 
 # ===================== DB 接続ヘルパ =====================
-def get_db():
-    if "db" not in g:
-        g.db = sqlite3.connect(DB_PATH)
-        g.db.row_factory = sqlite3.Row
-    return g.db
-
-
 def init_db():
-    db = get_db()
+    db = sqlite3.connect(DB_PATH)
     db.executescript(
         """
         CREATE TABLE IF NOT EXISTS users (
@@ -209,11 +202,17 @@ def init_db():
         """
     )
     db.commit()
+    db.close()
 
 
-@app.before_first_request
-def before_first_request():
-    init_db()
+def get_db():
+    if "db" not in g:
+        need_init = not os.path.exists(DB_PATH)
+        if need_init:
+            init_db()
+        g.db = sqlite3.connect(DB_PATH)
+        g.db.row_factory = sqlite3.Row
+    return g.db
 
 
 @app.teardown_appcontext
@@ -362,7 +361,6 @@ def favorite_add():
     )
     db.commit()
 
-    # 非同期対応なら 204 のほうが軽いが、既存動作維持のため redirect のままでもOK
     return ("", 204)
 
 
