@@ -336,17 +336,14 @@
         <fieldset>
             <legend>冷蔵庫の食材から探す</legend>
             <p>
-                冷蔵庫にある食材（カンマ区切り）：<br>
-                <input type="text" name="have_ingredients"
-                       id="have_ingredients"
-                       placeholder="例：鶏もも肉, じゃがいも, 玉ねぎ">
-            </p>
-            <p>
                 <button type="button" class="inline-button" id="open-ingredients-modal">
                     冷蔵庫の食材を選ぶ
                 </button>
             </p>
         </fieldset>
+
+        <!-- モーダルで選んだ食材を渡す hidden -->
+        <input type="hidden" name="have_ingredients" id="have_ingredients">
 
         <p>
             その他NG食材（カンマ区切り）：<br>
@@ -359,7 +356,7 @@
         <div class="modal-content">
             <h2>冷蔵庫の食材を選択</h2>
             <p style="font-size:0.85rem; color:#555;">
-                よく使う食材をチェックしてください。選択結果は「冷蔵庫にある食材」に反映されます。
+                よく使う食材をチェックしてください。選択結果は内部的に保存され、献立提案に使われます。
             </p>
             <div>
                 <label><input type="checkbox" value="鶏もも肉"> 鶏もも肉</label>
@@ -378,7 +375,6 @@
                 <label><input type="checkbox" value="ご飯"> ご飯</label>
                 <label><input type="checkbox" value="食パン"> 食パン</label>
                 <label><input type="checkbox" value="ヨーグルト"> ヨーグルト</label>
-                <!-- 必要に応じてここに食材を追加 -->
             </div>
             <div class="modal-actions">
                 <button type="button" class="btn-secondary inline-button" id="close-ingredients-modal">
@@ -433,7 +429,7 @@
         </fieldset>
     </form>
 
-    <!-- モーダル制御とフォーム送信 -->
+    <!-- モーダル制御とフォーム用スクリプト -->
     <script>
       const openBtn = document.getElementById("open-ingredients-modal");
       const modal = document.getElementById("ingredients-modal");
@@ -449,7 +445,6 @@
         modal.style.display = "none";
       });
 
-      // オーバーレイクリックで閉じる
       modal.addEventListener("click", (e) => {
         if (e.target === modal) {
           modal.style.display = "none";
@@ -459,7 +454,6 @@
       applyBtn.addEventListener("click", () => {
         const checks = modal.querySelectorAll("input[type='checkbox']:checked");
         const values = Array.from(checks).map(c => c.value.trim());
-        // 既存の手入力とマージ（重複を除く）
         const current = haveInput.value
           .split(",")
           .map(s => s.trim())
