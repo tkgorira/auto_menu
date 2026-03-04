@@ -5,15 +5,12 @@
     <title>今晩の夕食なに作ろう？食材から自動で献立提案する無料Webアプリ｜まいにち献立ナビ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- 説明文を検索結果向けに調整 -->
     <meta name="description"
-          content="「今晩の夕食なに作ろう？」という悩みを解消する、自動献立提案サイトです。冷蔵庫の中身の写真から献立を作成出来ます。冷蔵庫の食材やアレルギー、NG食材を入力するだけで、今日の朝・昼・夜の献立をまとめて提案します。">
+          content="「今晩の夕食なに作ろう？」という悩みを解消する、自動献立提案サイトです。冷蔵庫の食材やアレルギー、NG食材を入力するだけで、今日の朝・昼・夜の献立をまとめて提案します。">
 
-    <!-- PWA: manifest と テーマカラー -->
     <link rel="manifest" href="/static/manifest.json">
     <meta name="theme-color" content="#ff9800">
 
-    <!-- Google tag (gtag.js) - GA4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-01N9G096RH"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -125,7 +122,7 @@
             margin-bottom: 4px;
         }
 
-        /* 画面下部固定の2ボタンバー */
+        /* 画面下部固定の2ボタンバー（PCでも表示） */
         .fixed-fab-bar {
             position: fixed;
             bottom: 0;
@@ -166,12 +163,6 @@
             opacity: 0.9;
         }
 
-        @media (min-width: 801px) {
-            .fixed-fab-bar {
-                display: none;
-            }
-        }
-
         @media (max-width: 600px) {
             body {
                 padding: 6px 8px 80px;
@@ -181,8 +172,49 @@
                 align-items: flex-start;
             }
             .login-area {
-                text-align:左;
+                text-align: left;
             }
+        }
+
+        /* モーダル用 */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: #fff;
+            padding: 12px;
+            border-radius: 8px;
+            max-width: 480px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .modal-content h2 {
+            font-size: 1.1rem;
+            margin-top: 0;
+        }
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .btn-secondary {
+            background-color: #ccc;
+            color: #333;
+        }
+        .inline-button {
+            display: inline-block;
+            width: auto;
+            padding: 6px 10px;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -200,7 +232,6 @@
         </div>
     </div>
 
-    <!-- サイトの概要説明 -->
     <p>
       「今晩の夕食なに作ろう？」という悩みを解消するための自動献立提案サイトです。冷蔵庫の食材やアレルギー、NG食材を入力するだけで、朝食・昼食・夕食の献立を自動で作成します。
     </p>
@@ -236,7 +267,6 @@
             </label>
         </fieldset>
 
-        <!-- 料理タイプの選択（和食・洋食・中華） -->
         <fieldset>
             <legend>料理タイプ</legend>
             <label for="cuisine">
@@ -277,6 +307,14 @@
                     <option value="12">12月</option>
                 </select>
             </label>
+
+            <label>
+                手軽メニューの希望：<br>
+                <select name="easy_level">
+                    <option value="normal" selected>こだわらない</option>
+                    <option value="easy">手軽（時短・簡単）</option>
+                </select>
+            </label>
         </fieldset>
 
         <fieldset>
@@ -300,15 +338,13 @@
             <p>
                 冷蔵庫にある食材（カンマ区切り）：<br>
                 <input type="text" name="have_ingredients"
+                       id="have_ingredients"
                        placeholder="例：鶏もも肉, じゃがいも, 玉ねぎ">
             </p>
-
             <p>
-                手軽メニューの希望：<br>
-                <select name="easy_level">
-                    <option value="normal" selected>こだわらない</option>
-                    <option value="easy">手軽（時短・簡単）</option>
-                </select>
+                <button type="button" class="inline-button" id="open-ingredients-modal">
+                    冷蔵庫の食材を選ぶ
+                </button>
             </p>
         </fieldset>
 
@@ -316,8 +352,44 @@
             その他NG食材（カンマ区切り）：<br>
             <input type="text" name="ng_ingredients" placeholder="例：パプリカ, セロリ">
         </p>
-        <!-- ここにあった「献立を作成する」ボタンは削除 -->
     </form>
+
+    <!-- 冷蔵庫食材選択モーダル -->
+    <div class="modal-overlay" id="ingredients-modal">
+        <div class="modal-content">
+            <h2>冷蔵庫の食材を選択</h2>
+            <p style="font-size:0.85rem; color:#555;">
+                よく使う食材をチェックしてください。選択結果は「冷蔵庫にある食材」に反映されます。
+            </p>
+            <div>
+                <label><input type="checkbox" value="鶏もも肉"> 鶏もも肉</label>
+                <label><input type="checkbox" value="鶏むね肉"> 鶏むね肉</label>
+                <label><input type="checkbox" value="豚こま切れ肉"> 豚こま切れ肉</label>
+                <label><input type="checkbox" value="牛こま切れ肉"> 牛こま切れ肉</label>
+                <label><input type="checkbox" value="鮭切り身"> 鮭切り身</label>
+                <label><input type="checkbox" value="卵"> 卵</label>
+                <label><input type="checkbox" value="豆腐"> 豆腐</label>
+                <label><input type="checkbox" value="キャベツ"> キャベツ</label>
+                <label><input type="checkbox" value="白菜"> 白菜</label>
+                <label><input type="checkbox" value="玉ねぎ"> 玉ねぎ</label>
+                <label><input type="checkbox" value="じゃがいも"> じゃがいも</label>
+                <label><input type="checkbox" value="にんじん"> にんじん</label>
+                <label><input type="checkbox" value="ブロッコリー"> ブロッコリー</label>
+                <label><input type="checkbox" value="ご飯"> ご飯</label>
+                <label><input type="checkbox" value="食パン"> 食パン</label>
+                <label><input type="checkbox" value="ヨーグルト"> ヨーグルト</label>
+                <!-- 必要に応じてここに食材を追加 -->
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-secondary inline-button" id="close-ingredients-modal">
+                    キャンセル
+                </button>
+                <button type="button" class="inline-button" id="apply-ingredients-modal">
+                    選択を反映
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- 画像から献立を作るフォーム（Vision用） -->
     <form id="photo-form" action="{{ url_for('upload_photo') }}" method="post" enctype="multipart/form-data" style="margin-top: 16px;">
@@ -330,7 +402,6 @@
             <p>
                 冷蔵庫の中を撮影してアップロード：<br>
 
-                <!-- カメラで撮影 -->
                 <label style="display:inline-block; margin-right:8px;">
                   <span style="display:inline-block; padding:6px 10px; border-radius:4px;
                                border:1px solid #4b7bec; color:#4b7bec; font-size:0.9rem; cursor:pointer;">
@@ -344,7 +415,6 @@
                     style="display:none;">
                 </label>
 
-                <!-- 写真フォルダなどから選択 -->
                 <label style="display:inline-block;">
                   <span style="display:inline-block; padding:6px 10px; border-radius:4px;
                                border:1px solid #888; color:#444; font-size:0.9rem; cursor:pointer;">
@@ -362,6 +432,43 @@
             <button type="submit">画像から判定して献立を提案</button>
         </fieldset>
     </form>
+
+    <!-- モーダル制御とフォーム送信 -->
+    <script>
+      const openBtn = document.getElementById("open-ingredients-modal");
+      const modal = document.getElementById("ingredients-modal");
+      const closeBtn = document.getElementById("close-ingredients-modal");
+      const applyBtn = document.getElementById("apply-ingredients-modal");
+      const haveInput = document.getElementById("have_ingredients");
+
+      openBtn.addEventListener("click", () => {
+        modal.style.display = "flex";
+      });
+
+      closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+
+      // オーバーレイクリックで閉じる
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+
+      applyBtn.addEventListener("click", () => {
+        const checks = modal.querySelectorAll("input[type='checkbox']:checked");
+        const values = Array.from(checks).map(c => c.value.trim());
+        // 既存の手入力とマージ（重複を除く）
+        const current = haveInput.value
+          .split(",")
+          .map(s => s.trim())
+          .filter(s => s.length > 0);
+        const all = Array.from(new Set(current.concat(values)));
+        haveInput.value = all.join(", ");
+        modal.style.display = "none";
+      });
+    </script>
 
     <!-- PWA: Service Worker 登録 -->
     <script>
