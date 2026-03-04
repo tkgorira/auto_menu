@@ -15,3 +15,9 @@ git pull origin main
 git add .
 git commit -m "作業内容"
 git push origin main
+
+
+cd C:\Users\miyos\OneDrive\Desktop\auto_menu
+git add templates/index.html
+git commit -m "Update index description and default days"
+git push origin main
