@@ -19951,6 +19951,2042 @@
                 "carbs": 6.0
             },
             "cook_time_min": 10
+        },
+        {
+            "id": 1254,
+            "name": "油揚げの肉詰め煮",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "油揚げ",
+                "豚ひき肉",
+                "ねぎ",
+                "だし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 420.0,
+                "protein": 23.0,
+                "fat": 28.0,
+                "carbs": 18.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 1255,
+            "name": "大根とひき肉のそぼろ煮",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "大根",
+                "豚ひき肉",
+                "ねぎ",
+                "だし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 350.0,
+                "protein": 18.0,
+                "fat": 18.0,
+                "carbs": 20.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 1256,
+            "name": "ちくわとこんにゃくのピリ辛炒め",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ちくわ",
+                "こんにゃく",
+                "ごま油",
+                "醤油",
+                "唐辛子"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 180.0,
+                "protein": 8.0,
+                "fat": 9.0,
+                "carbs": 10.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1257,
+            "name": "厚揚げとキャベツの味噌炒め",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "厚揚げ",
+                "キャベツ",
+                "味噌",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 380.0,
+                "protein": 18.0,
+                "fat": 24.0,
+                "carbs": 15.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1258,
+            "name": "もやしときゅうりのナムル",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "中華",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "もやし",
+                "きゅうり",
+                "ごま油",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 80.0,
+                "protein": 4.0,
+                "fat": 4.0,
+                "carbs": 7.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1259,
+            "name": "梅きゅうりのさっぱり和え",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "きゅうり",
+                "梅干し",
+                "かつおぶし"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 40.0,
+                "protein": 2.0,
+                "fat": 1.0,
+                "carbs": 6.0
+            },
+            "cook_time_min": 5
+        },
+        {
+            "id": 1260,
+            "name": "レタスとトマトのツナサラダ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "洋食",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "レタス",
+                "トマト",
+                "ツナ缶",
+                "オリーブオイル"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 150.0,
+                "protein": 9.0,
+                "fat": 9.0,
+                "carbs": 6.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1261,
+            "name": "ほうれん草とひじきの胡麻和え",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "ingredients": [
+                "ほうれん草",
+                "ひじき",
+                "白ごま",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 90.0,
+                "protein": 5.0,
+                "fat": 5.0,
+                "carbs": 7.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1262,
+            "name": "枝豆とツナのマヨサラダ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "洋食",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "枝豆",
+                "ツナ缶",
+                "マヨネーズ"
+            ],
+            "allergy_flags": [
+                "卵"
+            ],
+            "nutrition": {
+                "kcal": 160.0,
+                "protein": 9.0,
+                "fat": 10.0,
+                "carbs": 7.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1263,
+            "name": "キャベツとベーコンの蒸し煮",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "洋食",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                10,
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "ingredients": [
+                "キャベツ",
+                "ベーコン",
+                "だし",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 190.0,
+                "protein": 7.0,
+                "fat": 15.0,
+                "carbs": 8.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1264,
+            "name": "マカロニサラダ(ハム入り)",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "洋食",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "マカロニ",
+                "ハム",
+                "きゅうり",
+                "マヨネーズ"
+            ],
+            "allergy_flags": [
+                "卵",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 280.0,
+                "protein": 9.0,
+                "fat": 12.0,
+                "carbs": 35.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1265,
+            "name": "ナポリタン",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "パスタ",
+                "夕食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "パスタ",
+                "ウインナー",
+                "ピーマン",
+                "玉ねぎ",
+                "ケチャップ"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 720.0,
+                "protein": 24.0,
+                "fat": 26.0,
+                "carbs": 100.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 1266,
+            "name": "サバとトマトの和風マリネ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "サバ",
+                "トマト",
+                "玉ねぎ",
+                "大葉",
+                "ポン酢"
+            ],
+            "allergy_flags": [
+                "小麦",
+                "さば"
+            ],
+            "nutrition": {
+                "kcal": 420.0,
+                "protein": 25.0,
+                "fat": 24.0,
+                "carbs": 10.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1267,
+            "name": "サーモンとアボカドのサラダ丼",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "丼もの",
+                "夕食"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "ご飯",
+                "サーモン",
+                "アボカド",
+                "レタス",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 650.0,
+                "protein": 27.0,
+                "fat": 25.0,
+                "carbs": 75.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1268,
+            "name": "いわしの梅煮",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "いわし",
+                "梅干し",
+                "生姜",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 380.0,
+                "protein": 28.0,
+                "fat": 18.0,
+                "carbs": 8.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 1269,
+            "name": "タラの野菜あんかけ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "タラ",
+                "にんじん",
+                "玉ねぎ",
+                "ピーマン",
+                "だし醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 360.0,
+                "protein": 25.0,
+                "fat": 11.0,
+                "carbs": 20.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1270,
+            "name": "まぐろユッケ風丼",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "韓国風",
+                "丼もの",
+                "夕食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "まぐろ",
+                "ねぎ",
+                "韓国海苔",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 640.0,
+                "protein": 29.0,
+                "fat": 18.0,
+                "carbs": 85.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1271,
+            "name": "アジの南蛮漬け",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食"
+            ],
+            "months": [
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "アジ",
+                "玉ねぎ",
+                "ピーマン",
+                "にんじん",
+                "酢"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 380.0,
+                "protein": 24.0,
+                "fat": 18.0,
+                "carbs": 20.0
+            },
+            "cook_time_min": 30
+        },
+        {
+            "id": 1272,
+            "name": "糸こんにゃくとひき肉の炒め煮",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "糸こんにゃく",
+                "豚ひき肉",
+                "にんじん",
+                "だし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 320.0,
+                "protein": 17.0,
+                "fat": 16.0,
+                "carbs": 18.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1273,
+            "name": "エビとブロッコリーのガーリック炒め",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "夕食"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "エビ",
+                "ブロッコリー",
+                "にんにく",
+                "オリーブオイル"
+            ],
+            "allergy_flags": [
+                "えび"
+            ],
+            "nutrition": {
+                "kcal": 380.0,
+                "protein": 25.0,
+                "fat": 22.0,
+                "carbs": 8.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1274,
+            "name": "イカと大根の煮物",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "イカ",
+                "大根",
+                "生姜",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 340.0,
+                "protein": 21.0,
+                "fat": 11.0,
+                "carbs": 18.0
+            },
+            "cook_time_min": 30
+        },
+        {
+            "id": 1275,
+            "name": "タコときゅうりの酢の物",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "タコ",
+                "きゅうり",
+                "わかめ",
+                "酢"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 90.0,
+                "protein": 9.0,
+                "fat": 3.0,
+                "carbs": 6.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1276,
+            "name": "鶏皮ポン酢",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "鶏皮",
+                "大根おろし",
+                "ポン酢"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 210.0,
+                "protein": 10.0,
+                "fat": 18.0,
+                "carbs": 3.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1277,
+            "name": "しそチーズささみフライ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "夕食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "鶏ささみ",
+                "シソ",
+                "チーズ",
+                "パン粉"
+            ],
+            "allergy_flags": [
+                "小麦",
+                "乳"
+            ],
+            "nutrition": {
+                "kcal": 480.0,
+                "protein": 30.0,
+                "fat": 26.0,
+                "carbs": 24.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 1278,
+            "name": "レンコンのはさみ揚げ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食"
+            ],
+            "months": [
+                9,
+                10,
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "レンコン",
+                "豚ひき肉",
+                "醤油",
+                "片栗粉"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 420.0,
+                "protein": 21.0,
+                "fat": 24.0,
+                "carbs": 20.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 1279,
+            "name": "麻婆茄子",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "中華",
+                "夕食"
+            ],
+            "months": [
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "茄子",
+                "豚ひき肉",
+                "ねぎ",
+                "豆板醤",
+                "味噌"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 480.0,
+                "protein": 18.0,
+                "fat": 34.0,
+                "carbs": 18.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1280,
+            "name": "かぼちゃのそぼろあん",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                9,
+                10,
+                11
+            ],
+            "ingredients": [
+                "かぼちゃ",
+                "鶏ひき肉",
+                "だし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 220.0,
+                "protein": 10.0,
+                "fat": 7.0,
+                "carbs": 30.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1281,
+            "name": "おくらと長いものねばねば和え",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "おくら",
+                "長いも",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 70.0,
+                "protein": 4.0,
+                "fat": 1.0,
+                "carbs": 12.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1282,
+            "name": "ゴーヤチャンプルー",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "沖縄",
+                "夕食"
+            ],
+            "months": [
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "ゴーヤ",
+                "豚肉",
+                "豆腐",
+                "卵"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "卵"
+            ],
+            "nutrition": {
+                "kcal": 520.0,
+                "protein": 24.0,
+                "fat": 32.0,
+                "carbs": 20.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1283,
+            "name": "さつまいものバターきんぴら",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "さつまいも",
+                "バター",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "乳",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 220.0,
+                "protein": 3.0,
+                "fat": 8.0,
+                "carbs": 35.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1284,
+            "name": "ニラ玉炒め",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "中華",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ニラ",
+                "卵",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "卵",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 160.0,
+                "protein": 9.0,
+                "fat": 11.0,
+                "carbs": 6.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1285,
+            "name": "スナップエンドウとベーコン炒め",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "洋食",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                3,
+                4,
+                5,
+                6
+            ],
+            "ingredients": [
+                "スナップエンドウ",
+                "ベーコン",
+                "にんにく"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 170.0,
+                "protein": 6.0,
+                "fat": 13.0,
+                "carbs": 7.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1286,
+            "name": "タケノコと豚肉のきんぴら",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食"
+            ],
+            "months": [
+                4,
+                5,
+                6
+            ],
+            "ingredients": [
+                "タケノコ",
+                "豚こま肉",
+                "醤油",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 360.0,
+                "protein": 18.0,
+                "fat": 22.0,
+                "carbs": 18.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1287,
+            "name": "高野豆腐のから揚げ甘辛だれ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "高野豆腐",
+                "片栗粉",
+                "醤油",
+                "砂糖"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 380.0,
+                "protein": 20.0,
+                "fat": 20.0,
+                "carbs": 25.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1288,
+            "name": "冬瓜と豚ひき肉のそぼろ煮",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食"
+            ],
+            "months": [
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "冬瓜",
+                "豚ひき肉",
+                "生姜",
+                "だし"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 320.0,
+                "protein": 18.0,
+                "fat": 14.0,
+                "carbs": 18.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 1289,
+            "name": "おからとひき肉のハンバーグ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "夕食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "おから",
+                "豚ひき肉",
+                "玉ねぎ",
+                "パン粉"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 420.0,
+                "protein": 22.0,
+                "fat": 24.0,
+                "carbs": 26.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 1290,
+            "name": "ウインナーとキャベツのトマト煮",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "夕食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ウインナー",
+                "キャベツ",
+                "玉ねぎ",
+                "トマト缶"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 450.0,
+                "protein": 17.0,
+                "fat": 32.0,
+                "carbs": 20.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 1291,
+            "name": "ハムとマカロニのグラタン",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "夕食"
+            ],
+            "months": [
+                10,
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "ingredients": [
+                "マカロニ",
+                "ハム",
+                "玉ねぎ",
+                "牛乳",
+                "チーズ"
+            ],
+            "allergy_flags": [
+                "乳",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 680.0,
+                "protein": 25.0,
+                "fat": 32.0,
+                "carbs": 70.0
+            },
+            "cook_time_min": 30
+        },
+        {
+            "id": 1292,
+            "name": "ベーコンとほうれん草のソテー",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "洋食",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                10,
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "ingredients": [
+                "ベーコン",
+                "ほうれん草",
+                "にんにく",
+                "バター"
+            ],
+            "allergy_flags": [
+                "乳"
+            ],
+            "nutrition": {
+                "kcal": 190.0,
+                "protein": 7.0,
+                "fat": 15.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1293,
+            "name": "わかめときゅうりの酢の物",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "わかめ",
+                "きゅうり",
+                "酢",
+                "砂糖"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 40.0,
+                "protein": 2.0,
+                "fat": 0.0,
+                "carbs": 7.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1294,
+            "name": "韓国海苔とツナのおにぎり",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "韓国風",
+                "夕食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ご飯",
+                "ツナ缶",
+                "韓国海苔",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 430.0,
+                "protein": 12.0,
+                "fat": 12.0,
+                "carbs": 70.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1295,
+            "name": "春雨とひき肉のピリ辛炒め",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "中華",
+                "夕食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "春雨",
+                "豚ひき肉",
+                "にら",
+                "もやし",
+                "醤油",
+                "豆板醤"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 460.0,
+                "protein": 18.0,
+                "fat": 18.0,
+                "carbs": 55.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1296,
+            "name": "春雨ときゅうりの中華風サラダ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "中華",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "春雨",
+                "きゅうり",
+                "ハム",
+                "ごま油",
+                "酢",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 180.0,
+                "protein": 7.0,
+                "fat": 6.0,
+                "carbs": 25.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1297,
+            "name": "ふきと厚揚げの含め煮",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6
+            ],
+            "ingredients": [
+                "ふき",
+                "厚揚げ",
+                "だし",
+                "醤油",
+                "みりん"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 160.0,
+                "protein": 9.0,
+                "fat": 7.0,
+                "carbs": 8.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1298,
+            "name": "ふきとさつま揚げの煮物",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6
+            ],
+            "ingredients": [
+                "ふき",
+                "さつま揚げ",
+                "だし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 170.0,
+                "protein": 8.0,
+                "fat": 8.0,
+                "carbs": 10.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1299,
+            "name": "ホルモンとニラの味噌炒め",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ホルモン",
+                "ニラ",
+                "もやし",
+                "キャベツ",
+                "味噌"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 520.0,
+                "protein": 22.0,
+                "fat": 40.0,
+                "carbs": 12.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1300,
+            "name": "ホルモンとスナップエンドウの甘辛炒め",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食"
+            ],
+            "months": [
+                3,
+                4,
+                5,
+                6
+            ],
+            "ingredients": [
+                "ホルモン",
+                "スナップエンドウ",
+                "にんにく",
+                "焼き肉のたれ"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 510.0,
+                "protein": 21.0,
+                "fat": 38.0,
+                "carbs": 14.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1301,
+            "name": "アサリと春雨の中華スープ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "中華",
+                "夕食",
+                "スープ"
+            ],
+            "months": [
+                3,
+                4,
+                5,
+                6
+            ],
+            "ingredients": [
+                "アサリ",
+                "春雨",
+                "長ねぎ",
+                "しょうが",
+                "中華スープ"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 220.0,
+                "protein": 12.0,
+                "fat": 6.0,
+                "carbs": 24.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1302,
+            "name": "ハマグリとわかめの酒蒸し",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "副菜"
+            ],
+            "months": [
+                3,
+                4
+            ],
+            "ingredients": [
+                "ハマグリ",
+                "わかめ",
+                "酒",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 90.0,
+                "protein": 9.0,
+                "fat": 2.0,
+                "carbs": 3.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1303,
+            "name": "ブリの照り焼きとふきの煮物定食",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食",
+                "定食"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "ブリ",
+                "ふき",
+                "だし",
+                "醤油",
+                "みりん",
+                "ご飯"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 720.0,
+                "protein": 34.0,
+                "fat": 32.0,
+                "carbs": 70.0
+            },
+            "cook_time_min": 30
+        },
+        {
+            "id": 1304,
+            "name": "切り餅とさつま揚げのお好み煮",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "切り餅",
+                "さつま揚げ",
+                "大根",
+                "だし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 520.0,
+                "protein": 15.0,
+                "fat": 14.0,
+                "carbs": 85.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 1305,
+            "name": "手羽先の塩焼きと大根サラダ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "手羽先",
+                "レタス",
+                "大根",
+                "ごま",
+                "塩こしょう"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 540.0,
+                "protein": 30.0,
+                "fat": 40.0,
+                "carbs": 8.0
+            },
+            "cook_time_min": 25
+        },
+        {
+            "id": 1306,
+            "name": "手羽元と大根のさっぱり煮",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食"
+            ],
+            "months": [
+                10,
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "ingredients": [
+                "手羽元",
+                "大根",
+                "しょうが",
+                "醤油",
+                "酢"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 480.0,
+                "protein": 28.0,
+                "fat": 32.0,
+                "carbs": 12.0
+            },
+            "cook_time_min": 30
         }
     ]
 }
