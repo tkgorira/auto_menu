@@ -209,7 +209,6 @@ def get_db():
     if "db" not in g:
         g.db = sqlite3.connect(DB_PATH)
         g.db.row_factory = sqlite3.Row
-        # ここで毎回テーブル作成を試みる（IF NOT EXISTS なので安全）
         init_db()
     return g.db
 
@@ -330,8 +329,10 @@ def is_soup_by_name(recipe):
 
 
 def is_soup_recipe(r):
+    # メニュー名に「スープ」「汁」があれば無条件でスープ扱い
     if is_soup_by_name(r):
         return True
+    # それ以外は tags に「スープ」があるものだけスープ扱い
     tags = r.get("tags", []) or []
     return "スープ" in tags
 
@@ -588,8 +589,12 @@ def generate_from_vision():
             if mt in r.get("meal_type", [])
         ]
 
-        mains = [r for r in mt_recipes if r.get("role", "main") == "main"]
+        # スープ判定されたものは mains / sides から除外する
         soups = [r for r in mt_recipes if is_soup_recipe(r)]
+        mains = [
+            r for r in mt_recipes
+            if r.get("role", "main") == "main" and not is_soup_recipe(r)
+        ]
         sides = [
             r for r in mt_recipes
             if r.get("role", "main") == "side" and not is_soup_recipe(r)
@@ -826,8 +831,12 @@ def generate():
             if mt in r.get("meal_type", [])
         ]
 
-        mains = [r for r in mt_recipes if r.get("role", "main") == "main"]
+        # スープ判定されたものは mains / sides から除外する
         soups = [r for r in mt_recipes if is_soup_recipe(r)]
+        mains = [
+            r for r in mt_recipes
+            if r.get("role", "main") == "main" and not is_soup_recipe(r)
+        ]
         sides = [
             r for r in mt_recipes
             if r.get("role", "main") == "side" and not is_soup_recipe(r)
