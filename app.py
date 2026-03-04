@@ -39,6 +39,7 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DB_DIR = os.environ.get("DB_DIR", BASE_DIR)
 os.makedirs(DB_DIR, exist_ok=True)
 DB_PATH = os.path.join(DB_DIR, "favorites.db")
+print("=== DB_PATH ===", DB_PATH, flush=True)
 # ============================================
 
 RECIPES_JSON_PATH = os.path.join(BASE_DIR, "recipes.json")
@@ -172,6 +173,47 @@ def get_db():
         g.db = sqlite3.connect(DB_PATH)
         g.db.row_factory = sqlite3.Row
     return g.db
+
+
+def init_db():
+    db = get_db()
+    db.executescript(
+        """
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nickname TEXT
+        );
+
+        CREATE TABLE IF NOT EXISTS favorites (
+            user_id INTEGER,
+            recipe_id INTEGER,
+            PRIMARY KEY (user_id, recipe_id)
+        );
+
+        CREATE TABLE IF NOT EXISTS user_recipes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            name TEXT NOT NULL,
+            meal_type TEXT,
+            role TEXT,
+            tags TEXT,
+            months TEXT,
+            ingredients TEXT,
+            allergy_flags TEXT,
+            kcal REAL,
+            protein REAL,
+            fat REAL,
+            carbs REAL,
+            cook_time_min REAL
+        );
+        """
+    )
+    db.commit()
+
+
+@app.before_first_request
+def before_first_request():
+    init_db()
 
 
 @app.teardown_appcontext
@@ -320,8 +362,8 @@ def favorite_add():
     )
     db.commit()
 
-    flash("お気に入りに追加しました。")
-    return redirect(url_for("index"))
+    # 非同期対応なら 204 のほうが軽いが、既存動作維持のため redirect のままでもOK
+    return ("", 204)
 
 
 @app.route("/favorite/list")
