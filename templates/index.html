@@ -216,6 +216,21 @@
             padding: 6px 10px;
             font-size: 0.9rem;
         }
+
+        /* 冷蔵庫食材チェックボックスを2列にする */
+        .ingredients-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 16px;
+        }
+        .ingredients-grid label {
+            width: 48%;
+        }
+        @media (max-width: 480px) {
+            .ingredients-grid label {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -358,7 +373,7 @@
             <p style="font-size:0.85rem; color:#555;">
                 よく使う食材をチェックしてください。選択結果は内部的に保存され、献立提案に使われます。
             </p>
-            <div>
+            <div class="ingredients-grid">
                 <!-- 肉・魚・たんぱく系 -->
                 <label><input type="checkbox" value="鶏もも肉"> 鶏もも肉</label>
                 <label><input type="checkbox" value="鶏もも肉(皮なし)"> 鶏もも肉(皮なし)</label>
@@ -369,16 +384,20 @@
                 <label><input type="checkbox" value="鶏そぼろ"> 鶏そぼろ</label>
                 <label><input type="checkbox" value="鶏の唐揚げ"> 鶏の唐揚げ</label>
                 <label><input type="checkbox" value="鶏の南蛮揚げ"> 鶏の南蛮揚げ</label>
+                <label><input type="checkbox" value="鶏皮"> 鳥皮</label>
+
                 <label><input type="checkbox" value="牛こま切れ肉"> 牛こま切れ肉</label>
-                <label><input type="checkbox" value="牛すじ"> 牛すじ</label>
                 <label><input type="checkbox" value="牛ひき肉"> 牛ひき肉</label>
                 <label><input type="checkbox" value="牛もも肉"> 牛もも肉</label>
-                <label><input type="checkbox" value="牛ホルモン"> 牛ホルモン</label>
+                <label><input type="checkbox" value="牛肩"> 牛の肩</label>
+                <label><input type="checkbox" value="牛ホルモン"> ホルモン（牛ホルモン）</label>
                 <label><input type="checkbox" value="牛肉"> 牛肉</label>
                 <label><input type="checkbox" value="牛焼肉"> 牛焼肉</label>
+
                 <label><input type="checkbox" value="豚こま肉"> 豚こま肉</label>
                 <label><input type="checkbox" value="豚しゃぶ肉"> 豚しゃぶ肉</label>
-                <label><input type="checkbox" value="豚ひき肉"> 豚ひき肉</label>
+                <label><input type="checkbox" value="豚ひき肉"> みんち（豚ひき肉）</label>
+                <label><input type="checkbox" value="合いびき肉"> 合いびき肉</label>
                 <label><input type="checkbox" value="豚バラ肉"> 豚バラ肉</label>
                 <label><input type="checkbox" value="豚バラブロック"> 豚バラブロック</label>
                 <label><input type="checkbox" value="豚ロース"> 豚ロース</label>
@@ -386,71 +405,113 @@
                 <label><input type="checkbox" value="豚の生姜焼き"> 豚の生姜焼き</label>
                 <label><input type="checkbox" value="豚汁"> 豚汁</label>
                 <label><input type="checkbox" value="豚肉"> 豚肉</label>
-                <label><input type="checkbox" value="合いびき肉"> 合いびき肉</label>
-                <label><input type="checkbox" value="大豆ミート"> 大豆ミート</label>
+
                 <label><input type="checkbox" value="厚揚げ"> 厚揚げ</label>
+                <label><input type="checkbox" value="油揚げ"> 油揚げ</label>
                 <label><input type="checkbox" value="木綿豆腐"> 木綿豆腐</label>
                 <label><input type="checkbox" value="絹豆腐"> 絹豆腐</label>
                 <label><input type="checkbox" value="豆腐"> 豆腐</label>
                 <label><input type="checkbox" value="豆腐ハンバーグ"> 豆腐ハンバーグ</label>
                 <label><input type="checkbox" value="高野豆腐"> 高野豆腐</label>
-                <label><input type="checkbox" value="納豆"> 納豆</label>
-                <label><input type="checkbox" value="鯖缶"> 鯖缶</label>
-                <label><input type="checkbox" value="鮭切り身"> 鮭切り身</label>
-                <label><input type="checkbox" value="鮭"> 鮭</label>
-                <label><input type="checkbox" value="生鮭"> 生鮭</label>
-                <label><input type="checkbox" value="鮭フレーク"> 鮭フレーク</label>
-                <label><input type="checkbox" value="鮭おにぎり"> 鮭おにぎり</label>
-                <label><input type="checkbox" value="白身魚フライ"> 白身魚フライ</label>
+                <label><input type="checkbox" value="大豆"> 大豆</label>
+                <label><input type="checkbox" value="おから"> おから</label>
 
-                <!-- 卵・乳製品・加工品 -->
                 <label><input type="checkbox" value="卵"> 卵</label>
                 <label><input type="checkbox" value="卵焼き"> 卵焼き</label>
                 <label><input type="checkbox" value="厚焼き玉子"> 厚焼き玉子</label>
                 <label><input type="checkbox" value="半熟卵"> 半熟卵</label>
                 <label><input type="checkbox" value="目玉焼き"> 目玉焼き</label>
+
                 <label><input type="checkbox" value="牛乳"> 牛乳</label>
                 <label><input type="checkbox" value="生クリーム"> 生クリーム</label>
                 <label><input type="checkbox" value="粉チーズ"> 粉チーズ</label>
                 <label><input type="checkbox" value="チーズ"> チーズ</label>
                 <label><input type="checkbox" value="ヨーグルト"> ヨーグルト</label>
-                <label><input type="checkbox" value="ウインナー"> ウインナー</label>
-                <label><input type="checkbox" value="餃子"> 餃子</label>
-                <label><input type="checkbox" value="餃子の皮"> 餃子の皮</label>
 
-                <!-- 野菜・きのこ類 -->
+                <label><input type="checkbox" value="ウインナー"> ウインナー</label>
+                <label><input type="checkbox" value="ハム"> ハム</label>
+                <label><input type="checkbox" value="ベーコン"> ベーコン</label>
+
+                <!-- 魚介 -->
+                <label><input type="checkbox" value="ツナ"> ツナ</label>
+                <label><input type="checkbox" value="サバ"> サバ</label>
+                <label><input type="checkbox" value="サーモン"> サーモン</label>
+                <label><input type="checkbox" value="いわし"> いわし</label>
+                <label><input type="checkbox" value="タラ"> タラ</label>
+                <label><input type="checkbox" value="まぐろ"> まぐろ</label>
+                <label><input type="checkbox" value="アジ"> アジ</label>
+                <label><input type="checkbox" value="ブリ"> ブリ</label>
+                <label><input type="checkbox" value="鯖缶"> 鯖缶</label>
+                <label><input type="checkbox" value="鮭切り身"> 鮭切り身</label>
+                <label><input type="checkbox" value="鮭"> 鮭</label>
+                <label><input type="checkbox" value="生鮭"> 生鮭</label>
+                <label><input type="checkbox" value="鮭フレーク"> 鮭フレーク</label>
+
+                <label><input type="checkbox" value="エビ"> エビ</label>
+                <label><input type="checkbox" value="イカ"> イカ</label>
+                <label><input type="checkbox" value="タコ"> タコ</label>
+                <label><input type="checkbox" value="アサリ"> アサリ</label>
+                <label><input type="checkbox" value="ハマグリ"> ハマグリ</label>
+                <label><input type="checkbox" value="かまぼこ"> かまぼこ</label>
+                <label><input type="checkbox" value="はんぺん"> はんぺん</label>
+                <label><input type="checkbox" value="さつま揚げ"> さつま揚げ</label>
+
+                <!-- 野菜・海藻 -->
                 <label><input type="checkbox" value="キャベツ"> キャベツ</label>
                 <label><input type="checkbox" value="白菜"> 白菜</label>
                 <label><input type="checkbox" value="小松菜"> 小松菜</label>
+                <label><input type="checkbox" value="ほうれん草"> ホウレンソウ</label>
+                <label><input type="checkbox" value="レタス"> レタス</label>
+                <label><input type="checkbox" value="トマト"> トマト</label>
+                <label><input type="checkbox" value="きゅうり"> きゅうり</label>
+                <label><input type="checkbox" value="もやし"> もやし</label>
+                <label><input type="checkbox" value="ねぎ"> ネギ</label>
                 <label><input type="checkbox" value="長ねぎ"> 長ねぎ</label>
-                <label><input type="checkbox" value="小ねぎ"> 小ねぎ</label>
-                <label><input type="checkbox" value="玉ねぎ"> 玉ねぎ</label>
                 <label><input type="checkbox" value="大根"> 大根</label>
-                <label><input type="checkbox" value="長いも"> 長いも</label>
-                <label><input type="checkbox" value="春菊"> 春菊</label>
-                <label><input type="checkbox" value="根菜"> 根菜</label>
+                <label><input type="checkbox" value="レンコン"> レンコン</label>
+                <label><input type="checkbox" value="茄子"> 茄子</label>
+                <label><input type="checkbox" value="かぼちゃ"> かぼちゃ</label>
+                <label><input type="checkbox" value="おくら"> おくら</label>
+                <label><input type="checkbox" value="ピーマン"> ピーマン</label>
+                <label><input type="checkbox" value="ゴーヤ"> ゴーヤ</label>
+                <label><input type="checkbox" value="サツマイモ"> サツマイモ</label>
+                <label><input type="checkbox" value="ニラ"> ニラ</label>
+                <label><input type="checkbox" value="スナップエンドウ"> スナップエンドウ</label>
+                <label><input type="checkbox" value="タケノコ"> タケノコ</label>
+                <label><input type="checkbox" value="冬瓜"> 冬瓜</label>
+                <label><input type="checkbox" value="ふき"> ふき</label>
+                <label><input type="checkbox" value="ひじき"> ひじき</label>
                 <label><input type="checkbox" value="枝豆"> 枝豆</label>
-                <label><input type="checkbox" value="貝割れ"> 貝割れ</label>
-                <label><input type="checkbox" value="野菜"> 野菜</label>
-                <label><input type="checkbox" value="野菜スープ"> 野菜スープ</label>
 
-                <!-- ご飯・パン・粉もの -->
-                <label><input type="checkbox" value="ご飯"> ご飯</label>
-                <label><input type="checkbox" value="玄米ご飯"> 玄米ご飯</label>
-                <label><input type="checkbox" value="雑穀ご飯"> 雑穀ご飯</label>
-                <label><input type="checkbox" value="米"> 米</label>
-                <label><input type="checkbox" value="米粉"> 米粉</label>
-                <label><input type="checkbox" value="玄米"> 玄米</label>
-                <label><input type="checkbox" value="食パン"> 食パン</label>
-                <label><input type="checkbox" value="昆布おにぎり"> 昆布おにぎり</label>
-                <label><input type="checkbox" value="梅おにぎり"> 梅おにぎり</label>
-                <label><input type="checkbox" value="焼きおにぎり"> 焼きおにぎり</label>
+                <label><input type="checkbox" value="わかめ"> わかめ</label>
+                <label><input type="checkbox" value="海苔"> 海苔</label>
+                <label><input type="checkbox" value="韓国のり"> 韓国海苔</label>
 
-                <!-- 調味料など（必要なら） -->
-                <label><input type="checkbox" value="味噌"> 味噌</label>
-                <label><input type="checkbox" value="味噌汁"> 味噌汁</label>
-                <label><input type="checkbox" value="鶏ガラスープの素"> 鶏ガラスープの素</label>
-                <label><input type="checkbox" value="鶏ガラスープ"> 鶏ガラスープ</label>
+                <!-- きのこ類 -->
+                <label><input type="checkbox" value="しいたけ"> しいたけ</label>
+                <label><input type="checkbox" value="シメジ"> シメジ</label>
+                <label><input type="checkbox" value="えのきだけ"> エノキ</label>
+                <label><input type="checkbox" value="エリンギ"> エリンギ</label>
+                <label><input type="checkbox" value="舞茸"> 舞茸</label>
+                <label><input type="checkbox" value="なめこ"> なめこ</label>
+
+                <!-- 麺・穀物など -->
+                <label><input type="checkbox" value="マカロニ"> マカロニ</label>
+                <label><input type="checkbox" value="パスタ"> パスタ</label>
+                <label><input type="checkbox" value="春雨"> 春雨</label>
+                <label><input type="checkbox" value="切り餅"> 切り餅</label>
+
+                <!-- その他 -->
+                <label><input type="checkbox" value="梅"> 梅</label>
+                <label><input type="checkbox" value="大葉"> シソ</label>
+                <label><input type="checkbox" value="糸こんにゃく"> 糸こんにゃく</label>
+                <label><input type="checkbox" value="こんにゃく"> こんにゃく</label>
+                <label><input type="checkbox" value="ちくわ"> ちくわ</label>
+                <label><input type="checkbox" value="にんにく"> にんにく</label>
+                <label><input type="checkbox" value="レモン"> レモン</label>
+                <label><input type="checkbox" value="キムチ"> キムチ</label>
+                <label><input type="checkbox" value="手羽先"> 手羽先</label>
+                <label><input type="checkbox" value="手羽元"> 手羽元</label>
             </div>
             <div class="modal-actions">
                 <button type="button" class="btn-secondary inline-button" id="close-ingredients-modal">
