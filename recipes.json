@@ -18245,6 +18245,1712 @@
                 "carbs": 68.0
             },
             "cook_time_min": 20
+        },
+        {
+            "id": 1212,
+            "name": "鶏むねとキャベツの和風スープ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "スープ"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "キャベツ",
+                "ねぎ",
+                "だし"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 260.0,
+                "protein": 24.0,
+                "fat": 6.0,
+                "carbs": 12.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1213,
+            "name": "鶏むねと大根のしょうがスープ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "スープ"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "大根",
+                "しょうが",
+                "だし"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 250.0,
+                "protein": 23.0,
+                "fat": 5.0,
+                "carbs": 12.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1214,
+            "name": "鶏むねと白菜のやさしいスープ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "スープ"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "白菜",
+                "ねぎ",
+                "だし"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 250.0,
+                "protein": 22.0,
+                "fat": 5.0,
+                "carbs": 13.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1215,
+            "name": "鶏ささみと小松菜の中華スープ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "中華",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "スープ"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "鶏ささみ",
+                "小松菜",
+                "長ねぎ",
+                "中華スープ"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 240.0,
+                "protein": 22.0,
+                "fat": 5.0,
+                "carbs": 10.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1216,
+            "name": "鶏むねとブロッコリーの中華スープ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "中華",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "スープ"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "ブロッコリー",
+                "長ねぎ",
+                "中華スープ"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 250.0,
+                "protein": 23.0,
+                "fat": 6.0,
+                "carbs": 10.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1217,
+            "name": "鶏むねとセロリのレモンスープ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "スープ"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "セロリ",
+                "レモン汁",
+                "コンソメ"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 240.0,
+                "protein": 22.0,
+                "fat": 5.0,
+                "carbs": 9.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1218,
+            "name": "鶏むねとトマトのハーブスープ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "スープ"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "トマト缶",
+                "セロリ",
+                "ハーブソルト"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 250.0,
+                "protein": 23.0,
+                "fat": 6.0,
+                "carbs": 11.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1219,
+            "name": "鶏ささみと白菜のキムチ風スープ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "韓国風",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "スープ"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "鶏ささみ",
+                "白菜",
+                "キムチの素",
+                "にんにく"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 260.0,
+                "protein": 23.0,
+                "fat": 7.0,
+                "carbs": 10.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1220,
+            "name": "鶏むねとごぼうの和風スープ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "スープ"
+            ],
+            "months": [
+                10,
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "ごぼう",
+                "長ねぎ",
+                "だし"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 250.0,
+                "protein": 22.0,
+                "fat": 6.0,
+                "carbs": 13.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1221,
+            "name": "鶏むねと長いものとろみスープ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "スープ"
+            ],
+            "months": [
+                10,
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "長いも",
+                "だし",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 240.0,
+                "protein": 21.0,
+                "fat": 4.0,
+                "carbs": 14.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1222,
+            "name": "豆腐と鶏ひき肉の和風スープ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "スープ"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "木綿豆腐",
+                "鶏ひき肉",
+                "長ねぎ",
+                "だし"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 230.0,
+                "protein": 18.0,
+                "fat": 7.0,
+                "carbs": 8.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1223,
+            "name": "厚揚げと小松菜の味噌スープ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "スープ"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "ingredients": [
+                "厚揚げ",
+                "小松菜",
+                "味噌",
+                "だし"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 230.0,
+                "protein": 13.0,
+                "fat": 10.0,
+                "carbs": 9.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1224,
+            "name": "高野豆腐と白菜のとろみスープ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "スープ"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "高野豆腐",
+                "白菜",
+                "長ねぎ",
+                "だし"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 230.0,
+                "protein": 15.0,
+                "fat": 9.0,
+                "carbs": 9.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1225,
+            "name": "豆腐とブロッコリーの中華スープ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "中華",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "スープ"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "木綿豆腐",
+                "ブロッコリー",
+                "中華スープ",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 230.0,
+                "protein": 13.0,
+                "fat": 9.0,
+                "carbs": 8.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1226,
+            "name": "厚揚げと大根のしょうがスープ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "スープ"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "厚揚げ",
+                "大根",
+                "しょうが",
+                "だし"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 230.0,
+                "protein": 13.0,
+                "fat": 9.0,
+                "carbs": 9.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1227,
+            "name": "鶏むねと豆腐の担々風スープ(ライト)",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "中華",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "スープ"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "鶏ひき肉",
+                "木綿豆腐",
+                "白ごま",
+                "豆板醤",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 270.0,
+                "protein": 20.0,
+                "fat": 11.0,
+                "carbs": 8.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1228,
+            "name": "鶏むねとキャベツのカレースープ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "洋食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "スープ"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "キャベツ",
+                "カレー粉",
+                "コンソメ"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 260.0,
+                "protein": 22.0,
+                "fat": 6.0,
+                "carbs": 13.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1229,
+            "name": "鶏ささみとトマトの韓国風スープ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "韓国風",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "スープ"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "鶏ささみ",
+                "トマト",
+                "コチュジャン",
+                "にんにく"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 250.0,
+                "protein": 22.0,
+                "fat": 6.0,
+                "carbs": 11.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1230,
+            "name": "鶏むねとほうれん草の中華スープ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "中華",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "スープ"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "ほうれん草",
+                "長ねぎ",
+                "中華スープ"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 250.0,
+                "protein": 23.0,
+                "fat": 5.0,
+                "carbs": 9.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1231,
+            "name": "鶏むねとオクラのとろみスープ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "main",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "スープ"
+            ],
+            "months": [
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "オクラ",
+                "だし",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 240.0,
+                "protein": 22.0,
+                "fat": 4.0,
+                "carbs": 10.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1232,
+            "name": "キャベツと蒸し鶏のごま塩サラダ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "キャベツ",
+                "白ごま",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 160.0,
+                "protein": 15.0,
+                "fat": 7.0,
+                "carbs": 6.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1233,
+            "name": "きゅうりと蒸し鶏の中華和え",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "中華",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "きゅうり",
+                "長ねぎ",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 150.0,
+                "protein": 14.0,
+                "fat": 7.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1234,
+            "name": "蒸し鶏とトマトのマリネ風",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "洋食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "トマト",
+                "セロリ",
+                "レモン汁"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 150.0,
+                "protein": 15.0,
+                "fat": 5.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1235,
+            "name": "鶏ささみと大根の梅おかかサラダ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "鶏ささみ",
+                "大根",
+                "梅干し",
+                "かつおぶし"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 140.0,
+                "protein": 14.0,
+                "fat": 3.0,
+                "carbs": 6.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1236,
+            "name": "鶏むねと小松菜のごま和え",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "小松菜",
+                "白ごま",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 150.0,
+                "protein": 15.0,
+                "fat": 6.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1237,
+            "name": "鶏ささみとセロリのレモンサラダ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "洋食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "鶏ささみ",
+                "セロリ",
+                "レタス",
+                "レモン汁"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 140.0,
+                "protein": 14.0,
+                "fat": 4.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1238,
+            "name": "鶏むねと白菜のごまポンサラダ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "白菜",
+                "白ごま",
+                "ポン酢"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 150.0,
+                "protein": 15.0,
+                "fat": 6.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1239,
+            "name": "鶏むねとレタスの韓国風サラダ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "韓国風",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "レタス",
+                "韓国のり",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 150.0,
+                "protein": 15.0,
+                "fat": 7.0,
+                "carbs": 3.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1240,
+            "name": "厚揚げと小松菜の炒め煮(ライト)",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "厚揚げ",
+                "小松菜",
+                "だし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 170.0,
+                "protein": 10.0,
+                "fat": 9.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1241,
+            "name": "高野豆腐と大根の含め煮",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "高野豆腐",
+                "大根",
+                "だし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 160.0,
+                "protein": 11.0,
+                "fat": 7.0,
+                "carbs": 6.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1242,
+            "name": "油揚げとほうれん草の煮びたし",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "副菜"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "ingredients": [
+                "油揚げ",
+                "ほうれん草",
+                "だし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 150.0,
+                "protein": 7.0,
+                "fat": 9.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1243,
+            "name": "豆腐とブロッコリーのごま和え",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "木綿豆腐",
+                "ブロッコリー",
+                "白ごま",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 150.0,
+                "protein": 10.0,
+                "fat": 8.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1244,
+            "name": "大豆ミートとセロリのカレー炒め",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "洋食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "大豆ミート",
+                "セロリ",
+                "カレー粉",
+                "オリーブオイル"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 160.0,
+                "protein": 11.0,
+                "fat": 7.0,
+                "carbs": 6.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1245,
+            "name": "蒸し鶏とひじきのサラダ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "ひじき",
+                "きゅうり",
+                "白ごま"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 150.0,
+                "protein": 14.0,
+                "fat": 6.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1246,
+            "name": "蒸し鶏と枝豆の和風サラダ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "枝豆",
+                "レタス",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 160.0,
+                "protein": 15.0,
+                "fat": 6.0,
+                "carbs": 6.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1247,
+            "name": "鶏ささみとトマトの和風マリネ",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "洋食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "鶏ささみ",
+                "トマト",
+                "大葉",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 150.0,
+                "protein": 15.0,
+                "fat": 4.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1248,
+            "name": "ひき肉少なめ鶏そぼろと小松菜の炒め物",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "鶏ひき肉",
+                "小松菜",
+                "しょうが",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 160.0,
+                "protein": 13.0,
+                "fat": 7.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1249,
+            "name": "鶏むねと大根の黒こしょう炒め",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "大根",
+                "黒こしょう",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 160.0,
+                "protein": 15.0,
+                "fat": 5.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1250,
+            "name": "鶏むねとブロッコリーのにんにく炒め",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "洋食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "ブロッコリー",
+                "にんにく",
+                "オリーブオイル"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 170.0,
+                "protein": 16.0,
+                "fat": 7.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1251,
+            "name": "蒸し鶏と白菜の胡麻和え",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "白菜",
+                "白ごま",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 150.0,
+                "protein": 15.0,
+                "fat": 6.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1252,
+            "name": "鶏むねとごぼうのきんぴら風",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                10,
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "ごぼう",
+                "醤油",
+                "みりん"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 170.0,
+                "protein": 15.0,
+                "fat": 6.0,
+                "carbs": 7.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1253,
+            "name": "鶏むねと長いものソテー",
+            "meal_type": [
+                "dinner"
+            ],
+            "role": "side",
+            "tags": [
+                "洋食",
+                "夕食",
+                "ダイエット",
+                "高たんぱく",
+                "副菜"
+            ],
+            "months": [
+                10,
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "ingredients": [
+                "鶏むね肉",
+                "長いも",
+                "塩こしょう",
+                "オリーブオイル"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 170.0,
+                "protein": 15.0,
+                "fat": 7.0,
+                "carbs": 6.0
+            },
+            "cook_time_min": 10
         }
     ]
 }
