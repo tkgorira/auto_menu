@@ -33,7 +33,14 @@ app = Flask(__name__)
 app.secret_key = "change_this_to_random_secret_key"
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-DB_PATH = os.path.join(BASE_DIR, "favorites.db")
+
+# ==== DB を永続ディスクに置くための設定 ====
+# 本番(Render)では DB_DIR=/var/data を環境変数で渡す
+DB_DIR = os.environ.get("DB_DIR", BASE_DIR)
+os.makedirs(DB_DIR, exist_ok=True)
+DB_PATH = os.path.join(DB_DIR, "favorites.db")
+# ============================================
+
 RECIPES_JSON_PATH = os.path.join(BASE_DIR, "recipes.json")
 
 # 画像アップロード用フォルダ
@@ -457,7 +464,6 @@ def recipe_new():
 def upload_photo():
     ensure_anonymous_user()
 
-    # カメラまたはファイルどちらか優先的に取得
     file = request.files.get("fridge_photo_camera") or request.files.get("fridge_photo_file")
     if not file or file.filename == "":
         flash("画像が選択されていません。")
