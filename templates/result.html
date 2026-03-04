@@ -127,6 +127,19 @@
             padding: 0;
         }
 
+        /* ブルブル系ハートアニメ */
+        @keyframes shake-heart {
+            0%   { transform: translate(0, 0); }
+            20%  { transform: translate(-1px, 0); }
+            40%  { transform: translate(1px, 0); }
+            60%  { transform: translate(-1px, 0); }
+            80%  { transform: translate(1px, 0); }
+            100% { transform: translate(0, 0); }
+        }
+        .heart-button.shake-heart {
+            animation: shake-heart 0.35s ease;
+        }
+
         /* クックパッドボタン */
         .cookpad-button {
             font-size: 0.8rem;
@@ -186,7 +199,7 @@
             opacity: 0.9;
         }
 
-        /* PC では隠したい場合 */
+        /* PC では隠したい場合（※ここを残すかどうかは方針に合わせて） */
         @media (min-width: 801px) {
             .fixed-fab-bar {
                 display: none;
@@ -362,5 +375,74 @@
           ♥ お気に入り一覧
         </a>
     </div>
+
+    <!-- ハートクリック時の非同期処理＋トースト＋バイブ -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const forms = document.querySelectorAll(".heart-form");
+
+      forms.forEach(form => {
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();   // ページ遷移を防ぐ
+
+          const button = form.querySelector(".heart-button");
+          const formData = new FormData(form);
+
+          try {
+            const response = await fetch(form.action, {
+              method: "POST",
+              body: formData
+            });
+
+            if (response.ok) {
+              // ハートをブルブルさせる
+              button.classList.add("shake-heart");
+
+              // バイブレーション（対応端末のみ）
+              if ("vibrate" in navigator) {
+                navigator.vibrate(120);
+              }
+
+              // トーストメッセージ
+              showToast("お気に入りに追加しました ❤️");
+
+              // アニメーション終了でクラスを外す
+              setTimeout(() => {
+                button.classList.remove("shake-heart");
+              }, 400);
+            } else {
+              showToast("お気に入り追加に失敗しました");
+            }
+          } catch (err) {
+            console.error(err);
+            showToast("通信エラーが発生しました");
+          }
+        });
+      });
+
+      function showToast(message) {
+        const toast = document.createElement("div");
+        toast.textContent = message;
+        toast.style.position = "fixed";
+        toast.style.bottom = "60px";  // 画面下部バナーの少し上
+        toast.style.left = "50%";
+        toast.style.transform = "translateX(-50%)";
+        toast.style.background = "rgba(255, 64, 129, 0.95)";
+        toast.style.color = "#fff";
+        toast.style.padding = "8px 14px";
+        toast.style.borderRadius = "16px";
+        toast.style.fontSize = "0.9rem";
+        toast.style.boxShadow = "0 2px 6px rgba(0,0,0,0.2)";
+        toast.style.zIndex = "1001";
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+          toast.style.transition = "opacity 0.5s ease";
+          toast.style.opacity = "0";
+          setTimeout(() => toast.remove(), 500);
+        }, 1000);
+      }
+    });
+    </script>
 </body>
 </html>
