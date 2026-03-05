@@ -47,16 +47,18 @@
             border-bottom: 1px solid #eee;
         }
 
+        /* 上段：メニュー名＋作り方ボタンを横並びに */
         .fav-header {
             display: flex;
-            align-items: center;
-            gap: 6px;
+            align-items: center;      /* 縦位置を中央揃え */
+            gap: 4px;                 /* 名称とボタンのすき間 */
             margin-bottom: 2px;
         }
 
         .fav-name {
             flex: 1;
             font-size: 0.95rem;
+            min-width: 0;             /* 長い名前でも折り返しやすくする */
         }
 
         a {
