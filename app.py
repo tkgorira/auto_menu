@@ -63,6 +63,26 @@ def get_price_per_100g(name: str):
     return info.get("price_per_100g")
 
 
+def load_json_recipes():
+    """recipes.json のトップレベルが list でも dict でも対応するローダー"""
+    with open(RECIPES_JSON_PATH, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    # パターンA: {"recipes": [...]} 形式
+    if isinstance(data, dict) and "recipes" in data and isinstance(data["recipes"], list):
+        return data["recipes"]
+
+    # パターンB: すでにレシピのリスト
+    if isinstance(data, list):
+        return data
+
+    # それ以外（id→レシピ dict など）は values を使う
+    if isinstance(data, dict):
+        return list(data.values())
+
+    return []
+
+
 # 画像アップロード用フォルダ
 UPLOAD_FOLDER = os.path.join(BASE_DIR, "uploads")
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -433,9 +453,7 @@ def favorite_list():
 
     favorite_ids = {int(row["recipe_id"]) for row in rows}
 
-    with open(RECIPES_JSON_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
-    json_recipes = data.get("recipes", [])
+    json_recipes = load_json_recipes()
 
     user_recipes = load_user_recipes(user_id)
     all_recipes = json_recipes + user_recipes
@@ -594,9 +612,7 @@ def generate_from_vision():
     except ValueError:
         days = 3
 
-    with open(RECIPES_JSON_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
-    json_recipes = data.get("recipes", [])
+    json_recipes = load_json_recipes()
 
     user_recipes = load_user_recipes(session["user_id"])
     all_recipes = json_recipes + user_recipes
@@ -804,9 +820,7 @@ def generate():
         s.strip() for s in have_ingredients_raw.split(",") if s.strip()
     ]
 
-    with open(RECIPES_JSON_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
-    json_recipes = data.get("recipes", [])
+    json_recipes = load_json_recipes()
 
     user_recipes = load_user_recipes(session["user_id"])
     all_recipes = json_recipes + user_recipes
