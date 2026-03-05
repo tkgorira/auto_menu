@@ -45,7 +45,7 @@ DB_PATH = os.path.join(DB_DIR, "favorites.db")
 print("=== DB_PATH ===", DB_PATH, flush=True)
 # ============================================
 
-# ★ display_amount 付きの JSON を読む
+# display_amount を含むJSON
 RECIPES_JSON_PATH = os.path.join(BASE_DIR, "recipes_with_display.json")
 
 # 単価マスタ
@@ -375,7 +375,6 @@ def build_share_text_for_recipe(recipe):
     details = recipe.get("ingredients_detail", []) or []
     for ing in details:
         lines.append("- " + format_ingredient_line(ing))
-    # 実際のテキスト内は改行
     return "\n".join(lines)
 
 
@@ -475,7 +474,6 @@ def favorite_list():
     favorite_ids = {int(row["recipe_id"]) for row in rows}
 
     json_recipes = load_json_recipes()
-
     user_recipes = load_user_recipes(user_id)
     all_recipes = json_recipes + user_recipes
 
@@ -483,6 +481,13 @@ def favorite_list():
         r for r in all_recipes
         if r.get("id") in favorite_ids
     ]
+
+    # ★ お気に入りにも share_text を付与
+    for r in favorite_recipes:
+        if r.get("ingredients_detail"):
+            r["share_text"] = build_share_text_for_recipe(r)
+        else:
+            r["share_text"] = None
 
     return render_template(
         "favorites.html",
@@ -952,7 +957,7 @@ def generate():
         def is_ok_breakfast(r):
             if "breakfast" not in r.get("meal_type", []):
                 return True
-            if r.get("role", "main") != "main":
+            if r.get("role") != "main":
                 return True
 
             n = r.get("nutrition", {}) or {}
@@ -1047,7 +1052,7 @@ def generate():
                 chosen_menu = last_menu
 
             for r in chosen_menu:
-                if r.get("role", "side"):
+                if r.get("role") == "side":
                     used_side_ids_by_meal_type[mt].add(r.get("id"))
 
             day_menus.append(chosen_menu)
