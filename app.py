@@ -45,7 +45,8 @@ DB_PATH = os.path.join(DB_DIR, "favorites.db")
 print("=== DB_PATH ===", DB_PATH, flush=True)
 # ============================================
 
-RECIPES_JSON_PATH = os.path.join(BASE_DIR, "recipes.json")
+# ★ display_amount 付きの JSON を読む
+RECIPES_JSON_PATH = os.path.join(BASE_DIR, "recipes_with_display.json")
 
 # 単価マスタ
 PRICE_MASTER_PATH = os.path.join(BASE_DIR, "prices.json")
@@ -363,11 +364,9 @@ def format_ingredient_line(ing):
     name = ing.get("name")
     amount = ing.get("amount")
     unit = ing.get("unit", "")
-    # recipes.json 側で display_amount が付いていれば優先
     display = ing.get("display_amount")
     if display:
         return f"{name} {display}"
-    # なければ amount + unit そのまま
     return f"{name} {amount}{unit}"
 
 
@@ -376,6 +375,7 @@ def build_share_text_for_recipe(recipe):
     details = recipe.get("ingredients_detail", []) or []
     for ing in details:
         lines.append("- " + format_ingredient_line(ing))
+    # 実際のテキスト内は改行
     return "\n".join(lines)
 
 
@@ -1047,7 +1047,7 @@ def generate():
                 chosen_menu = last_menu
 
             for r in chosen_menu:
-                if r.get("role") == "side":
+                if r.get("role", "side"):
                     used_side_ids_by_meal_type[mt].add(r.get("id"))
 
             day_menus.append(chosen_menu)
