@@ -363,6 +363,11 @@ def format_ingredient_line(ing):
     name = ing.get("name")
     amount = ing.get("amount")
     unit = ing.get("unit", "")
+    # recipes.json 側で display_amount が付いていれば優先
+    display = ing.get("display_amount")
+    if display:
+        return f"{name} {display}"
+    # なければ amount + unit そのまま
     return f"{name} {amount}{unit}"
 
 
