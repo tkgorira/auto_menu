@@ -47,18 +47,17 @@
             border-bottom: 1px solid #eee;
         }
 
-        /* 上段：メニュー名＋作り方ボタンを横並びに */
+        /* 上段：メニュー名のみ（画像検索リンク） */
         .fav-header {
             display: flex;
-            align-items: center;      /* 縦位置を中央揃え */
-            gap: 4px;                 /* 名称とボタンのすき間 */
+            align-items: center;
             margin-bottom: 2px;
         }
 
         .fav-name {
             flex: 1;
             font-size: 0.95rem;
-            min-width: 0;             /* 長い名前でも折り返しやすくする */
+            min-width: 0;
         }
 
         a {
@@ -194,7 +193,6 @@
             opacity: 0.9;
         }
 
-        /* PC では隠したい場合（お好みで） */
         @media (min-width: 801px) {
             .fixed-fab-bar {
                 display: none;
@@ -236,7 +234,7 @@
         <ul>
             {% for r in recipes %}
             <li class="favorite-item">
-                <!-- 上段：メニュー名（画像検索リンク）＋ クックパッドボタン -->
+                <!-- 上段：メニュー名（画像検索リンク） -->
                 <div class="fav-header">
                     <div class="fav-name">
                         <a
@@ -247,6 +245,29 @@
                             {{ r.name }}
                         </a>
                     </div>
+                </div>
+
+                <!-- 中段：LINE共有 → 材料コピー → 作り方を検索 を縦並び -->
+                <div style="margin-top:2px; display:flex; flex-direction:column; align-items:flex-start; gap:2px; font-size:0.8rem;">
+
+                    {% if r.share_text %}
+                    <a
+                        href="https://line.me/R/msg/text/?{{ r.share_text|urlencode }}"
+                        target="_blank"
+                        class="menu-share-btn menu-share-btn-line"
+                    >
+                        このメニューをLINEで共有
+                    </a>
+
+                    <button
+                        type="button"
+                        class="copy-btn menu-share-btn menu-share-btn-copy"
+                        data-share-text="{{ r.share_text }}"
+                    >
+                        このメニューの材料をコピー
+                    </button>
+                    {% endif %}
+
                     <a
                         href="https://cookpad.com/search/{{ r.name | urlencode }}"
                         target="_blank"
@@ -256,26 +277,6 @@
                         作り方を検索
                     </a>
                 </div>
-
-                <!-- 中段：材料コピー＆LINE共有（share_text があるときだけ） -->
-                {% if r.share_text %}
-                <div style="margin-top:2px; display:flex; flex-wrap:wrap; gap:4px; font-size:0.8rem;">
-                    <button
-                        type="button"
-                        class="copy-btn menu-share-btn menu-share-btn-copy"
-                        data-share-text="{{ r.share_text }}"
-                    >
-                        このメニューの材料をコピー
-                    </button>
-                    <a
-                        href="https://line.me/R/msg/text/?{{ r.share_text|urlencode }}"
-                        target="_blank"
-                        class="menu-share-btn menu-share-btn-line"
-                    >
-                        このメニューをLINEで共有
-                    </a>
-                </div>
-                {% endif %}
 
                 <!-- 下段：お気に入りから削除 -->
                 <div style="margin-top:4px;">
@@ -312,7 +313,6 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      // コピー用ボタン（result.html と同じ .copy-btn を利用）
       document.querySelectorAll(".copy-btn").forEach(btn => {
         btn.addEventListener("click", () => {
           const text = btn.getAttribute("data-share-text") || "";
