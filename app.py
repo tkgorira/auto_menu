@@ -4,6 +4,7 @@ import sqlite3
 import os
 import uuid
 import tempfile
+from collections import defaultdict
 
 from flask import (
     Flask,
@@ -43,6 +44,22 @@ print("=== DB_PATH ===", DB_PATH, flush=True)
 # ============================================
 
 RECIPES_JSON_PATH = os.path.join(BASE_DIR, "recipes.json")
+
+# 単価マスタ
+PRICE_MASTER_PATH = os.path.join(BASE_DIR, "prices.json")
+if os.path.exists(PRICE_MASTER_PATH):
+    with open(PRICE_MASTER_PATH, encoding="utf-8") as f:
+        PRICE_MASTER = json.load(f)
+else:
+    PRICE_MASTER = {}
+
+
+def get_price_per_100g(name: str):
+    info = PRICE_MASTER.get(name)
+    if not info:
+        return None
+    return info.get("price_per_100g")
+
 
 # 画像アップロード用フォルダ
 UPLOAD_FOLDER = os.path.join(BASE_DIR, "uploads")
@@ -279,6 +296,52 @@ def sum_nutrition(recipes):
     for k in total:
         total[k] = round(total[k], 1)
     return total
+
+
+# ===================== 材料集計・金額 =====================
+def aggregate_ingredients(recipes):
+    """
+    recipes: レシピ(dict)のリスト
+    return: { "大根": {"total_amount": 160, "unit": "g"}, ... }
+    """
+    agg = defaultdict(lambda: {"total_amount": 0, "unit": "g"})
+    for r in recipes:
+        for ing in r.get("ingredients_detail", []):
+            name = ing["name"]
+            amount = ing["amount"]
+            unit = ing.get("unit", "g")
+            agg[name]["total_amount"] += amount
+            agg[name]["unit"] = unit
+    return dict(agg)
+
+
+def estimate_cost(ingredients_agg):
+    """
+    ingredients_agg: aggregate_ingredients の結果
+    return: {"total_cost": int, "details": [...]}
+    """
+    total = 0
+    details = []
+    for name, info in ingredients_agg.items():
+        amount = info["total_amount"]
+        unit = info["unit"]
+        price_per_100g = get_price_per_100g(name)
+
+        if price_per_100g is None or unit != "g":
+            cost = 0
+        else:
+            cost = int(round(amount / 100 * price_per_100g))
+
+        total += cost
+        details.append({
+            "name": name,
+            "total_amount": amount,
+            "unit": unit,
+            "price_per_100g": price_per_100g,
+            "cost": cost,
+        })
+
+    return {"total_cost": total, "details": details}
 
 
 # ===================== 自作レシピ読み込みヘルパ =====================
@@ -678,6 +741,15 @@ def generate_from_vision():
         total = sum_nutrition(day_recipes[d])
         daily_nutrition.append(total)
 
+    # 1日ごとの材料集計＆概算金額
+    daily_ingredients = []
+    daily_costs = []
+    for d in range(days):
+        ing_agg = aggregate_ingredients(day_recipes[d])
+        cost_info = estimate_cost(ing_agg)
+        daily_ingredients.append(ing_agg)
+        daily_costs.append(cost_info)
+
     nutrition_labels = {
         "protein": "たんぱく質",
         "fat": "脂質",
@@ -707,6 +779,8 @@ def generate_from_vision():
         nickname=None,
         easy_level=easy_level,
         have_ingredients=have_ingredients,
+        daily_ingredients=daily_ingredients,
+        daily_costs=daily_costs,
     )
 
 
@@ -975,6 +1049,15 @@ def generate():
         total = sum_nutrition(day_recipes[d])
         daily_nutrition.append(total)
 
+    # 1日ごとの材料集計＆概算金額
+    daily_ingredients = []
+    daily_costs = []
+    for d in range(days):
+        ing_agg = aggregate_ingredients(day_recipes[d])
+        cost_info = estimate_cost(ing_agg)
+        daily_ingredients.append(ing_agg)
+        daily_costs.append(cost_info)
+
     nutrition_labels = {
         "protein": "たんぱく質",
         "fat": "脂質",
@@ -1004,6 +1087,8 @@ def generate():
         nickname=None,
         easy_level=easy_level,
         have_ingredients=have_ingredients,
+        daily_ingredients=daily_ingredients,
+        daily_costs=daily_costs,
     )
 
 

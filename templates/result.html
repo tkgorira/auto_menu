@@ -199,7 +199,6 @@
             opacity: 0.9;
         }
 
-        /* PC では隠したい場合（※ここを残すかどうかは方針に合わせて） */
         @media (min-width: 801px) {
             .fixed-fab-bar {
                 display: none;
@@ -354,6 +353,77 @@
         </ul>
     {% endif %}
 
+    {% if daily_ingredients and daily_costs %}
+        <h2>1日ごとの買い物リストと概算金額</h2>
+
+        {% for d in range(days) %}
+            <h3>{{ d + 1 }}日目の買い物リスト</h3>
+
+            {% set cost_info = daily_costs[d] %}
+            {% set ing_agg = daily_ingredients[d] %}
+
+            {% if cost_info.details %}
+                <table style="width:100%; border-collapse:collapse; font-size:0.9rem; margin-bottom:8px;">
+                    <thead>
+                        <tr>
+                            <th style="border-bottom:1px solid #ccc; text-align:left;">食材</th>
+                            <th style="border-bottom:1px solid #ccc; text-align:right;">量</th>
+                            <th style="border-bottom:1px solid #ccc; text-align:right;">概算金額</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cost_info.details %}
+                            <tr>
+                                <td style="border-bottom:1px solid #eee; padding:2px 0;">
+                                    {{ item.name }}
+                                </td>
+                                <td style="border-bottom:1px solid #eee; padding:2px 0; text-align:right;">
+                                    {{ item.total_amount }}{{ item.unit }}
+                                </td>
+                                <td style="border-bottom:1px solid #eee; padding:2px 0; text-align:right;">
+                                    {% if item.price_per_100g %}
+                                        約{{ item.cost }}円
+                                    {% else %}
+                                        単価未設定
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <p style="font-size:0.9rem; margin-top:0;">
+                    合計：<strong>約{{ cost_info.total_cost }}円</strong>
+                </p>
+
+                {% set lines = [] %}
+                {% for item in cost_info.details %}
+                    {% set _ = lines.append(item.name ~ " " ~ item.total_amount ~ item.unit) %}
+                {% endfor %}
+                {% set share_text = (d + 1) ~ "日目の買い物リスト\n" ~ lines|join("\n") %}
+
+                <p style="margin:4px 0 10px;">
+                    <button
+                        type="button"
+                        onclick="copyToClipboard(`{{ share_text|escapejs }}`)"
+                        style="font-size:0.85rem; padding:4px 8px; border-radius:4px; border:1px solid #4b7bec; background:#fff; color:#4b7bec; margin-right:6px;"
+                    >
+                        食材リストをコピー
+                    </button>
+                    <a
+                        href="https://line.me/R/msg/text/?{{ share_text|urlencode }}"
+                        target="_blank"
+                        style="font-size:0.85rem; padding:4px 8px; border-radius:4px; border:1px solid #06c755; color:#06c755; text-decoration:none;"
+                    >
+                        LINEで共有
+                    </a>
+                </p>
+            {% else %}
+                <p>この日の買い物リストはありません。</p>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
     <h2>簡易買い物リスト</h2>
     {% if shopping_list %}
         <ul>
@@ -375,6 +445,18 @@
           ♥ お気に入り一覧
         </a>
     </div>
+
+    <script>
+    function copyToClipboard(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text)
+          .then(() => alert("コピーしました"))
+          .catch(() => alert("コピーに失敗しました"));
+      } else {
+        alert("このブラウザではクリップボードコピーがサポートされていません");
+      }
+    }
+    </script>
 
     <!-- ハートクリック時の非同期処理＋トースト＋バイブ -->
     <script>
