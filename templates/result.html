@@ -288,6 +288,27 @@
                                             </span>
                                         {% endif %}
                                     </div>
+
+                                    {% if recipe.share_text %}
+                                    <!-- レシピ単位の材料シェア -->
+                                    <div style="margin-top:2px; display:flex; flex-wrap:wrap; gap:4px; font-size:0.8rem;">
+                                        <button
+                                            type="button"
+                                            class="copy-btn"
+                                            data-share-text="{{ recipe.share_text }}"
+                                            style="padding:3px 6px; border-radius:4px; border:1px solid #4b7bec; background:#fff; color:#4b7bec;"
+                                        >
+                                            このメニューの材料をコピー
+                                        </button>
+                                        <a
+                                            href="https://line.me/R/msg/text/?{{ recipe.share_text|urlencode }}"
+                                            target="_blank"
+                                            style="padding:3px 6px; border-radius:4px; border:1px solid #06c755; color:#06c755; text-decoration:none;"
+                                        >
+                                            このメニューをLINEで共有
+                                        </a>
+                                    </div>
+                                    {% endif %}
                                 </div>
                             </li>
                             {% endfor %}
@@ -353,77 +374,7 @@
         </ul>
     {% endif %}
 
-    {% if daily_ingredients and daily_costs %}
-        <h2>1日ごとの買い物リストと概算金額</h2>
-
-        {% for d in range(days) %}
-            <h3>{{ d + 1 }}日目の買い物リスト</h3>
-
-            {% set cost_info = daily_costs[d] %}
-            {% set ing_agg = daily_ingredients[d] %}
-
-            {% if cost_info.details %}
-                <table style="width:100%; border-collapse:collapse; font-size:0.9rem; margin-bottom:8px;">
-                    <thead>
-                        <tr>
-                            <th style="border-bottom:1px solid #ccc; text-align:left;">食材</th>
-                            <th style="border-bottom:1px solid #ccc; text-align:right;">量</th>
-                            <th style="border-bottom:1px solid #ccc; text-align:right;">概算金額</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for item in cost_info.details %}
-                            <tr>
-                                <td style="border-bottom:1px solid #eee; padding:2px 0;">
-                                    {{ item.name }}
-                                </td>
-                                <td style="border-bottom:1px solid #eee; padding:2px 0; text-align:right;">
-                                    {{ item.total_amount }}{{ item.unit }}
-                                </td>
-                                <td style="border-bottom:1px solid #eee; padding:2px 0; text-align:right;">
-                                    {% if item.price_per_100g %}
-                                        約{{ item.cost }}円
-                                    {% else %}
-                                        単価未設定
-                                    {% endif %}
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-
-                <p style="font-size:0.9rem; margin-top:0;">
-                    合計：<strong>約{{ cost_info.total_cost }}円</strong>
-                </p>
-
-                {% set lines = [] %}
-                {% for item in cost_info.details %}
-                    {% set _ = lines.append(item.name ~ " " ~ item.total_amount ~ item.unit) %}
-                {% endfor %}
-                {% set share_text = (d + 1) ~ "日目の買い物リスト\n" ~ lines|join("\n") %}
-
-                <p style="margin:4px 0 10px;">
-                    <button
-                        type="button"
-                        class="copy-btn"
-                        data-share-text="{{ share_text }}"
-                        style="font-size:0.85rem; padding:4px 8px; border-radius:4px; border:1px solid #4b7bec; background:#fff; color:#4b7bec; margin-right:6px;"
-                    >
-                        食材リストをコピー
-                    </button>
-                    <a
-                        href="https://line.me/R/msg/text/?{{ share_text|urlencode }}"
-                        target="_blank"
-                        style="font-size:0.85rem; padding:4px 8px; border-radius:4px; border:1px solid #06c755; color:#06c755; text-decoration:none;"
-                    >
-                        LINEで共有
-                    </a>
-                </p>
-            {% else %}
-                <p>この日の買い物リストはありません。</p>
-            {% endif %}
-        {% endfor %}
-    {% endif %}
+    <!-- ★ ここにあった「1日ごとの買い物リストと概算金額」セクションは削除済み -->
 
     <h2>簡易買い物リスト</h2>
     {% if shopping_list %}
@@ -459,7 +410,7 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      // コピー用ボタン
+      // コピー用ボタン（レシピ単位のボタンも、今後追加するボタンも共通）
       document.querySelectorAll(".copy-btn").forEach(btn => {
         btn.addEventListener("click", () => {
           const text = btn.getAttribute("data-share-text") || "";

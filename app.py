@@ -358,6 +358,22 @@ def estimate_cost(ingredients_agg):
     return {"total_cost": total, "details": details}
 
 
+# ===================== レシピ単位の共有テキスト =====================
+def format_ingredient_line(ing):
+    name = ing.get("name")
+    amount = ing.get("amount")
+    unit = ing.get("unit", "")
+    return f"{name} {amount}{unit}"
+
+
+def build_share_text_for_recipe(recipe):
+    lines = [recipe.get("name", "メニュー")]
+    details = recipe.get("ingredients_detail", []) or []
+    for ing in details:
+        lines.append("- " + format_ingredient_line(ing))
+    return "\n".join(lines)
+
+
 # ===================== 自作レシピ読み込みヘルパ =====================
 def load_user_recipes(user_id):
     db = get_db()
@@ -742,6 +758,14 @@ def generate_from_vision():
         total = sum_nutrition(day_recipes[d])
         daily_nutrition.append(total)
 
+    # 各レシピに share_text を付与
+    for d in range(days):
+        for r in day_recipes[d]:
+            if r.get("ingredients_detail"):
+                r["share_text"] = build_share_text_for_recipe(r)
+            else:
+                r["share_text"] = None
+
     daily_ingredients = []
     daily_costs = []
     for d in range(days):
@@ -1029,6 +1053,14 @@ def generate():
     for d in range(days):
         total = sum_nutrition(day_recipes[d])
         daily_nutrition.append(total)
+
+    # 各レシピに share_text を付与
+    for d in range(days):
+        for r in day_recipes[d]:
+            if r.get("ingredients_detail"):
+                r["share_text"] = build_share_text_for_recipe(r)
+            else:
+                r["share_text"] = None
 
     daily_ingredients = []
     daily_costs = []
