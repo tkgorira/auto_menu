@@ -45,14 +45,18 @@
         li.favorite-item {
             padding: 6px 0;
             border-bottom: 1px solid #eee;
+        }
+
+        .fav-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
             gap: 6px;
+            margin-bottom: 2px;
         }
 
         .fav-name {
             flex: 1;
+            font-size: 0.95rem;
         }
 
         a {
@@ -107,6 +111,39 @@
             color: #c00;
             font-size: 0.85rem;
             margin-bottom: 4px;
+        }
+
+        /* クックパッドボタン（result.html と同じ） */
+        .cookpad-button {
+            font-size: 0.8rem;
+            border: 1px solid #f08a24;
+            border-radius: 3px;
+            padding: 1px 4px;
+            color: #f08a24;
+            text-decoration: none;
+        }
+        .cookpad-button:hover {
+            background-color: #fff5ea;
+        }
+
+        /* メニュー単位のシェアボタン（result.html と同じ小さめ設定） */
+        .menu-share-btn {
+            display: inline-block;
+            padding: 1px 4px;
+            font-size: 0.7rem;
+            border-radius: 3px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .menu-share-btn-copy {
+            border: 1px solid #4b7bec;
+            background-color: #ffffff;
+            color: #4b7bec;
+        }
+        .menu-share-btn-line {
+            border: 1px solid #06c755;
+            background-color: #ffffff;
+            color: #06c755;
         }
 
         /* 画面下部固定 2ボタンバー */
@@ -197,10 +234,49 @@
         <ul>
             {% for r in recipes %}
             <li class="favorite-item">
-                <div class="fav-name">
-                    {{ r.name }}
+                <!-- 上段：メニュー名（画像検索リンク）＋ クックパッドボタン -->
+                <div class="fav-header">
+                    <div class="fav-name">
+                        <a
+                            href="https://www.google.com/search?tbm=isch&q={{ r.name | urlencode }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            {{ r.name }}
+                        </a>
+                    </div>
+                    <a
+                        href="https://cookpad.com/search/{{ r.name | urlencode }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="cookpad-button"
+                    >
+                        作り方を検索
+                    </a>
                 </div>
-                <div>
+
+                <!-- 中段：材料コピー＆LINE共有（share_text があるときだけ） -->
+                {% if r.share_text %}
+                <div style="margin-top:2px; display:flex; flex-wrap:wrap; gap:4px; font-size:0.8rem;">
+                    <button
+                        type="button"
+                        class="copy-btn menu-share-btn menu-share-btn-copy"
+                        data-share-text="{{ r.share_text }}"
+                    >
+                        このメニューの材料をコピー
+                    </button>
+                    <a
+                        href="https://line.me/R/msg/text/?{{ r.share_text|urlencode }}"
+                        target="_blank"
+                        class="menu-share-btn menu-share-btn-line"
+                    >
+                        このメニューをLINEで共有
+                    </a>
+                </div>
+                {% endif %}
+
+                <!-- 下段：お気に入りから削除 -->
+                <div style="margin-top:4px;">
                     <form class="delete-form" method="POST" action="{{ url_for('favorite_delete') }}">
                         <input type="hidden" name="recipe_id" value="{{ r.id }}">
                         <button type="submit" class="delete-button">お気に入りから削除</button>
@@ -221,5 +297,27 @@
           ♥ お気に入り一覧を閉じる
         </a>
     </div>
+
+    <script>
+    function copyToClipboard(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text)
+          .then(() => alert("コピーしました"))
+          .catch(() => alert("コピーに失敗しました"));
+      } else {
+        alert("このブラウザではクリップボードコピーがサポートされていません");
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // コピー用ボタン（result.html と同じ .copy-btn を利用）
+      document.querySelectorAll(".copy-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const text = btn.getAttribute("data-share-text") || "";
+          copyToClipboard(text);
+        });
+      });
+    });
+    </script>
 </body>
 </html>
