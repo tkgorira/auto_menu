@@ -25122,6 +25122,2908 @@
                 "carbs": 5.0
             },
             "cook_time_min": 10
+        },
+        {
+            "id": 1385,
+            "name": "大根ときゅうりの浅漬け",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "大根",
+                "きゅうり",
+                "塩",
+                "昆布"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 25.0,
+                "protein": 1.0,
+                "fat": 0.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1386,
+            "name": "塩キャベツのごま和え",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "キャベツ",
+                "塩",
+                "白ごま",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 35.0,
+                "protein": 2.0,
+                "fat": 3.0,
+                "carbs": 3.0
+            },
+            "cook_time_min": 5
+        },
+        {
+            "id": 1387,
+            "name": "大根とわかめのさっぱり和え",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "大根",
+                "わかめ",
+                "酢",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 30.0,
+                "protein": 1.0,
+                "fat": 0.0,
+                "carbs": 6.0
+            },
+            "cook_time_min": 5
+        },
+        {
+            "id": 1388,
+            "name": "トマトと大葉の和風サラダ",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "トマト",
+                "大葉",
+                "オリーブオイル",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 40.0,
+                "protein": 1.0,
+                "fat": 3.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 5
+        },
+        {
+            "id": 1389,
+            "name": "きゅうりのにんにく塩こんぶ和え",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "きゅうり",
+                "にんにく",
+                "塩昆布",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 35.0,
+                "protein": 1.0,
+                "fat": 3.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 5
+        },
+        {
+            "id": 1390,
+            "name": "レタスときゅうりの中華風サラダ",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "中華",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "レタス",
+                "きゅうり",
+                "ごま油",
+                "酢",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 40.0,
+                "protein": 1.0,
+                "fat": 3.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 5
+        },
+        {
+            "id": 1391,
+            "name": "レタスとトマトの和風サラダ",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "レタス",
+                "トマト",
+                "かつおぶし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 40.0,
+                "protein": 2.0,
+                "fat": 1.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 5
+        },
+        {
+            "id": 1392,
+            "name": "キャベツと大葉の梅和え",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "キャベツ",
+                "梅干し",
+                "大葉"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 25.0,
+                "protein": 1.0,
+                "fat": 0.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 5
+        },
+        {
+            "id": 1393,
+            "name": "ほうれん草の塩昆布和え",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "ingredients": [
+                "ほうれん草",
+                "塩昆布",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 35.0,
+                "protein": 3.0,
+                "fat": 3.0,
+                "carbs": 3.0
+            },
+            "cook_time_min": 5
+        },
+        {
+            "id": 1394,
+            "name": "小松菜のおかか醤油和え",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "ingredients": [
+                "小松菜",
+                "かつおぶし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 25.0,
+                "protein": 2.0,
+                "fat": 0.0,
+                "carbs": 3.0
+            },
+            "cook_time_min": 5
+        },
+        {
+            "id": 1395,
+            "name": "大根とひじきのさっぱりサラダ",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "大根",
+                "ひじき",
+                "レモン汁",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 45.0,
+                "protein": 2.0,
+                "fat": 1.0,
+                "carbs": 9.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1396,
+            "name": "ひじきと枝豆のさっぱり和え",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "ひじき",
+                "枝豆",
+                "レモン汁",
+                "塩"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 55.0,
+                "protein": 5.0,
+                "fat": 2.0,
+                "carbs": 6.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1397,
+            "name": "キャベツとひじきのごまマリネ",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "キャベツ",
+                "ひじき",
+                "白ごま",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 50.0,
+                "protein": 2.0,
+                "fat": 2.0,
+                "carbs": 7.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1398,
+            "name": "枝豆とわかめの酢の物",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "枝豆",
+                "わかめ",
+                "酢",
+                "砂糖",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 55.0,
+                "protein": 5.0,
+                "fat": 2.0,
+                "carbs": 6.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1399,
+            "name": "おくらと長いものねばねば和え",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "おくら",
+                "長いも",
+                "だし醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 60.0,
+                "protein": 3.0,
+                "fat": 1.0,
+                "carbs": 11.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1400,
+            "name": "ゴーヤの塩こんぶ和え",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "ゴーヤ",
+                "塩昆布",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 40.0,
+                "protein": 2.0,
+                "fat": 3.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1401,
+            "name": "ふきとわかめのさっぱり煮",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6
+            ],
+            "ingredients": [
+                "ふき",
+                "わかめ",
+                "だし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 40.0,
+                "protein": 1.0,
+                "fat": 0.0,
+                "carbs": 7.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1402,
+            "name": "たけのことキャベツの浅漬け",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                3,
+                4,
+                5,
+                6
+            ],
+            "ingredients": [
+                "タケノコ",
+                "キャベツ",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 25.0,
+                "protein": 1.0,
+                "fat": 0.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1403,
+            "name": "レンコンのレモンマリネ",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "洋食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "レンコン",
+                "レモン汁",
+                "オリーブオイル",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 55.0,
+                "protein": 1.0,
+                "fat": 3.0,
+                "carbs": 9.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1404,
+            "name": "レンコンチップス(軽め)",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "レンコン",
+                "オリーブオイル",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 70.0,
+                "protein": 1.0,
+                "fat": 4.0,
+                "carbs": 13.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1405,
+            "name": "さつまいもとレモンのサラダ",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "さつまいも",
+                "レモン汁",
+                "きび砂糖"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 110.0,
+                "protein": 1.0,
+                "fat": 0.0,
+                "carbs": 26.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1406,
+            "name": "かぼちゃの出汁煮",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                9,
+                10,
+                11
+            ],
+            "ingredients": [
+                "かぼちゃ",
+                "だし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 90.0,
+                "protein": 2.0,
+                "fat": 1.0,
+                "carbs": 20.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1407,
+            "name": "さつまいもと枝豆の塩バター風(乳不使用)",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "さつまいも",
+                "枝豆",
+                "ごま油",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 120.0,
+                "protein": 4.0,
+                "fat": 4.0,
+                "carbs": 23.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1408,
+            "name": "もやしとニラのさっと炒め",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "中華",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "もやし",
+                "ニラ",
+                "ごま油",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 60.0,
+                "protein": 3.0,
+                "fat": 4.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1409,
+            "name": "スナップエンドウのごま和え",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                3,
+                4,
+                5,
+                6
+            ],
+            "ingredients": [
+                "スナップエンドウ",
+                "白ごま",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 45.0,
+                "protein": 3.0,
+                "fat": 2.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1410,
+            "name": "枝豆とひじきのごま和え",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "枝豆",
+                "ひじき",
+                "白ごま",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 70.0,
+                "protein": 5.0,
+                "fat": 3.0,
+                "carbs": 7.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1411,
+            "name": "レタスとひじきの和風サラダ",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "レタス",
+                "ひじき",
+                "醤油",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 40.0,
+                "protein": 2.0,
+                "fat": 2.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1412,
+            "name": "小松菜と大根の塩昆布和え",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "ingredients": [
+                "小松菜",
+                "大根",
+                "塩昆布",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 35.0,
+                "protein": 2.0,
+                "fat": 2.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1413,
+            "name": "大根ときゅうりのナムル",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "韓国風",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "大根",
+                "きゅうり",
+                "ごま油",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 40.0,
+                "protein": 1.0,
+                "fat": 3.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1414,
+            "name": "トマトとわかめのナムル",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "韓国風",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "トマト",
+                "わかめ",
+                "ごま油",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 40.0,
+                "protein": 1.0,
+                "fat": 3.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1415,
+            "name": "白菜とわかめのポン酢和え",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "白菜",
+                "わかめ",
+                "ポン酢"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 30.0,
+                "protein": 1.0,
+                "fat": 0.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1416,
+            "name": "白菜とひじきのサラダ",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "白菜",
+                "ひじき",
+                "レモン汁",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 40.0,
+                "protein": 2.0,
+                "fat": 3.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1417,
+            "name": "おからときゅうりの和え物",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "生おから",
+                "きゅうり",
+                "醤油",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 80.0,
+                "protein": 4.0,
+                "fat": 4.0,
+                "carbs": 9.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1418,
+            "name": "高野豆腐とわかめのさっと煮",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "高野豆腐",
+                "わかめ",
+                "だし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 85.0,
+                "protein": 7.0,
+                "fat": 4.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1419,
+            "name": "こんにゃくと大根の田舎煮",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "こんにゃく",
+                "大根",
+                "だし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 60.0,
+                "protein": 1.0,
+                "fat": 1.0,
+                "carbs": 11.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1420,
+            "name": "糸こんにゃくとひじきの中華風和え",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "中華",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "糸こんにゃく",
+                "ひじき",
+                "ごま油",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 55.0,
+                "protein": 2.0,
+                "fat": 3.0,
+                "carbs": 7.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1421,
+            "name": "わかめとゴーヤのサラダ",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "副菜"
+            ],
+            "months": [
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "わかめ",
+                "ゴーヤ",
+                "レモン汁",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 30.0,
+                "protein": 2.0,
+                "fat": 1.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1422,
+            "name": "わかめとレタスの味噌汁",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "スープ",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "わかめ",
+                "レタス",
+                "味噌"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 35.0,
+                "protein": 2.0,
+                "fat": 1.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1423,
+            "name": "大根と小松菜の味噌汁",
+            "meal_type": [
+                "breakfast"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "朝食",
+                "スープ",
+                "副菜"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "ingredients": [
+                "大根",
+                "小松菜",
+                "味噌"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 35.0,
+                "protein": 2.0,
+                "fat": 1.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1424,
+            "name": "キャベツと大根のごまサラダ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "キャベツ",
+                "大根",
+                "白ごま",
+                "醤油",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 70.0,
+                "protein": 3.0,
+                "fat": 4.0,
+                "carbs": 7.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1425,
+            "name": "キャベツときゅうりの中華和え",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "中華",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "キャベツ",
+                "きゅうり",
+                "ごま油",
+                "酢",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 50.0,
+                "protein": 2.0,
+                "fat": 3.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1426,
+            "name": "大根とレタスのシンプルサラダ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "洋食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "大根",
+                "レタス",
+                "オリーブオイル",
+                "レモン汁"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 45.0,
+                "protein": 1.0,
+                "fat": 3.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 5
+        },
+        {
+            "id": 1427,
+            "name": "レタスとトマトのオリーブサラダ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "洋食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "レタス",
+                "トマト",
+                "オリーブオイル",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 45.0,
+                "protein": 1.0,
+                "fat": 3.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 5
+        },
+        {
+            "id": 1428,
+            "name": "トマトときゅうりの和風マリネ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "トマト",
+                "きゅうり",
+                "醤油",
+                "酢",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 45.0,
+                "protein": 1.0,
+                "fat": 3.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1429,
+            "name": "きゅうりのピリ辛中華漬け",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "中華",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "きゅうり",
+                "ごま油",
+                "唐辛子",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 40.0,
+                "protein": 1.0,
+                "fat": 3.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1430,
+            "name": "もやしときゅうりのごま酢和え",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "もやし",
+                "きゅうり",
+                "酢",
+                "白ごま"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 40.0,
+                "protein": 2.0,
+                "fat": 1.0,
+                "carbs": 7.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1431,
+            "name": "もやしとレタスのナムル",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "韓国風",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "もやし",
+                "レタス",
+                "ごま油",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 40.0,
+                "protein": 2.0,
+                "fat": 3.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1432,
+            "name": "小松菜とキャベツの塩炒め",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "小松菜",
+                "キャベツ",
+                "ごま油",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 55.0,
+                "protein": 3.0,
+                "fat": 4.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1433,
+            "name": "ほうれん草とレタスの和風サラダ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "ほうれん草",
+                "レタス",
+                "醤油",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 45.0,
+                "protein": 3.0,
+                "fat": 3.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1434,
+            "name": "ひじきとキャベツのサラダ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ひじき",
+                "キャベツ",
+                "レモン汁",
+                "オリーブオイル"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 55.0,
+                "protein": 2.0,
+                "fat": 3.0,
+                "carbs": 6.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1435,
+            "name": "ひじきと大豆の煮物",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "ひじき",
+                "大豆",
+                "だし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 80.0,
+                "protein": 4.0,
+                "fat": 3.0,
+                "carbs": 10.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1436,
+            "name": "枝豆とひじきのサラダボウル",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "洋食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "枝豆",
+                "ひじき",
+                "レタス",
+                "レモン汁"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 80.0,
+                "protein": 6.0,
+                "fat": 3.0,
+                "carbs": 6.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1437,
+            "name": "枝豆とキャベツの塩炒め",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "枝豆",
+                "キャベツ",
+                "ごま油",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 70.0,
+                "protein": 5.0,
+                "fat": 4.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1438,
+            "name": "わかめとレタスの中華サラダ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "中華",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "わかめ",
+                "レタス",
+                "ごま油",
+                "酢",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 40.0,
+                "protein": 2.0,
+                "fat": 3.0,
+                "carbs": 3.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1439,
+            "name": "わかめときゅうりのピリ辛和え",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "韓国風",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "わかめ",
+                "きゅうり",
+                "コチュジャン",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 45.0,
+                "protein": 2.0,
+                "fat": 3.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1440,
+            "name": "韓国海苔とレタスのサラダ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "韓国風",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            "ingredients": [
+                "レタス",
+                "韓国海苔",
+                "ごま油",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 35.0,
+                "protein": 1.0,
+                "fat": 3.0,
+                "carbs": 2.0
+            },
+            "cook_time_min": 5
+        },
+        {
+            "id": 1441,
+            "name": "白菜とわかめのごまサラダ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "白菜",
+                "わかめ",
+                "白ごま",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 45.0,
+                "protein": 2.0,
+                "fat": 2.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1442,
+            "name": "白菜とレタスの塩昆布サラダ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "白菜",
+                "レタス",
+                "塩昆布",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 35.0,
+                "protein": 2.0,
+                "fat": 3.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1443,
+            "name": "ゴーヤとわかめの酢の物",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "ゴーヤ",
+                "わかめ",
+                "酢",
+                "砂糖",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 30.0,
+                "protein": 2.0,
+                "fat": 1.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1444,
+            "name": "おくらとトマトのサラダ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "洋食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "おくら",
+                "トマト",
+                "オリーブオイル",
+                "塩"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 40.0,
+                "protein": 2.0,
+                "fat": 3.0,
+                "carbs": 4.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1445,
+            "name": "おくらとわかめのポン酢和え",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "おくら",
+                "わかめ",
+                "ポン酢"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 35.0,
+                "protein": 2.0,
+                "fat": 0.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 5
+        },
+        {
+            "id": 1446,
+            "name": "さつまいもとひじきのサラダ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "さつまいも",
+                "ひじき",
+                "醤油",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 110.0,
+                "protein": 3.0,
+                "fat": 3.0,
+                "carbs": 22.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1447,
+            "name": "かぼちゃと枝豆のサラダ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                9,
+                10,
+                11
+            ],
+            "ingredients": [
+                "かぼちゃ",
+                "枝豆",
+                "塩",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 115.0,
+                "protein": 4.0,
+                "fat": 4.0,
+                "carbs": 20.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1448,
+            "name": "レンコンとひじきのマリネ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "洋食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "レンコン",
+                "ひじき",
+                "レモン汁",
+                "オリーブオイル"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 65.0,
+                "protein": 2.0,
+                "fat": 3.0,
+                "carbs": 10.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1449,
+            "name": "レンコンときゅうりのごまサラダ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "レンコン",
+                "きゅうり",
+                "白ごま",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 70.0,
+                "protein": 2.0,
+                "fat": 3.0,
+                "carbs": 11.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1450,
+            "name": "ふきと大根の煮物",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                4,
+                5,
+                6
+            ],
+            "ingredients": [
+                "ふき",
+                "大根",
+                "だし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 60.0,
+                "protein": 2.0,
+                "fat": 0.0,
+                "carbs": 10.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1451,
+            "name": "たけのことこんにゃくの土佐煮",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                3,
+                4,
+                5
+            ],
+            "ingredients": [
+                "タケノコ",
+                "こんにゃく",
+                "かつおぶし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 70.0,
+                "protein": 2.0,
+                "fat": 1.0,
+                "carbs": 11.0
+            },
+            "cook_time_min": 20
+        },
+        {
+            "id": 1452,
+            "name": "こんにゃくとごぼうのピリ辛炒め",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                10,
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "ingredients": [
+                "こんにゃく",
+                "ごぼう",
+                "ごま油",
+                "醤油",
+                "唐辛子"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 80.0,
+                "protein": 2.0,
+                "fat": 3.0,
+                "carbs": 11.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1453,
+            "name": "糸こんにゃくとピーマン風ニラの炒り煮",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "糸こんにゃく",
+                "ニラ",
+                "だし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 70.0,
+                "protein": 2.0,
+                "fat": 2.0,
+                "carbs": 12.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1454,
+            "name": "高野豆腐とキャベツの煮浸し",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "高野豆腐",
+                "キャベツ",
+                "だし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 90.0,
+                "protein": 7.0,
+                "fat": 4.0,
+                "carbs": 6.0
+            },
+            "cook_time_min": 15
+        },
+        {
+            "id": 1455,
+            "name": "油揚げと小松菜のさっと煮",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "油揚げ",
+                "小松菜",
+                "だし",
+                "醤油"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 95.0,
+                "protein": 5.0,
+                "fat": 6.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1456,
+            "name": "おからとレタスのサラダ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "洋食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "生おから",
+                "レタス",
+                "レモン汁",
+                "オリーブオイル"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 85.0,
+                "protein": 4.0,
+                "fat": 4.0,
+                "carbs": 8.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1457,
+            "name": "おからと枝豆の和風サラダ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "副菜"
+            ],
+            "months": [
+                6,
+                7,
+                8,
+                9
+            ],
+            "ingredients": [
+                "生おから",
+                "枝豆",
+                "醤油",
+                "ごま油"
+            ],
+            "allergy_flags": [
+                "大豆",
+                "小麦"
+            ],
+            "nutrition": {
+                "kcal": 95.0,
+                "protein": 5.0,
+                "fat": 4.0,
+                "carbs": 9.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1458,
+            "name": "わかめと大根の中華スープ",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "中華",
+                "昼食",
+                "スープ",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "わかめ",
+                "大根",
+                "長ねぎ",
+                "中華スープ"
+            ],
+            "allergy_flags": [
+                "なし"
+            ],
+            "nutrition": {
+                "kcal": 25.0,
+                "protein": 2.0,
+                "fat": 1.0,
+                "carbs": 3.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1459,
+            "name": "キャベツとひじきの味噌汁",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "スープ",
+                "副菜"
+            ],
+            "months": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "ingredients": [
+                "キャベツ",
+                "ひじき",
+                "味噌"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 40.0,
+                "protein": 2.0,
+                "fat": 1.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1460,
+            "name": "白菜とわかめの味噌汁",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "スープ",
+                "副菜"
+            ],
+            "months": [
+                11,
+                12,
+                1,
+                2
+            ],
+            "ingredients": [
+                "白菜",
+                "わかめ",
+                "味噌"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 40.0,
+                "protein": 2.0,
+                "fat": 1.0,
+                "carbs": 5.0
+            },
+            "cook_time_min": 10
+        },
+        {
+            "id": 1461,
+            "name": "大根とごぼうの具だくさん味噌汁",
+            "meal_type": [
+                "lunch"
+            ],
+            "role": "side",
+            "tags": [
+                "和食",
+                "昼食",
+                "スープ",
+                "副菜"
+            ],
+            "months": [
+                10,
+                11,
+                12,
+                1,
+                2,
+                3
+            ],
+            "ingredients": [
+                "大根",
+                "ごぼう",
+                "ねぎ",
+                "味噌"
+            ],
+            "allergy_flags": [
+                "大豆"
+            ],
+            "nutrition": {
+                "kcal": 50.0,
+                "protein": 2.0,
+                "fat": 1.0,
+                "carbs": 8.0
+            },
+            "cook_time_min": 15
         }
     ]
 }
