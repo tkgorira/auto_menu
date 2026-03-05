@@ -30,6 +30,8 @@ if sa_json and not os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"):
 
 app = Flask(__name__)
 
+print("=== APP STARTED WITH COST FEATURE ===", flush=True)
+
 # セッション用のシークレットキー（本番では環境変数などで安全に管理）
 app.secret_key = "change_this_to_random_secret_key"
 
@@ -300,10 +302,6 @@ def sum_nutrition(recipes):
 
 # ===================== 材料集計・金額 =====================
 def aggregate_ingredients(recipes):
-    """
-    recipes: レシピ(dict)のリスト
-    return: { "大根": {"total_amount": 160, "unit": "g"}, ... }
-    """
     agg = defaultdict(lambda: {"total_amount": 0, "unit": "g"})
     for r in recipes:
         for ing in r.get("ingredients_detail", []):
@@ -316,10 +314,6 @@ def aggregate_ingredients(recipes):
 
 
 def estimate_cost(ingredients_agg):
-    """
-    ingredients_agg: aggregate_ingredients の結果
-    return: {"total_cost": int, "details": [...]}
-    """
     total = 0
     details = []
     for name, info in ingredients_agg.items():
@@ -392,10 +386,8 @@ def is_soup_by_name(recipe):
 
 
 def is_soup_recipe(r):
-    # メニュー名に「スープ」「汁」があれば無条件でスープ扱い
     if is_soup_by_name(r):
         return True
-    # それ以外は tags に「スープ」があるものだけスープ扱い
     tags = r.get("tags", []) or []
     return "スープ" in tags
 
@@ -646,7 +638,6 @@ def generate_from_vision():
     daily_nutrition = []
     day_recipes = [[] for _ in range(days)]
 
-    # 1食分の main+side+soup セットを一意に識別するキー
     def meal_set_key(recipes_for_one_meal):
         main_id = None
         side_id = None
@@ -661,9 +652,7 @@ def generate_from_vision():
                     main_id = r.get("id")
         return (main_id, side_id, soup_id)
 
-    # 期間内で出た main+side+soup セットの集合
     used_sets = set()
-    # meal_type ごとの side 使用済みID
     used_side_ids_by_meal_type = {mt: set() for mt in target_meal_types}
 
     for mt in target_meal_types:
@@ -672,7 +661,6 @@ def generate_from_vision():
             if mt in r.get("meal_type", [])
         ]
 
-        # スープ判定されたものは mains / sides から除外する
         soups = [r for r in mt_recipes if is_soup_recipe(r)]
         mains = [
             r for r in mt_recipes
@@ -695,11 +683,9 @@ def generate_from_vision():
 
                 menu = []
 
-                # main は普通にランダム
                 if mains:
                     menu.append(random.choice(mains))
 
-                # side は、その meal_type で未使用のものを優先
                 if sides:
                     unused_sides = [
                         s for s in sides
@@ -727,7 +713,6 @@ def generate_from_vision():
             if chosen_menu is None:
                 chosen_menu = last_menu
 
-            # 採用された side を使用済みに登録
             for r in chosen_menu:
                 if r.get("role") == "side":
                     used_side_ids_by_meal_type[mt].add(r.get("id"))
@@ -741,7 +726,6 @@ def generate_from_vision():
         total = sum_nutrition(day_recipes[d])
         daily_nutrition.append(total)
 
-    # 1日ごとの材料集計＆概算金額
     daily_ingredients = []
     daily_costs = []
     for d in range(days):
@@ -806,7 +790,6 @@ def generate():
     ng_presets = request.form.getlist("ng_preset")
     ng_ingredients = request.form.get("ng_ingredients", "")
 
-    # 料理タイプ（和食・洋食・中華）プルダウン
     cuisine = request.form.get("cuisine", "")
 
     days_str = request.form.get("days", "3")
@@ -830,27 +813,23 @@ def generate():
 
     target_meal_types = meal_types or ["dinner"]
 
-    # 食事タイミングで絞り込み
     filtered_recipes = [
         r for r in all_recipes
         if any(mt in r.get("meal_type", []) for mt in target_meal_types)
     ]
 
-    # 料理タイプ（和食・洋食・中華）で絞り込み
     if cuisine:
         filtered_recipes = [
             r for r in filtered_recipes
             if cuisine in (r.get("tags") or [])
         ]
 
-    # ダイエット
     if diet:
         filtered_recipes = [
             r for r in filtered_recipes
             if "ダイエット" in r.get("tags", [])
         ]
 
-    # 季節
     month_int = None
     try:
         month_int = int(month)
@@ -865,7 +844,6 @@ def generate():
         if seasonal_recipes:
             filtered_recipes = seasonal_recipes
 
-    # アレルギー
     allergy_flags = []
     if request.form.get("allergy_egg"):
         allergy_flags.append("卵")
@@ -880,7 +858,6 @@ def generate():
             if not any(flag in r.get("allergy_flags", []) for flag in allergy_flags)
         ]
 
-    # NG食材
     free_ng_list = [
         s.strip() for s in ng_ingredients.split(",")
         if s.strip()
@@ -893,7 +870,6 @@ def generate():
             if not any(ng in r.get("ingredients", []) for ng in ng_list)
         ]
 
-    # 手持ち食材
     if have_ingredients:
         def match_score(r):
             ings = r.get("ingredients", [])
@@ -911,7 +887,6 @@ def generate():
                 reverse=True,
             )
 
-    # 手軽さ
     if easy_level == "easy":
         def easy_score(r):
             tags = r.get("tags", [])
@@ -928,7 +903,6 @@ def generate():
             reverse=True,
         )
 
-    # 朝食カロリー上限
     if "breakfast" in target_meal_types:
         MAX_BREAKFAST_KCAL = 300.0
 
@@ -954,7 +928,6 @@ def generate():
     daily_nutrition = []
     day_recipes = [[] for _ in range(days)]
 
-    # 1食分の main+side+soup セットを一意に識別するキー
     def meal_set_key(recipes_for_one_meal):
         main_id = None
         side_id = None
@@ -969,9 +942,7 @@ def generate():
                     main_id = r.get("id")
         return (main_id, side_id, soup_id)
 
-    # 期間内で出た main+side+soup セットの集合
     used_sets = set()
-    # meal_type ごとの side 使用済みID
     used_side_ids_by_meal_type = {mt: set() for mt in target_meal_types}
 
     for mt in target_meal_types:
@@ -980,7 +951,6 @@ def generate():
             if mt in r.get("meal_type", [])
         ]
 
-        # スープ判定されたものは mains / sides から除外する
         soups = [r for r in mt_recipes if is_soup_recipe(r)]
         mains = [
             r for r in mt_recipes
@@ -1003,11 +973,9 @@ def generate():
 
                 menu = []
 
-                # main は普通にランダム
                 if mains:
                     menu.append(random.choice(mains))
 
-                # side は、その meal_type で未使用のものを優先
                 if sides:
                     unused_sides = [
                         s for s in sides
@@ -1035,7 +1003,6 @@ def generate():
             if chosen_menu is None:
                 chosen_menu = last_menu
 
-            # 採用された side を使用済みに登録
             for r in chosen_menu:
                 if r.get("role") == "side":
                     used_side_ids_by_meal_type[mt].add(r.get("id"))
@@ -1049,7 +1016,6 @@ def generate():
         total = sum_nutrition(day_recipes[d])
         daily_nutrition.append(total)
 
-    # 1日ごとの材料集計＆概算金額
     daily_ingredients = []
     daily_costs = []
     for d in range(days):
