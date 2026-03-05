@@ -600,6 +600,8 @@ def generate_from_vision():
 
     # 期間内で出た main+side+soup セットの集合
     used_sets = set()
+    # meal_type ごとの side 使用済みID
+    used_side_ids_by_meal_type = {mt: set() for mt in target_meal_types}
 
     for mt in target_meal_types:
         mt_recipes = [
@@ -623,21 +625,35 @@ def generate_from_vision():
         for day_index in range(days):
             max_retry = 100
             chosen_menu = None
+            last_menu = None
 
             while max_retry > 0:
                 max_retry -= 1
 
                 menu = []
 
+                # main は普通にランダム
                 if mains:
                     menu.append(random.choice(mains))
+
+                # side は、その meal_type で未使用のものを優先
                 if sides:
-                    menu.append(random.choice(sides))
+                    unused_sides = [
+                        s for s in sides
+                        if s.get("id") not in used_side_ids_by_meal_type[mt]
+                    ]
+                    if unused_sides:
+                        side = random.choice(unused_sides)
+                    else:
+                        side = random.choice(sides)
+                    menu.append(side)
+
                 if soups:
                     menu.append(random.choice(soups))
                 if not menu and mains:
                     menu.append(random.choice(mains))
 
+                last_menu = menu
                 key = (mt, meal_set_key(menu))
 
                 if key not in used_sets:
@@ -646,7 +662,12 @@ def generate_from_vision():
                     break
 
             if chosen_menu is None:
-                chosen_menu = menu
+                chosen_menu = last_menu
+
+            # 採用された side を使用済みに登録
+            for r in chosen_menu:
+                if r.get("role") == "side":
+                    used_side_ids_by_meal_type[mt].add(r.get("id"))
 
             day_menus.append(chosen_menu)
             day_recipes[day_index].extend(chosen_menu)
@@ -876,6 +897,8 @@ def generate():
 
     # 期間内で出た main+side+soup セットの集合
     used_sets = set()
+    # meal_type ごとの side 使用済みID
+    used_side_ids_by_meal_type = {mt: set() for mt in target_meal_types}
 
     for mt in target_meal_types:
         mt_recipes = [
@@ -899,21 +922,35 @@ def generate():
         for day_index in range(days):
             max_retry = 100
             chosen_menu = None
+            last_menu = None
 
             while max_retry > 0:
                 max_retry -= 1
 
                 menu = []
 
+                # main は普通にランダム
                 if mains:
                     menu.append(random.choice(mains))
+
+                # side は、その meal_type で未使用のものを優先
                 if sides:
-                    menu.append(random.choice(sides))
+                    unused_sides = [
+                        s for s in sides
+                        if s.get("id") not in used_side_ids_by_meal_type[mt]
+                    ]
+                    if unused_sides:
+                        side = random.choice(unused_sides)
+                    else:
+                        side = random.choice(sides)
+                    menu.append(side)
+
                 if soups:
                     menu.append(random.choice(soups))
                 if not menu and mains:
                     menu.append(random.choice(mains))
 
+                last_menu = menu
                 key = (mt, meal_set_key(menu))
 
                 if key not in used_sets:
@@ -922,7 +959,12 @@ def generate():
                     break
 
             if chosen_menu is None:
-                chosen_menu = menu
+                chosen_menu = last_menu
+
+            # 採用された side を使用済みに登録
+            for r in chosen_menu:
+                if r.get("role") == "side":
+                    used_side_ids_by_meal_type[mt].add(r.get("id"))
 
             day_menus.append(chosen_menu)
             day_recipes[day_index].extend(chosen_menu)
