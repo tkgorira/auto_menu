@@ -583,6 +583,24 @@ def generate_from_vision():
     daily_nutrition = []
     day_recipes = [[] for _ in range(days)]
 
+    # 1食分の main+side+soup セットを一意に識別するキー
+    def meal_set_key(recipes_for_one_meal):
+        main_id = None
+        side_id = None
+        soup_id = None
+        for r in recipes_for_one_meal:
+            if is_soup_recipe(r):
+                soup_id = r.get("id")
+            else:
+                if r.get("role") == "side":
+                    side_id = r.get("id")
+                else:
+                    main_id = r.get("id")
+        return (main_id, side_id, soup_id)
+
+    # 期間内で出た main+side+soup セットの集合
+    used_sets = set()
+
     for mt in target_meal_types:
         mt_recipes = [
             r for r in filtered_recipes
@@ -603,19 +621,35 @@ def generate_from_vision():
         day_menus = []
 
         for day_index in range(days):
-            menu = []
+            max_retry = 100
+            chosen_menu = None
 
-            if mains:
-                menu.append(random.choice(mains))
-            if sides:
-                menu.append(random.choice(sides))
-            if soups:
-                menu.append(random.choice(soups))
-            if not menu and mains:
-                menu.append(random.choice(mains))
+            while max_retry > 0:
+                max_retry -= 1
 
-            day_menus.append(menu)
-            day_recipes[day_index].extend(menu)
+                menu = []
+
+                if mains:
+                    menu.append(random.choice(mains))
+                if sides:
+                    menu.append(random.choice(sides))
+                if soups:
+                    menu.append(random.choice(soups))
+                if not menu and mains:
+                    menu.append(random.choice(mains))
+
+                key = (mt, meal_set_key(menu))
+
+                if key not in used_sets:
+                    used_sets.add(key)
+                    chosen_menu = menu
+                    break
+
+            if chosen_menu is None:
+                chosen_menu = menu
+
+            day_menus.append(chosen_menu)
+            day_recipes[day_index].extend(chosen_menu)
 
         menus_by_meal[mt] = day_menus
 
@@ -825,6 +859,24 @@ def generate():
     daily_nutrition = []
     day_recipes = [[] for _ in range(days)]
 
+    # 1食分の main+side+soup セットを一意に識別するキー
+    def meal_set_key(recipes_for_one_meal):
+        main_id = None
+        side_id = None
+        soup_id = None
+        for r in recipes_for_one_meal:
+            if is_soup_recipe(r):
+                soup_id = r.get("id")
+            else:
+                if r.get("role") == "side":
+                    side_id = r.get("id")
+                else:
+                    main_id = r.get("id")
+        return (main_id, side_id, soup_id)
+
+    # 期間内で出た main+side+soup セットの集合
+    used_sets = set()
+
     for mt in target_meal_types:
         mt_recipes = [
             r for r in filtered_recipes
@@ -845,19 +897,35 @@ def generate():
         day_menus = []
 
         for day_index in range(days):
-            menu = []
+            max_retry = 100
+            chosen_menu = None
 
-            if mains:
-                menu.append(random.choice(mains))
-            if sides:
-                menu.append(random.choice(sides))
-            if soups:
-                menu.append(random.choice(soups))
-            if not menu and mains:
-                menu.append(random.choice(mains))
+            while max_retry > 0:
+                max_retry -= 1
 
-            day_menus.append(menu)
-            day_recipes[day_index].extend(menu)
+                menu = []
+
+                if mains:
+                    menu.append(random.choice(mains))
+                if sides:
+                    menu.append(random.choice(sides))
+                if soups:
+                    menu.append(random.choice(soups))
+                if not menu and mains:
+                    menu.append(random.choice(mains))
+
+                key = (mt, meal_set_key(menu))
+
+                if key not in used_sets:
+                    used_sets.add(key)
+                    chosen_menu = menu
+                    break
+
+            if chosen_menu is None:
+                chosen_menu = menu
+
+            day_menus.append(chosen_menu)
+            day_recipes[day_index].extend(chosen_menu)
 
         menus_by_meal[mt] = day_menus
 
