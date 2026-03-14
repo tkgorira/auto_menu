@@ -39,7 +39,9 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 # ==== DB を永続ディスクに置くための設定 ====
 # 本番(Render)では DB_DIR=/var/data を環境変数で渡す
-DB_DIR = os.environ.get("DB_DIR", BASE_DIR)
+DB_ROOT = os.environ.get("DB_DIR", BASE_DIR)   # 例: /var/data
+DB_DIR = os.path.join(DB_ROOT, "db")           # 例: /var/data/db
+
 os.makedirs(DB_DIR, exist_ok=True)
 DB_PATH = os.path.join(DB_DIR, "favorites.db")
 print("=== DB_PATH ===", DB_PATH, flush=True)
@@ -375,7 +377,7 @@ def build_share_text_for_recipe(recipe):
     details = recipe.get("ingredients_detail", []) or []
     for ing in details:
         lines.append("- " + format_ingredient_line(ing))
-    return "\n".join(lines)
+    return "\\n".join(lines)
 
 
 # ===================== 自作レシピ読み込みヘルパ =====================
