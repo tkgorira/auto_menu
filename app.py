@@ -395,4 +395,20 @@ def load_user_recipes(user_id):
 
         recipe = {
             "id": int(row["id"]),
-
+            "name": row["name"],
+            "meal_type": meal_type,
+            "role": row["role"],
+            "tags": [],
+            "months": months,
+            "ingredients": ingredients,
+            "allergy_flags": allergy_flags,
+            "nutrition": {
+                "kcal": row["kcal"] or 0,
+                "protein": row["protein"] or 0,
+                "fat": row["fat"] or 0,
+                "carbs": row["carbs"] or 0,
+            },
+            "cook_time_min": row["cook_time_min"] if "cook_time_min" in row.keys() else 0,
+        }
+        result.append(recipe)
+    return result
