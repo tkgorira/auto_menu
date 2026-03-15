@@ -412,3 +412,9 @@ def load_user_recipes(user_id):
         }
         result.append(recipe)
     return result
+# ===================== アプリ起動 =====================
+if __name__ == "__main__":
+    # Render が渡してくる PORT 環境変数を優先的に使う
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port, debug=False)
+
